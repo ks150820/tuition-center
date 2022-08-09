@@ -6,10 +6,6 @@ const useInterNetHandlingService = () => {
   const [isConnected, setSsConnected] = useState<boolean | null>(true);
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener(state => {
-      console.log('Connection type', state.type);
-      console.log('Connection Reachable', state.isInternetReachable);
-
-      console.log('Is connected?', state.isConnected);
       setSsConnected(state.isConnected || null);
     });
 
