@@ -8,24 +8,20 @@
  * @format
  */
 
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Provider} from 'react-redux';
 import useInterNetHandlingService from './src/services/internet-handling-service';
 import {store} from './src/store/configureStore';
 import {NavigationContainer} from '@react-navigation/native';
-import Config from 'react-native-config';
 import MainScreen from './src/screens/main-screen';
+import AppTheme from './src/theme/theme';
 
 const App = () => {
-  const {isConnected, NoInterNetConnectionView} = useInterNetHandlingService();
-  useEffect(() => {
-    console.log(isConnected, 'is Connected 34');
-  }, [isConnected]);
-  console.log(Config.API, 'API SERVICE');
+  const {NoInterNetConnectionView} = useInterNetHandlingService();
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer theme={AppTheme}>
         <MainScreen />
         <NoInterNetConnectionView />
       </NavigationContainer>
