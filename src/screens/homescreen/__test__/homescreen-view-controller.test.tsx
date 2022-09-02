@@ -1,7 +1,18 @@
-import { renderHook, act } from "@testing-library/react-hooks";
-import useHomescreenController from "../homescreen-view-controller";
+import {renderHook} from '@testing-library/react-native';
+import useHomeScreenViewController from '../homescreen-view-controller';
 
-test("Something to test", () => {
-  const { result } = renderHook(() => useHomescreenController({}));
-
+jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native');
+  return {
+    ...actualNav,
+    useNavigation: () => ({
+      navigate: jest.fn(),
+    }),
+  };
+});
+describe('testing home screen view', () => {
+  test('test component', () => {
+    const {result} = renderHook(useHomeScreenViewController);
+    result.current.onPress();
+  });
 });

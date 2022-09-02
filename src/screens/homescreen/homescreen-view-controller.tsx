@@ -10,6 +10,7 @@ import {myCourseNavigationProps} from '../../navigators/home-navigator/@types/ho
 const useHomeScreenViewController = () => {
   const navigation = useNavigation<myCourseNavigationProps>();
   const onPress = () => {
+    console.log('call.');
     navigation.navigate('MyCourse', {courseList: ['A', 'B']});
   };
   return {onPress};

@@ -1,6 +1,20 @@
-import { render } from "@testing-library/react";
-import HomescreenView from "../homescreen-view";
+import React from 'react';
+import {fireEvent, render} from '@testing-library/react-native';
+import HomescreenView from '../homescreen-view';
 
-test("Something to test", () => {
-  const { getByText, getByTestId } = render(<HomescreenView />);
+jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native');
+  return {
+    ...actualNav,
+    useNavigation: () => ({
+      navigate: jest.fn(),
+    }),
+  };
+});
+
+describe('render home screen view', () => {
+  test('test component', () => {
+    const {getByText} = render(<HomescreenView />);
+    fireEvent.press(getByText('Click Me'));
+  });
 });
