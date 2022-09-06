@@ -1,31 +1,26 @@
-import {configureStore} from '@reduxjs/toolkit';
+import {applyMiddleware, configureStore} from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
-import thunkMiddleware from './middlewares/thunk';
+import apiMiddleware from './middlewares/api-middleware';
+import {composeWithDevTools} from 'redux-devtools-extension';
+
 // import {api} from '../services';
 // import createDebugger from 'redux-flipper';
 import reducer from './reducer';
+// import addLastFetchMiddleware from './middlewares/add-last-fetch-middleware';
 export interface thunkType {
   dispatch: AppDispatch;
   getState: RootState;
 }
+const composedEnhancer = composeWithDevTools(applyMiddleware(apiMiddleware));
 
 export const store = configureStore({
   reducer: reducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware()
-      .prepend(
-        // correctly typed middlewares can just be used
-
-        // you can also type middlewares manually
-        // untypedMiddleware as Middleware<
-        //   (action: Action<'specialAction'>) => number,
-        //   RootState
-        // >,
-        thunk,
-        thunkMiddleware,
-      )
+      .prepend(thunk)
       // prepend and concat calls can be chained
       .concat(),
+  enhancers: [composedEnhancer],
 });
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,5 +1,6 @@
-import {useNavigation} from '@react-navigation/native';
-import {myCourseNavigationProps} from '../../navigators/home-navigator/@types/home-navigator-param-list';
+import {useDispatch} from 'react-redux';
+import {callAPi, callRetry} from '../../store/auth';
+import {AppDispatch} from '../../store/configureStore';
 // import {postNavigationProp} from '../../navigators/post-auth-navigator/@types/post-auth-param-list';
 
 /**
@@ -8,12 +9,19 @@ import {myCourseNavigationProps} from '../../navigators/home-navigator/@types/ho
  * @returns
  */
 const useHomeScreenViewController = () => {
-  const navigation = useNavigation<myCourseNavigationProps>();
+  // const navigation = useNavigation<myCourseNavigationProps>();
+  const dispatch = useDispatch<AppDispatch>();
+
   const onPress = () => {
     console.log('call.');
-    navigation.navigate('MyCourse', {courseList: ['A', 'B']});
+    dispatch(callAPi());
+    // navigation.navigate('MyCourse', {courseList: ['A', 'B']});
   };
-  return {onPress};
+
+  const onRetry = () => {
+    dispatch(callRetry());
+  };
+  return {onPress, onRetry};
 };
 
 export default useHomeScreenViewController;
