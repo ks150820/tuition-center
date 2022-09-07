@@ -3,7 +3,7 @@ import {createSelector} from 'reselect';
 import {apiRetry} from '../actions/actions';
 // import {apiCallBegan} from '../actions/actions';
 import {AppDispatch, RootState, store} from '../configureStore';
-import {httpMethods} from '../enum';
+import {CACHING_TIME, httpMethods} from '../enum';
 import storeDispatch from '../util/dispatch';
 //Slice => reducer and actions
 
@@ -56,14 +56,16 @@ export const updateLoginStatus =
 
 export const callAPi = () => () => {
   const lastCalled = store.getState().auth.lastCalledTime;
+  let testId = '6299efb1e51fe25d77f6b191';
   return storeDispatch({
-    url: '7789745b-9e42-4385-9c75-00e1cf1677c3',
+    // url: '7789745b-9e42-4385-9c75-00e1cf1677c3',
+    url: `v1/user/test/sampling/${testId}`,
     method: httpMethods.GET,
     onStart: startApiCall.type,
     onSuccess: endApiCall.type,
     onError: failedApiCall.type,
     lastCalledTime: lastCalled || 0,
-    cacheValidityDuration: 1,
+    cacheValidityDuration: CACHING_TIME.SHORT,
   });
 };
 export const callRetry = () => (dispatch: AppDispatch) => {

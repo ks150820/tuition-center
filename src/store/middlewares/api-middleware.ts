@@ -2,7 +2,7 @@ import {AppDispatch, RootState, store} from '../configureStore';
 import * as actions from '../actions/actions';
 import apiQueue from '../config/apiQueue';
 import {createRequestObject} from '../../util/request';
-import {httpMethods} from '../enum';
+import {CACHING_TIME, httpMethods} from '../enum';
 import {httpInterceptor} from '../../services/http-interceptor-service';
 
 export interface thunkType {
@@ -16,8 +16,7 @@ const makeRequest = (payload: {
   onStart: string;
   onSuccess: string;
   lastCalledTime: number;
-  invalidateCache: boolean;
-  cacheValidityDuration: number;
+  cacheValidityDuration: CACHING_TIME;
 }) => {
   const {
     url,
@@ -68,8 +67,6 @@ const apiMiddleware =
   (next: any) =>
   async (action: any) => {
     console.log(action.type);
-    createRequestObject('some-url', httpMethods.GET);
-
     if (action?.type === actions.apiRetry.type) {
       console.log(apiQueue.size());
 
