@@ -1,8 +1,9 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {createSelector} from 'reselect';
-import {apiCallBegan, apiRetry} from '../actions/actions';
+import {apiRetry} from '../actions/actions';
 // import {apiCallBegan} from '../actions/actions';
 import {AppDispatch, RootState, store} from '../configureStore';
+import {httpMethods} from '../enum';
 import storeDispatch from '../util/dispatch';
 //Slice => reducer and actions
 
@@ -56,8 +57,8 @@ export const updateLoginStatus =
 export const callAPi = () => () => {
   const lastCalled = store.getState().auth.lastCalledTime;
   return storeDispatch({
-    url: 'https://mocki.io/v1/7789745b-9e42-4385-9c75-00e1cf1677c3',
-    method: 'get',
+    url: '7789745b-9e42-4385-9c75-00e1cf1677c3',
+    method: httpMethods.GET,
     onStart: startApiCall.type,
     onSuccess: endApiCall.type,
     onError: failedApiCall.type,

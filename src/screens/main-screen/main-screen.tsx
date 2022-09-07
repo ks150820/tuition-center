@@ -5,7 +5,7 @@ import PreAuthNavigator from '../../navigators/pre-auth-navigator';
 
 const MainScreen = () => {
   const {isLoggedIn} = useMainScreenViewController();
-  return isLoggedIn === true ? <PostAuthNavigator /> : <PreAuthNavigator />;
+  return isLoggedIn === false ? <PostAuthNavigator /> : <PreAuthNavigator />;
 };
 
 export default MainScreen;

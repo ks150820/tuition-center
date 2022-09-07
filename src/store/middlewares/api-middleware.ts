@@ -1,7 +1,9 @@
 import {AppDispatch, RootState, store} from '../configureStore';
 import * as actions from '../actions/actions';
-import axios from 'axios';
 import apiQueue from '../config/apiQueue';
+import {createRequestObject} from '../../util/request';
+import {httpMethods} from '../enum';
+import {httpInterceptor} from '../../services/http-interceptor-service';
 
 export interface thunkType {
   dispatch: AppDispatch;
@@ -30,12 +32,11 @@ const makeRequest = (payload: {
   if (new Date().getMinutes() - lastCalledTime < cacheValidityDuration) {
     return;
   }
-
-  // store.dispatch({type: actions.apiCallBegan.type, payload: []});
   store.dispatch({type: onStart, payload: []});
-  axios
-    .get(url + 'LOL')
-    .then(function (response) {
+  httpInterceptor
+    .request(createRequestObject(url, httpMethods.GET))
+    .then(response => {
+      console.log(response.data);
       store.dispatch({
         type: actions.apiCallSuccess.type,
         payload: response.data,
@@ -43,14 +44,15 @@ const makeRequest = (payload: {
       store.dispatch({type: onSuccess, payload: response.data});
       return response;
     })
-    .catch(function (error) {
+    .catch(error => {
+      console.log(error);
       store.dispatch({
         type: actions.apiCallFailed.type,
         payload: JSON.stringify(error),
       });
       console.log(error);
 
-      apiQueue.enqueue({url: url, method: 'get'});
+      apiQueue.enqueue({url: url, method: httpMethods.GET});
       store.dispatch({
         type: onError,
         payload: JSON.stringify(error),
@@ -66,6 +68,8 @@ const apiMiddleware =
   (next: any) =>
   async (action: any) => {
     console.log(action.type);
+    createRequestObject('some-url', httpMethods.GET);
+
     if (action?.type === actions.apiRetry.type) {
       console.log(apiQueue.size());
 
