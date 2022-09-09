@@ -1,7 +1,10 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import useAsyncStorageService from '../../services/async-storage-service';
-import {getUserLoggedInData, updateLoginStatus} from '../../store/auth';
+import {
+  getUserLoggedInData,
+  updateLoginStatus,
+} from '../../store/entities/auth';
 import {AppDispatch} from '../../store/configureStore';
 
 const useMainScreenViewController = () => {

@@ -1,10 +1,10 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {createSelector} from 'reselect';
-import {apiRetry} from '../actions/actions';
+import {apiRetry} from '../../actions/actions';
 // import {apiCallBegan} from '../actions/actions';
-import {AppDispatch, RootState, store} from '../configureStore';
-import {CACHING_TIME, httpMethods} from '../enum';
-import storeDispatch from '../util/dispatch';
+import {AppDispatch, RootState, store} from '../../configureStore';
+import {CACHING_TIME, httpMethods} from '../../enum';
+import storeDispatch from '../../util/dispatch';
 //Slice => reducer and actions
 
 const slice = createSlice({
@@ -56,7 +56,7 @@ export const updateLoginStatus =
 
 export const callAPi = () => () => {
   const lastCalled = store.getState().auth.lastCalledTime;
-  let testId = '6299efb1e51fe25d77f6b191';
+  let testId = '6299efb1e51fe25d77f6b191m';
   return storeDispatch({
     // url: '7789745b-9e42-4385-9c75-00e1cf1677c3',
     url: `v1/user/test/sampling/${testId}`,

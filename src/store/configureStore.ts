@@ -1,7 +1,6 @@
-import {applyMiddleware, configureStore} from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import apiMiddleware from './middlewares/api-middleware';
-import {composeWithDevTools} from 'redux-devtools-extension';
 
 // import {api} from '../services';
 // import createDebugger from 'redux-flipper';
@@ -11,16 +10,15 @@ export interface thunkType {
   dispatch: AppDispatch;
   getState: RootState;
 }
-const composedEnhancer = composeWithDevTools(applyMiddleware(apiMiddleware));
 
 export const store = configureStore({
   reducer: reducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware()
-      .prepend(thunk)
+      .prepend(thunk, apiMiddleware)
       // prepend and concat calls can be chained
       .concat(),
-  enhancers: [composedEnhancer],
+  enhancers: [],
 });
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;

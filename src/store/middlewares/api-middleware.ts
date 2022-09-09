@@ -4,6 +4,7 @@ import apiQueue from '../config/apiQueue';
 import {createRequestObject} from '../../util/request';
 import {CACHING_TIME, httpMethods} from '../enum';
 import {httpInterceptor} from '../../services/http-interceptor-service';
+import {handleError} from '../ui/http-manager';
 
 export interface thunkType {
   dispatch: AppDispatch;
@@ -45,6 +46,19 @@ const makeRequest = (payload: {
     })
     .catch(error => {
       console.log(error);
+      if (error.response) {
+        console.log(
+          JSON.stringify(error),
+          '>>>>>><<<<<<<<<>>>>>>>>>>><<<<<<<<<<<<<>>>>>>>>',
+        );
+
+        store.dispatch(
+          handleError({
+            errorCode: error.code || 'NaN',
+            errorMessage: error.message || 'something went wrong',
+          }),
+        );
+      }
       store.dispatch({
         type: actions.apiCallFailed.type,
         payload: JSON.stringify(error),

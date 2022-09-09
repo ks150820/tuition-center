@@ -1,5 +1,5 @@
 import {useDispatch} from 'react-redux';
-import {callAPi, callRetry} from '../../store/auth';
+import {callAPi, callRetry} from '../../store/entities/auth';
 import {AppDispatch} from '../../store/configureStore';
 // import {postNavigationProp} from '../../navigators/post-auth-navigator/@types/post-auth-param-list';
 
