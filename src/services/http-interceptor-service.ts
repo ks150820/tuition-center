@@ -1,7 +1,10 @@
 import axios from 'axios';
 import {store} from '../store/configureStore';
 import {httpMethods} from '../store/enum';
-import {handleError} from '../store/ui/http-manager';
+import {
+  handleAuthTokenUpdate,
+  updateHaltedApis,
+} from '../store/ui/http-manager';
 import {createRequestObject} from '../util/request';
 
 const axiosInstance = axios.create();
@@ -26,13 +29,10 @@ axiosInstance.interceptors.response.use(
   response => {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
-    console.log(response, 'Response>>>>>>>>>>>');
-
     return response;
   },
   async error => {
-    console.log(error, 'Error>>>>>>>>>>>');
-
+    console.log(JSON.stringify(error), 'error )))))))))))))))))');
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     if (error.response.status !== 401) {
@@ -44,20 +44,32 @@ axiosInstance.interceptors.response.use(
      * token refresh causes the 401 response
      */
     // axios.interceptors.response.eject(interceptor);
-    try {
-      const tokenRefreshResponse = await axios.request(
+
+    store.dispatch(
+      updateHaltedApis({
+        url: error?.config?.url,
+        method: error?.config?.method,
+      }),
+    );
+
+    return await axios
+      .request(
         createRequestObject('v1/user/oauth/token', httpMethods.POST, {
           grant_type: 'refresh_token',
           refresh_token: refresh_token,
         }),
-      );
-      error.response.config.headers['authorization'] =
-        'Bearer ' + tokenRefreshResponse.data.token;
-      return await axios(error.response.config);
-    } catch (errorMsg) {
-      console.log(errorMsg, 'error msg>>>>>>>>>>>>.');
-      return await Promise.reject(errorMsg);
-    }
+      )
+      .then(tokenRefreshResponse => {
+        store.dispatch(handleAuthTokenUpdate(true));
+        error.response.config.headers['authorization'] =
+          'Bearer ' + tokenRefreshResponse.data.token;
+        //provide a success dispatch
+        return axios(error.response.config);
+      })
+      .catch(() => {
+        //handleLogout
+        return Promise.reject(error);
+      });
   },
 );
 export const httpInterceptor = axiosInstance;

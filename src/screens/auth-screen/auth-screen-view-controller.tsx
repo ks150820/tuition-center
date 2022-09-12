@@ -6,9 +6,6 @@ const useAuthScreenViewController = () => {
   const {storeData} = useAsyncStorageService({key: 'app'});
   const dispatch = useDispatch<AppDispatch>();
   const onPress = () => {
-    // storeData('true');
-    // dispatch(updateLogin(true));
-    // dispatch(callLoginApi(false));
     dispatch(callAPi());
   };
   return {onPress};

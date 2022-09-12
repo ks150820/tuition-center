@@ -47,11 +47,6 @@ const makeRequest = (payload: {
     .catch(error => {
       console.log(error);
       if (error.response) {
-        console.log(
-          JSON.stringify(error),
-          '>>>>>><<<<<<<<<>>>>>>>>>>><<<<<<<<<<<<<>>>>>>>>',
-        );
-
         store.dispatch(
           handleError({
             errorCode: error.code || 'NaN',
@@ -64,8 +59,6 @@ const makeRequest = (payload: {
         payload: JSON.stringify(error),
       });
       console.log(error);
-
-      apiQueue.enqueue({url: url, method: httpMethods.GET});
       store.dispatch({
         type: onError,
         payload: JSON.stringify(error),

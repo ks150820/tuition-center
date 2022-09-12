@@ -16,11 +16,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import MainScreen from './src/screens/main-screen';
 import AppTheme from './src/theme/theme';
 import {ENV_VAR} from '@env';
+import {initFirebase} from './src/services/firebase-services';
+
 const App = () => {
   const {NoInterNetConnectionView} = useInterNetHandlingService();
   // console.log(ENV_VAR);
   useEffect(() => {
     console.log(ENV_VAR);
+    initFirebase();
   }, []);
 
   return (

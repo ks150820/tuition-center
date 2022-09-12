@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import useToast from '../components/toast/toast';
 import {useSelector} from 'react-redux';
 import {getApiErrorData} from '../store/ui/http-manager';
-const useHttpErrorHandlingService = () => {
+export const useHttpErrorHandlingService = () => {
   const {View, callBacks, values} = useToast();
   const apiError = useSelector(getApiErrorData);
   useEffect(() => {
@@ -14,5 +14,3 @@ const useHttpErrorHandlingService = () => {
   }, [apiError, callBacks, values]);
   return View;
 };
-
-export default useHttpErrorHandlingService;
