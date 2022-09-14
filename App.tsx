@@ -30,6 +30,7 @@ const App = () => {
   useEffect(() => {
     console.log(ENV_VAR);
     initFirebase();
+    // Sentry.nativeCrash();
   }, []);
 
   return (

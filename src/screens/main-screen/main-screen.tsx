@@ -7,6 +7,7 @@ import {useHttpErrorHandlingService} from '../../services/http-error-handling-se
 const MainScreen = () => {
   const {isLoggedIn} = useMainScreenViewController();
   const ErrorView = useHttpErrorHandlingService();
+
   return (
     <>
       {isLoggedIn === false ? <PostAuthNavigator /> : <PreAuthNavigator />}
