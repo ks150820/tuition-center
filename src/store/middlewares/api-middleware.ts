@@ -10,6 +10,10 @@ export interface thunkType {
   dispatch: AppDispatch;
   getState: RootState;
 }
+interface IDataType {
+  type: string;
+  payload: unknown;
+}
 
 const makeRequest = (payload: {
   url: string;
@@ -27,21 +31,29 @@ const makeRequest = (payload: {
     lastCalledTime,
     cacheValidityDuration,
   } = payload;
-  console.log(new Date().getMinutes() - lastCalledTime);
-
+  const dispatch = (data: IDataType) => {
+    store.dispatch({
+      type: data.type,
+      payload: data.payload,
+    });
+    data.type === actions.apiCallSuccess.type
+      ? store.dispatch({type: onSuccess, payload: data.payload})
+      : data.type === actions.apiCallFailed.type
+      ? store.dispatch({
+          type: onError,
+          payload: data.payload,
+        })
+      : store.dispatch({type: onStart, payload: []});
+  };
   if (new Date().getMinutes() - lastCalledTime < cacheValidityDuration) {
     return;
   }
-  store.dispatch({type: onStart, payload: []});
+
   httpInterceptor
     .request(createRequestObject(url, httpMethods.GET))
     .then(response => {
       console.log(response.data);
-      store.dispatch({
-        type: actions.apiCallSuccess.type,
-        payload: response.data,
-      });
-      store.dispatch({type: onSuccess, payload: response.data});
+      dispatch({type: actions.apiCallSuccess.type, payload: response.data});
       return response;
     })
     .catch(error => {
@@ -54,13 +66,8 @@ const makeRequest = (payload: {
           }),
         );
       }
-      store.dispatch({
+      dispatch({
         type: actions.apiCallFailed.type,
-        payload: JSON.stringify(error),
-      });
-      console.log(error);
-      store.dispatch({
-        type: onError,
         payload: JSON.stringify(error),
       });
       return error;
