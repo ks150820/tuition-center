@@ -15,10 +15,11 @@ const useHomeScreenViewController = () => {
     course_id: 'course_id',
     item: 'item',
   };
-  const dataToTrack = useDataTrackingService(data, true);
+  const {dataToTrack, userDetails} = useDataTrackingService(data, true);
   useEffect(() => {
     console.log(dataToTrack, 'data to track');
-  }, [dataToTrack]);
+    console.log(userDetails, 'userDetails to track');
+  }, [dataToTrack, userDetails]);
   const dispatch = useDispatch<AppDispatch>();
 
   const onPress = () => {
