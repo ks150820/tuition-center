@@ -27,7 +27,7 @@ const useAsyncStorageService = ({key}: IUseAsyncStorageService) => {
    * This function to get the data from the async storage
    * if the type of value we are stored is object we have to parse it
    */
-  const getData = async () => {
+  const getData = async (): Promise<string | null> => {
     try {
       const value = await AsyncStorage.getItem(key);
       if (value !== null) {
