@@ -1,12 +1,11 @@
-type User = {
-  firstName: string;
-  lastName?: string;
+interface authDetails {
+  name: string;
   phoneNumber: string;
-};
-
-type Authentication = {
-  user: User;
-  refreshToken?: string;
+  email?: string;
+  authToken: string;
+  refreshToken: string;
+}
+interface Authentication {
+  authDetails: authDetails;
   isLoggedIn: boolean;
-  lastCalledTime: number;
-};
+}

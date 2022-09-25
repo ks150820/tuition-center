@@ -1,63 +1,70 @@
-import {AppDispatch, RootState, store} from '../configureStore';
+import {store} from '../configureStore';
 import * as actions from '../actions/actions';
 import apiQueue from '../config/apiQueue';
 import {createRequestObject} from '../../util/request';
-import {CACHING_TIME, httpMethods} from '../enum';
 import {httpInterceptor} from '../../services/http-interceptor-service';
 import {handleError} from '../ui/http-manager';
-
-export interface thunkType {
-  dispatch: AppDispatch;
-  getState: RootState;
-}
+import {IDispatchType} from '../../@types';
 interface IDataType {
   type: string;
   payload: unknown;
 }
 
-const makeRequest = (payload: {
-  url: string;
-  onError: string;
-  onStart: string;
-  onSuccess: string;
-  lastCalledTime: number;
-  cacheValidityDuration: CACHING_TIME;
-}) => {
+const apiLastCalledTimeMap = new Map<
+  string,
+  {url: string; method: string; lastCalled: number}
+>();
+
+const makeRequest = (payload: IDispatchType) => {
   const {
     url,
+    method,
+    data,
     onError,
     onStart,
     onSuccess,
-    lastCalledTime,
+    auth,
     cacheValidityDuration,
   } = payload;
-  const dispatch = (data: IDataType) => {
+  const dispatch = (oData: IDataType) => {
     store.dispatch({
-      type: data.type,
-      payload: data.payload,
+      type: oData.type,
+      payload: oData.payload,
     });
-    data.type === actions.apiCallSuccess.type
-      ? store.dispatch({type: onSuccess, payload: data.payload})
-      : data.type === actions.apiCallFailed.type
+    oData.type === actions.apiCallSuccess.type
+      ? store.dispatch({type: onSuccess, payload: oData.payload})
+      : oData.type === actions.apiCallFailed.type
       ? store.dispatch({
           type: onError,
-          payload: data.payload,
+          payload: oData.payload,
         })
       : store.dispatch({type: onStart, payload: []});
   };
-  if (new Date().getMinutes() - lastCalledTime < cacheValidityDuration) {
+
+  let apiLastCalledApiKey = url + method;
+  const requestObject = createRequestObject(url, method, auth, data);
+  let lastCalledTimeApi =
+    apiLastCalledTimeMap.get(apiLastCalledApiKey)?.lastCalled;
+
+  if (
+    lastCalledTimeApi &&
+    new Date().getMinutes() - lastCalledTimeApi < cacheValidityDuration
+  ) {
     return;
   }
-
   httpInterceptor
-    .request(createRequestObject(url, httpMethods.GET))
+    .request(requestObject)
     .then(response => {
-      console.log(response.data);
       dispatch({type: actions.apiCallSuccess.type, payload: response.data});
+
+      apiLastCalledTimeMap.set(apiLastCalledApiKey, {
+        url: url,
+        method: method,
+        lastCalled: new Date().getMinutes(),
+      });
       return response;
     })
     .catch(error => {
-      console.log(error);
       if (error.response) {
         store.dispatch(
           handleError({

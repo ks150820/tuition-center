@@ -1,8 +1,9 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {createSelector} from 'reselect';
+import asyncStorage from '../../../services/async-storage-service';
 import {apiRetry} from '../../actions/actions';
 // import {apiCallBegan} from '../actions/actions';
-import {AppDispatch, RootState, store} from '../../configureStore';
+import {AppDispatch, RootState} from '../../configureStore';
 import {CACHING_TIME, httpMethods} from '../../enum';
 import storeDispatch from '../../util/dispatch';
 //Slice => reducer and actions
@@ -10,62 +11,111 @@ import storeDispatch from '../../util/dispatch';
 const slice = createSlice({
   name: 'authentication',
   initialState: <Authentication>{
-    user: {
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-    },
-    refresh_token: '',
-    userMobileNumber: '',
+    authDetails: {name: '', authToken: '', phoneNumber: '', refreshToken: ''},
     isLoggedIn: false,
-    lastCalledTime: 0,
   },
   reducers: {
-    updateLoggedInStatus: (
+    authDetailsUpdated: (
       authentication: Authentication,
-      action: PayloadAction<{data: boolean}>,
+      action: PayloadAction<{
+        first_name: string;
+        refresh_token: string;
+        token: string;
+        mobile_number: string;
+      }>,
     ) => {
-      authentication.isLoggedIn = action.payload?.data || false;
+      const {first_name, refresh_token, token, mobile_number} = action?.payload;
+      authentication.authDetails = {
+        name: first_name,
+        phoneNumber: mobile_number,
+        authToken: token,
+        refreshToken: refresh_token,
+      };
+      authentication.isLoggedIn = true;
     },
-    startApiCall: () => {
+    authenticationApiCalledSuccess: (
+      authentication: Authentication,
+      action: PayloadAction<{
+        first_name: string;
+        refresh_token: string;
+        token: string;
+        mobile_number: string;
+      }>,
+    ) => {
+      const {first_name, refresh_token, token, mobile_number} = action?.payload;
+      authentication.authDetails = {
+        name: first_name,
+        phoneNumber: mobile_number,
+        authToken: token,
+        refreshToken: refresh_token,
+      };
+      authentication.isLoggedIn = true;
+      asyncStorage.storeData(authentication.authDetails);
+      console.log(JSON.stringify(authentication));
+    },
+    authenticationApiCalledStart: () => {
+      console.log('API CALL END');
+    },
+    authenticationApiCalledFailed: () => {
+      console.log('API CALL Error');
+      // authentication.lastCalledTime = new Date().getMinutes();
+    },
+    getOtpApiCalledSuccess: () => {
       console.log('API CALL START');
     },
-    endApiCall: authentication => {
+    getOtpApiCalledStart: () => {
       console.log('API CALL END');
-      authentication.lastCalledTime = new Date().getMinutes();
     },
-    failedApiCall: () => {
+    getOtpApiCalledFailed: () => {
       console.log('API CALL Error');
       // authentication.lastCalledTime = new Date().getMinutes();
     },
   },
 });
-const {updateLoggedInStatus, startApiCall, endApiCall, failedApiCall} =
-  slice.actions;
+const {
+  authDetailsUpdated,
+  authenticationApiCalledSuccess,
+  authenticationApiCalledStart,
+  authenticationApiCalledFailed,
+  getOtpApiCalledSuccess,
+  getOtpApiCalledStart,
+  getOtpApiCalledFailed,
+} = slice.actions;
 export default slice.reducer;
 
-export const updateLoginStatus =
-  (status: boolean) => (dispatch: AppDispatch) => {
-    return dispatch({
-      type: updateLoggedInStatus.type,
-      payload: {
-        data: status,
-      },
-    });
-  };
-
 export const callAPi = () => () => {
-  const lastCalled = store.getState().auth.lastCalledTime;
-  let testId = '6299efb1e51fe25d77f6b191m';
   return storeDispatch({
-    // url: '7789745b-9e42-4385-9c75-00e1cf1677c3',
-    url: `v1/user/test/sampling/${testId}`,
+    url: `v1/exam`,
     method: httpMethods.GET,
-    onStart: startApiCall.type,
-    onSuccess: endApiCall.type,
-    onError: failedApiCall.type,
-    lastCalledTime: lastCalled || 0,
-    cacheValidityDuration: CACHING_TIME.SHORT,
+    onStart: getOtpApiCalledStart.type,
+    onSuccess: getOtpApiCalledSuccess.type,
+    onError: getOtpApiCalledFailed.type,
+    auth: true,
+    cacheValidityDuration: CACHING_TIME.INVALIDATE,
+  });
+};
+export const callAuthenticationApi = () => () => {
+  return storeDispatch({
+    url: `v1/user/oauth/token`,
+    method: httpMethods.POST,
+    data: {mobile_number: '8848195439', otp: '2038', grant_type: 'otp'},
+    onStart: authenticationApiCalledStart.type,
+    onSuccess: authenticationApiCalledSuccess.type,
+    onError: authenticationApiCalledFailed.type,
+    auth: false,
+    cacheValidityDuration: CACHING_TIME.INVALIDATE,
+  });
+};
+export const callGetOtpApi = () => () => {
+  return storeDispatch({
+    url: `v1/user/oauth/otp?isLogin=true&v=2`,
+    method: httpMethods.POST,
+    data: {mobile_number: '8848195439'},
+    onStart: getOtpApiCalledStart.type,
+    onSuccess: getOtpApiCalledSuccess.type,
+    onError: getOtpApiCalledFailed.type,
+    auth: false,
+    cacheValidityDuration: CACHING_TIME.INVALIDATE,
   });
 };
 export const callRetry = () => (dispatch: AppDispatch) => {
@@ -74,14 +124,20 @@ export const callRetry = () => (dispatch: AppDispatch) => {
     payload: {},
   });
 };
-export const updateLogin = createAsyncThunk(
-  updateLoggedInStatus.type,
-  (data: boolean) => {
-    return {data: data};
-  },
-);
+export const updateUserDetails =
+  (authData: Authentication) => (dispatch: AppDispatch) => {
+    return dispatch({
+      type: authDetailsUpdated.type,
+      payload: authData,
+    });
+  };
 
 export const getUserLoggedInData = createSelector(
   (state: RootState) => state.auth.isLoggedIn,
   isLoggedIn => isLoggedIn,
+);
+
+export const getAuthDetails = createSelector(
+  (state: RootState) => state.auth.authDetails,
+  authDetails => authDetails,
 );

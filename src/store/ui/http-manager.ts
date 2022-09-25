@@ -1,7 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {createSelector} from 'reselect';
+import {apiCallBegan, apiCallFailed, apiCallSuccess} from '../actions/actions';
 import {AppDispatch, RootState} from '../configureStore';
 import {httpMethods} from '../enum';
+import storeDispatch from '../util/dispatch';
 
 const slice = createSlice({
   name: 'httpManager',
@@ -39,7 +41,8 @@ const slice = createSlice({
     },
   },
 });
-const {updateErrorMessage, authTokenUpdated, initHaltedApis} = slice.actions;
+const {updateErrorMessage, authTokenUpdated, initHaltedApis, addToHaltedApis} =
+  slice.actions;
 export default slice.reducer;
 
 export const handleError =
@@ -59,15 +62,26 @@ export const handleAuthTokenUpdate =
 
 export const initHttpManager = () => (dispatch: AppDispatch) =>
   dispatch({
-    type: initHaltedApis,
+    type: initHaltedApis.type,
     payload: '',
   });
 export const updateHaltedApis =
   (api: {url: string; method: httpMethods}) => (dispatch: AppDispatch) =>
     dispatch({
-      type: initHaltedApis,
+      type: addToHaltedApis.type,
       payload: api,
     });
+
+export const makeApiCall = (url: string, method: httpMethods) => () =>
+  storeDispatch({
+    // url: '7789745b-9e42-4385-9c75-00e1cf1677c3',
+    url: url,
+    method: method,
+    onStart: apiCallBegan.type,
+    onSuccess: apiCallSuccess.type,
+    onError: apiCallFailed.type,
+    cacheValidityDuration: 0,
+  });
 export const getApiErrorData = createSelector(
   (state: RootState) => state.httpManager.error,
   error => error,
@@ -75,4 +89,9 @@ export const getApiErrorData = createSelector(
 export const getIsAuthTokenUpdated = createSelector(
   (state: RootState) => state.httpManager.isAuthTokenUpdated,
   isAuthTokenUpdated => isAuthTokenUpdated,
+);
+
+export const getHaltedApis = createSelector(
+  (state: RootState) => state.httpManager.haltedAPiCalls,
+  haltedAPiCalls => haltedAPiCalls,
 );

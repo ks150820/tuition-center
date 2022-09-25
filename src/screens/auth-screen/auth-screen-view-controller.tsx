@@ -1,14 +1,17 @@
 import {useDispatch} from 'react-redux';
-import useAsyncStorageService from '../../services/async-storage-service';
-import {callAPi, callLoginApi, updateLogin} from '../../store/entities/auth';
 import {AppDispatch} from '../../store/configureStore';
+import {callAuthenticationApi, callGetOtpApi} from '../../store/entities/auth';
+
 const useAuthScreenViewController = () => {
-  const {storeData} = useAsyncStorageService({key: 'app'});
   const dispatch = useDispatch<AppDispatch>();
-  const onPress = () => {
-    dispatch(callAPi());
+  const callLoginApi = () => {
+    console.log('call login api');
+    setTimeout(() => {
+      dispatch(callAuthenticationApi());
+    }, 5000);
+    dispatch(callGetOtpApi());
   };
-  return {onPress};
+  return {callLoginApi};
 };
 
 export default useAuthScreenViewController;

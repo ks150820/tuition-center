@@ -17,7 +17,7 @@ const useToast = () => {
     setStatus,
     instantPopOut,
     popIn,
-  } = useToastViewController();
+  } = useToastViewController(); // to dotted call
   return {
     View: () => (
       <ToastView

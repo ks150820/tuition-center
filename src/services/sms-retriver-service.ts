@@ -1,12 +1,12 @@
 import {NativeModules} from 'react-native';
-const {SmsRetrieverApi} = NativeModules;
+const {SmsRetriever} = NativeModules;
 const useSmsRetrieverService = () => {
   const registerNativeBroadcastReceiver = (): void => {
-    SmsRetrieverApi.deRegisterBroadcast();
+    SmsRetriever.deRegisterBroadcast();
   };
 
   const startSmsRetrieverApi = (): void => {
-    SmsRetrieverApi.startSmsRetriever();
+    SmsRetriever.startSmsRetriever();
   };
   return {registerNativeBroadcastReceiver, startSmsRetrieverApi};
 };

@@ -1,10 +1,16 @@
 import {useEffect} from 'react';
 import useToast from '../components/toast/toast';
 import {useSelector} from 'react-redux';
-import {getApiErrorData} from '../store/ui/http-manager';
+import {
+  getApiErrorData,
+  getHaltedApis,
+  makeApiCall,
+} from '../store/ui/http-manager';
 export const useHttpErrorHandlingService = () => {
   const {View, callBacks, values} = useToast();
   const apiError = useSelector(getApiErrorData);
+  // const dispatch = useDispatch();
+  const haltedApis = useSelector(getHaltedApis);
   useEffect(() => {
     if (apiError.errorMessage.length > 0) {
       callBacks.setFailMessage(apiError.errorMessage);
@@ -12,5 +18,12 @@ export const useHttpErrorHandlingService = () => {
       callBacks.popIn();
     }
   }, [apiError, callBacks, values]);
-  return View;
+
+  const retryApiCall = async () => {
+    for (const iterator of haltedApis) {
+      const {url, method} = JSON.parse(iterator);
+      makeApiCall(url, method);
+    }
+  };
+  return {View, retryApiCall};
 };

@@ -1,6 +1,7 @@
 import {requestMethodType} from '../store/@types/api/api';
 import {BASE_URL} from '../store/enum';
 import hasher from 'hash.js';
+import {store} from '../store/configureStore';
 
 type progressHandlerType = (progressEvent: number) => {};
 interface IRequestType {
@@ -10,7 +11,7 @@ interface IRequestType {
   // It can be convenient to set `baseURL` for an instance of axios to pass relative URLs
   // to methods of that instance.
   baseURL: BASE_URL;
-  data?: {};
+  data?: object;
   // `timeout` specifies the number of milliseconds before the request times out.
   // If the request takes longer than `timeout`, the request will be aborted.
   timeout?: 0 | 1000 | number; // default is `0` (no timeout)
@@ -23,21 +24,23 @@ interface IRequestType {
   onDownloadProgress?: progressHandlerType;
   headers: any;
 }
-let headers = {
-  'x-user-agent':
-    '59b524f8de039389005bce58385cae1d9241abd663e87647727abc8802e85c3b',
-};
-
-const authToken =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MWY3NzJkMDk0MDc2OTcyYzAwOTUzZGEiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTY1OTUyNTQ3OCwiZXhwIjoxNjU5NTI2MDc4LCJpc3MiOiJ1cGdyYWRqZWV0LmNvbSJ9.co7OUiUnEubCkNEqVRSbXdis9mP_Bv5TIIe3nnbb6YI';
+const xUserAgent = hasher
+  .sha256()
+  .update(`${Math.floor(Math.random() * Math.floor(1000))}`)
+  .digest('hex');
+const authToken = store.getState().auth.authDetails.refreshToken;
 export const createRequestObject = (
   url: string,
   method: requestMethodType,
+  auth: boolean,
   data?: object,
   timeout?: number,
   onUploadProgressHandler?: progressHandlerType,
   onDownloadProgressHandler?: progressHandlerType,
 ) => {
+  let headers = {
+    'x-user-agent': xUserAgent,
+  };
   const request: IRequestType = {
     baseURL: BASE_URL.PRODUCTION,
     headers: headers,
@@ -47,12 +50,11 @@ export const createRequestObject = (
 
   console.log(method);
 
-  let auth = true;
   let urlHash = hasher.sha256().update(JSON.stringify(request)).digest('hex');
 
   request.headers['x-hash'] = urlHash;
-  request.headers['user-agent'] =
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36';
+  request.headers['x-request-from'] = 'mobile';
+
   if (auth) {
     request.headers['authorization'] = 'Bearer ' + authToken;
   }
