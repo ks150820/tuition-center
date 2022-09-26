@@ -1,11 +1,11 @@
 import axios from 'axios';
-import {store} from '../store/configureStore';
-import {httpMethods} from '../store/enum';
+import {store} from '../../store/configureStore';
+import {httpMethods} from '../../store/enum';
 import {
   handleAuthTokenUpdate,
   updateHaltedApis,
-} from '../store/ui/http-manager';
-import {createRequestObject} from '../util/request';
+} from '../../store/ui/http-manager';
+import {createRequestObject} from '../../util/request';
 
 const axiosInstance = axios.create();
 // Add a request interceptor, added for reference

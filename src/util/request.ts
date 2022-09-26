@@ -28,7 +28,7 @@ const xUserAgent = hasher
   .sha256()
   .update(`${Math.floor(Math.random() * Math.floor(1000))}`)
   .digest('hex');
-const authToken = store.getState().auth.authDetails.refreshToken;
+const authToken = store?.getState()?.auth?.authDetails?.refreshToken;
 export const createRequestObject = (
   url: string,
   method: requestMethodType,
@@ -55,7 +55,7 @@ export const createRequestObject = (
   request.headers['x-hash'] = urlHash;
   request.headers['x-request-from'] = 'mobile';
 
-  if (auth) {
+  if (auth && authToken) {
     request.headers['authorization'] = 'Bearer ' + authToken;
   }
 

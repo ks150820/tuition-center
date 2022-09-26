@@ -14,10 +14,7 @@ const BottomTabBarNavigator = () => {
         options={{headerShown: false}}
         component={HomeNavigator}
       />
-      <BottomTab.Screen
-        name={ProfileScreen.displayName as keyof bottomTabParamList}
-        component={ProfileScreen}
-      />
+      <BottomTab.Screen name="Profile" component={ProfileScreen} />
     </BottomTab.Navigator>
   );
 };

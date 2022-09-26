@@ -10,12 +10,12 @@ const HomeNavigator = () => {
     <homeNavigator.Navigator>
       <homeNavigator.Screen
         options={{headerShown: true}}
-        name={Homescreen.displayName as keyof homeParamList}
+        name="Home"
         component={Homescreen}
       />
       <homeNavigator.Screen
         options={{headerShown: true}}
-        name={MyCourse.displayName as keyof homeParamList}
+        name="MyCourse"
         component={MyCourse}
       />
     </homeNavigator.Navigator>

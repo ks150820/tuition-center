@@ -1,5 +1,5 @@
 import {combineReducers} from '@reduxjs/toolkit';
-import authentication from './entities/auth';
+import authentication from './entities/auth/auth';
 import httpManager from './ui/http-manager';
 
 /**

@@ -14,4 +14,5 @@ module.exports = {
     '<rootDir>/testing/test-utils.tsx',
     '<rootDir>/app/screens/HomeLayout/index.tsx',
   ],
+  setupFiles: ['<rootDir>/jest.setup.js'],
 };

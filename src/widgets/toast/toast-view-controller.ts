@@ -1,15 +1,14 @@
 import {Dimensions, Animated} from 'react-native';
 import {useRef, useState} from 'react';
+import {toastStatusType} from './enum';
 
 const useToastViewController = () => {
   const windowHeight = Dimensions.get('window').height;
-  const [status, setStatus] = useState<string | null>(null);
+  const [status, setStatus] = useState<toastStatusType | null>(null);
   const popAnim = useRef(new Animated.Value(windowHeight * -1)).current;
 
-  const [failHeader, setFailHeader] = useState<string>('');
-  const [failMessage, setFailMessage] = useState<string>('');
-  const [successHeader, setSuccessHeader] = useState<string>('');
-  const [successMessage, setSuccessMessage] = useState<string>('');
+  const [header, setHeader] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
 
   const popOut = () => {
     setTimeout(() => {
@@ -21,7 +20,7 @@ const useToastViewController = () => {
     }, 2000);
   };
 
-  const popIn = () => {
+  const show = () => {
     Animated.timing(popAnim, {
       toValue: windowHeight * 0.15 * -1,
       duration: 300,
@@ -29,7 +28,7 @@ const useToastViewController = () => {
     }).start(popOut() as any);
   };
 
-  const instantPopOut = () => {
+  const hide = () => {
     Animated.timing(popAnim, {
       toValue: windowHeight * -1,
       duration: 150,
@@ -37,19 +36,15 @@ const useToastViewController = () => {
     }).start();
   };
   return {
-    successHeader,
-    successMessage,
-    failHeader,
-    failMessage,
+    header,
+    message,
     status,
     popAnim,
-    setSuccessHeader,
-    setSuccessMessage,
-    setFailHeader,
-    setFailMessage,
+    setHeader,
+    setMessage,
     setStatus,
-    instantPopOut,
-    popIn,
+    hide,
+    show,
   };
 };
 

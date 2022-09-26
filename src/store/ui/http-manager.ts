@@ -81,6 +81,7 @@ export const makeApiCall = (url: string, method: httpMethods) => () =>
     onSuccess: apiCallSuccess.type,
     onError: apiCallFailed.type,
     cacheValidityDuration: 0,
+    auth: true,
   });
 export const getApiErrorData = createSelector(
   (state: RootState) => state.httpManager.error,

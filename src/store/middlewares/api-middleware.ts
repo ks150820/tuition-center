@@ -2,7 +2,7 @@ import {store} from '../configureStore';
 import * as actions from '../actions/actions';
 import apiQueue from '../config/apiQueue';
 import {createRequestObject} from '../../util/request';
-import {httpInterceptor} from '../../services/http-interceptor-service';
+import {httpInterceptor} from '../../services/http/http-interceptor-service';
 import {handleError} from '../ui/http-manager';
 import {IDispatchType} from '../../@types';
 interface IDataType {
@@ -87,7 +87,6 @@ const apiMiddleware =
   ) =>
   (next: any) =>
   async (action: any) => {
-    console.log(action.type);
     if (action?.type === actions.apiRetry.type) {
       console.log(apiQueue.size());
 

@@ -20,5 +20,9 @@ const styles = StyleSheet.create({
     width: '90%',
     padding: 2,
   },
+  header: {fontWeight: 'bold', fontSize: 15, color: '#000'},
+  message: {fontSize: 12, color: '#000'},
+  errorHeader: {fontWeight: 'bold', fontSize: 15, color: 'red'},
+  errorMessage: {fontSize: 12, color: 'red'},
 });
 export default styles;

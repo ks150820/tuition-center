@@ -51,25 +51,12 @@ const slice = createSlice({
       };
       authentication.isLoggedIn = true;
       asyncStorage.storeData(authentication.authDetails);
-      console.log(JSON.stringify(authentication));
     },
-    authenticationApiCalledStart: () => {
-      console.log('API CALL END');
-    },
-    authenticationApiCalledFailed: () => {
-      console.log('API CALL Error');
-      // authentication.lastCalledTime = new Date().getMinutes();
-    },
-    getOtpApiCalledSuccess: () => {
-      console.log('API CALL START');
-    },
-    getOtpApiCalledStart: () => {
-      console.log('API CALL END');
-    },
-    getOtpApiCalledFailed: () => {
-      console.log('API CALL Error');
-      // authentication.lastCalledTime = new Date().getMinutes();
-    },
+    authenticationApiCalledStart: () => {},
+    authenticationApiCalledFailed: () => {},
+    getOtpApiCalledSuccess: () => {},
+    getOtpApiCalledStart: () => {},
+    getOtpApiCalledFailed: () => {},
   },
 });
 const {
@@ -83,22 +70,11 @@ const {
 } = slice.actions;
 export default slice.reducer;
 
-export const callAPi = () => () => {
-  return storeDispatch({
-    url: `v1/exam`,
-    method: httpMethods.GET,
-    onStart: getOtpApiCalledStart.type,
-    onSuccess: getOtpApiCalledSuccess.type,
-    onError: getOtpApiCalledFailed.type,
-    auth: true,
-    cacheValidityDuration: CACHING_TIME.INVALIDATE,
-  });
-};
 export const callAuthenticationApi = () => () => {
   return storeDispatch({
     url: `v1/user/oauth/token`,
     method: httpMethods.POST,
-    data: {mobile_number: '8848195439', otp: '2038', grant_type: 'otp'},
+    data: {mobile_number: '8848195439', otp: '2068', grant_type: 'otp'},
     onStart: authenticationApiCalledStart.type,
     onSuccess: authenticationApiCalledSuccess.type,
     onError: authenticationApiCalledFailed.type,

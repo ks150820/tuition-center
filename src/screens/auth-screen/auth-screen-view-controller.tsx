@@ -1,6 +1,9 @@
 import {useDispatch} from 'react-redux';
 import {AppDispatch} from '../../store/configureStore';
-import {callAuthenticationApi, callGetOtpApi} from '../../store/entities/auth';
+import {
+  callAuthenticationApi,
+  callGetOtpApi,
+} from '../../store/entities/auth/auth';
 
 const useAuthScreenViewController = () => {
   const dispatch = useDispatch<AppDispatch>();

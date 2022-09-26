@@ -1,5 +1,5 @@
 import {useDispatch} from 'react-redux';
-import {callAPi, callRetry} from '../../store/entities/auth';
+import {callAPi, callRetry} from '../../store/entities/auth/auth';
 import {AppDispatch} from '../../store/configureStore';
 import {useEffect} from 'react';
 import useDataTrackingService from '../../services/data-tracking-service';
@@ -15,7 +15,10 @@ const useHomeScreenViewController = () => {
     course_id: 'course_id',
     item: 'item',
   };
-  const {dataToTrack, userDetails} = useDataTrackingService(data, true);
+  const {dataToTrack, userDetails} = useDataTrackingService({
+    data: data,
+    isUseUserDetails: true,
+  });
   useEffect(() => {
     console.log(dataToTrack, 'data to track');
     console.log(userDetails, 'userDetails to track');

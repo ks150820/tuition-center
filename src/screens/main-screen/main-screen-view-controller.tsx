@@ -4,7 +4,7 @@ import {AppDispatch} from '../../store/configureStore';
 import {
   getUserLoggedInData,
   updateUserDetails,
-} from '../../store/entities/auth';
+} from '../../store/entities/auth/auth';
 
 const useMainScreenViewController = () => {
   const isLoggedIn = useSelector(getUserLoggedInData);

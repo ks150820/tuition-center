@@ -9,6 +9,6 @@ jest.mock('react-redux', () => ({
 describe('testing home screen view', () => {
   test('test component', () => {
     const {result} = renderHook(useAuthScreenViewController);
-    result.current.onPress();
+    result.current.callLoginApi();
   });
 });
