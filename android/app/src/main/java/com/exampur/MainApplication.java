@@ -10,6 +10,11 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
+import com.moe.pushlibrary.MoEHelper;
+import com.moengage.core.MoEngage;
+import com.moengage.core.MoEngage;
+import com.moengage.react.MoEInitializer;
+import com.moengage.react.MoEReactPackage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -25,6 +30,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       @SuppressWarnings("UnnecessaryLocalVariable")
       List<ReactPackage> packages = new PackageList(this).getPackages();
+      packages.add(new AppPackages());
+      // packages.add(new MoEReactPackage());
+
       // Packages that cannot be autolinked yet can be added manually here, for example:
       // packages.add(new MyReactNativePackage());
       return packages;
@@ -67,6 +75,13 @@ public class MainApplication extends Application implements ReactApplication {
     //   client.addPlugin(LeakCanary2FlipperPlugin());
     //   client.start();
     // }
+
+    // this is the instance of the application class and "XXXXXXXXXXX" is the APP ID from the dashboard.
+    MoEngage.Builder moEngage = new MoEngage.Builder(
+      this,
+      "UAIIRLJXLAVMA3I6TOFYHV8P"
+    );
+    MoEInitializer.INSTANCE.initialize(getApplicationContext(), moEngage);
   }
 
   /**

@@ -7033,6 +7033,11 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.70.2.tgz"
   "version" "0.70.2"
 
+"react-native-moengage@^7.4.1":
+  "integrity" "sha512-GtvEovTISHHce1EBeY0ndScKqIzmEdTFNoMehwAx3p9YTFmZVCn1IOZz7gbSATusrzrjp86sOFjlEoTFqOSh7g=="
+  "resolved" "https://registry.npmjs.org/react-native-moengage/-/react-native-moengage-7.4.1.tgz"
+  "version" "7.4.1"
+
 "react-native-safe-area-context@^4.3.1", "react-native-safe-area-context@>= 3.0.0":
   "integrity" "sha512-cEr7fknJCToTrSyDCVNg0GRdRMhyLeQa2NZwVCuzEQcWedOw/59ExomjmzCE4rxrKXs6OJbyfNtFRNyewDaHuA=="
   "resolved" "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-4.3.1.tgz"
