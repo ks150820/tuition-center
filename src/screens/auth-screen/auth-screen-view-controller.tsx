@@ -7,6 +7,7 @@ import {
 
 const useAuthScreenViewController = () => {
   const dispatch = useDispatch<AppDispatch>();
+
   const callLoginApi = () => {
     console.log('call login api');
     setTimeout(() => {

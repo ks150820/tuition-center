@@ -74,7 +74,7 @@ export const callAuthenticationApi = () => () => {
   return storeDispatch({
     url: `v1/user/oauth/token`,
     method: httpMethods.POST,
-    data: {mobile_number: '8848195439', otp: '2068', grant_type: 'otp'},
+    data: {mobile_number: '7356704543', otp: '2088', grant_type: 'otp'},
     onStart: authenticationApiCalledStart.type,
     onSuccess: authenticationApiCalledSuccess.type,
     onError: authenticationApiCalledFailed.type,
@@ -86,7 +86,7 @@ export const callGetOtpApi = () => () => {
   return storeDispatch({
     url: `v1/user/oauth/otp?isLogin=true&v=2`,
     method: httpMethods.POST,
-    data: {mobile_number: '8848195439'},
+    data: {mobile_number: '7356704543'},
     onStart: getOtpApiCalledStart.type,
     onSuccess: getOtpApiCalledSuccess.type,
     onError: getOtpApiCalledFailed.type,

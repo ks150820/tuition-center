@@ -1,5 +1,7 @@
+import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import asyncStorage from '../../services/async-storage-service';
+import useDataTrackingService from '../../services/data-tracking-service';
 import {AppDispatch} from '../../store/configureStore';
 import {
   getUserLoggedInData,
@@ -8,6 +10,14 @@ import {
 
 const useMainScreenViewController = () => {
   const isLoggedIn = useSelector(getUserLoggedInData);
+  const {MoEngage} = useDataTrackingService({});
+  useEffect(() => {
+    if (isLoggedIn) {
+      MoEngage.setUserUniqID();
+      MoEngage.initUserDetails();
+      console.log('USE EFFECT');
+    }
+  }, [isLoggedIn]);
   const dispatch = useDispatch<AppDispatch>();
   asyncStorage.getData().then(value => {
     if (value != null) {

@@ -1,8 +1,8 @@
 import {useDispatch} from 'react-redux';
-import {callAPi, callRetry} from '../../store/entities/auth/auth';
+import {callRetry} from '../../store/entities/auth/auth';
 import {AppDispatch} from '../../store/configureStore';
-import {useEffect} from 'react';
 import useDataTrackingService from '../../services/data-tracking-service';
+import {useEffect} from 'react';
 
 // import {postNavigationProp} from '../../navigators/post-auth-navigator/@types/post-auth-param-list';;
 /**
@@ -11,23 +11,17 @@ import useDataTrackingService from '../../services/data-tracking-service';
  * @returns
  */
 const useHomeScreenViewController = () => {
-  let data = {
-    course_id: 'course_id',
-    item: 'item',
-  };
-  const {dataToTrack, userDetails} = useDataTrackingService({
-    data: data,
-    isUseUserDetails: true,
-  });
-  useEffect(() => {
-    console.log(dataToTrack, 'data to track');
-    console.log(userDetails, 'userDetails to track');
-  }, [dataToTrack, userDetails]);
   const dispatch = useDispatch<AppDispatch>();
+  const {MoEngage} = useDataTrackingService({});
 
+  useEffect(() => {}, []);
   const onPress = () => {
-    // console.log('call.');
-    dispatch(callAPi());
+    console.log('CLICKED');
+
+    MoEngage.trackUserEvents('Home page new app', {
+      user: 'Ramees',
+      Phone: '7356704543',
+    });
   };
 
   const onRetry = () => {

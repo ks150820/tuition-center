@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "833066424354",
-    "project_id": "exampurofficial-7284c",
-    "storage_bucket": "exampurofficial-7284c.appspot.com"
+    "project_number": "725147360424",
+    "project_id": "fir-examp-433c1",
+    "storage_bucket": "fir-examp-433c1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:833066424354:android:164cf327a0f40da850527b",
+        "mobilesdk_app_id": "1:725147360424:android:88591a1fab058c5547769d",
         "android_client_info": {
-          "package_name": "com.edudrive.exampur"
+          "package_name": "com.exampur"
         }
       },
       "oauth_client": [
         {
-          "client_id": "833066424354-jtc0ej6s685tt5mj5926l35vpdpvgm2l.apps.googleusercontent.com",
+          "client_id": "725147360424-lfmld2ug7aet55ln7gbkrkbdafqjk6im.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyADauLjxvQiyrdm5OlcRmtRNPtKGV7H2fA"
+          "current_key": "AIzaSyCO6E4RMyCYiA2YsgkeP-mhsCCA0PHG9ec"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "833066424354-jtc0ej6s685tt5mj5926l35vpdpvgm2l.apps.googleusercontent.com",
+              "client_id": "725147360424-lfmld2ug7aet55ln7gbkrkbdafqjk6im.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -16,7 +16,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import MainScreen from './src/screens/main-screen';
 import AppTheme from './src/theme/theme';
 import * as Sentry from '@sentry/react-native';
-import ReactMoE from 'react-native-moengage';
+import ReactMoE, {MoEAppStatus} from 'react-native-moengage';
 const App = () => {
   useEffect(() => {
     Sentry.init({
@@ -25,7 +25,9 @@ const App = () => {
       // We recommend adjusting this value in production.
       tracesSampleRate: 1.0,
     });
+    // ReactMoE.initialize();
     ReactMoE.initialize();
+    ReactMoE.setAppStatus(MoEAppStatus.Install);
   }, []);
   const {NoInterNetConnectionView} = useInterNetHandlingService();
 

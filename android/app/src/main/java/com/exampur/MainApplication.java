@@ -13,6 +13,7 @@ import com.facebook.soloader.SoLoader;
 import com.moe.pushlibrary.MoEHelper;
 import com.moengage.core.MoEngage;
 import com.moengage.core.MoEngage;
+import com.moengage.core.config.NotificationConfig;
 import com.moengage.react.MoEInitializer;
 import com.moengage.react.MoEReactPackage;
 import java.lang.reflect.InvocationTargetException;

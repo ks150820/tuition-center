@@ -23,8 +23,6 @@ public class AppPackages implements ReactPackage {
   ) {
     List<NativeModule> modules = new ArrayList<>();
 
-    modules.add(new SmsRetrieverModule(reactContext));
-
     return modules;
   }
 }

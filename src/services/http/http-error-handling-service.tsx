@@ -13,11 +13,11 @@ export const useHttpErrorHandlingService = () => {
   const haltedApis = useSelector(getHaltedApis);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    if (apiError.errorMessage.length > 0) {
-      callBacks.setMessage(apiError.errorMessage);
-      callBacks.setHeader(apiError.errorCode);
-      callBacks.show();
-    }
+    // if (apiError.errorMessage.length > 0) {
+    //   callBacks.setMessage(apiError.errorMessage);
+    //   callBacks.setHeader(apiError.errorCode);
+    //   callBacks.show();
+    // }
   }, [apiError, callBacks, values]);
 
   const retryApiCall = async () => {
