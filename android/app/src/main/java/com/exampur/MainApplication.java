@@ -11,6 +11,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
 import com.moe.pushlibrary.MoEHelper;
+import com.moengage.core.DataCenter;
 import com.moengage.core.MoEngage;
 import com.moengage.core.MoEngage;
 import com.moengage.core.config.NotificationConfig;
@@ -81,7 +82,8 @@ public class MainApplication extends Application implements ReactApplication {
     MoEngage.Builder moEngage = new MoEngage.Builder(
       this,
       "UAIIRLJXLAVMA3I6TOFYHV8P"
-    );
+    )
+    .setDataCenter(DataCenter.DATA_CENTER_3);
     MoEInitializer.INSTANCE.initialize(getApplicationContext(), moEngage);
   }
 

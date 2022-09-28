@@ -74,7 +74,7 @@ export const callAuthenticationApi = () => () => {
   return storeDispatch({
     url: `v1/user/oauth/token`,
     method: httpMethods.POST,
-    data: {mobile_number: '7356704543', otp: '20888', grant_type: 'otp'},
+    data: {mobile_number: '7356704543', otp: '2088', grant_type: 'otp'},
     onStart: authenticationApiCalledStart.type,
     onSuccess: authenticationApiCalledSuccess.type,
     onError: authenticationApiCalledFailed.type,
