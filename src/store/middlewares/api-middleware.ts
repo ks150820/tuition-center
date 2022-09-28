@@ -5,6 +5,7 @@ import {createRequestObject} from '../../util/request';
 import {httpInterceptor} from '../../services/http/http-interceptor-service';
 import {handleError} from '../ui/http-manager';
 import {IDispatchType} from '../../@types';
+import {CACHING_TIME} from '../enum';
 interface IDataType {
   type: string;
   payload: unknown;
@@ -48,6 +49,7 @@ const makeRequest = (payload: IDispatchType) => {
 
   if (
     lastCalledTimeApi &&
+    cacheValidityDuration > CACHING_TIME.INVALIDATE &&
     new Date().getMinutes() - lastCalledTimeApi < cacheValidityDuration
   ) {
     return;

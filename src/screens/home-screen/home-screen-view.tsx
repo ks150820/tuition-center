@@ -2,14 +2,14 @@ import React from 'react';
 import {Pressable, View, Text} from 'react-native';
 import useHomeScreenViewController from './homescreen-view-controller';
 
-interface IHomescreenViewProps {}
+interface IHomeScreenViewProps {}
 
 /**
  * View for Homescreen
  * @param props
  * @returns
  */
-const HomescreenView: React.FunctionComponent<IHomescreenViewProps> = ({}) => {
+const HomeScreenView: React.FunctionComponent<IHomeScreenViewProps> = ({}) => {
   const {onPress, onRetry} = useHomeScreenViewController();
   return (
     <View style={{flex: 1, backgroundColor: 'pink'}}>
@@ -27,4 +27,4 @@ const HomescreenView: React.FunctionComponent<IHomescreenViewProps> = ({}) => {
   );
 };
 
-export default HomescreenView;
+export default HomeScreenView;

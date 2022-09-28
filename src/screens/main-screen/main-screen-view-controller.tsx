@@ -17,6 +17,7 @@ const useMainScreenViewController = () => {
       MoEngage.initUserDetails();
       console.log('USE EFFECT');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn]);
   const dispatch = useDispatch<AppDispatch>();
   asyncStorage.getData().then(value => {

@@ -1,3 +1,3 @@
-import Homescreen from './homescreen';
+import HomeScreen from './home-screen-view';
 
-export default Homescreen;
+export default HomeScreen;

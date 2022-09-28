@@ -1,18 +1,18 @@
 import React from 'react';
-import HomescreenView from './homescreen-view';
+import HomeScreenView from './home-screen-view';
 // import useHomescreenViewController from './homescreen-view-controller';
 
-interface IHomescreenProps {}
+interface IHomeScreenProps {}
 
 /**
  *
  * @param props
  * @returns
  */
-const Homescreen: React.FunctionComponent<IHomescreenProps> = () => {
+const HomeScreen: React.FunctionComponent<IHomeScreenProps> = () => {
   //   const {} = useHomescreenViewController({});
 
-  return <HomescreenView />;
+  return <HomeScreenView />;
 };
 
-export default Homescreen;
+export default HomeScreen;

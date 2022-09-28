@@ -26,6 +26,7 @@ const useHomeScreenViewController = () => {
 
   const onRetry = () => {
     dispatch(callRetry());
+    // retryApiCall();
   };
   return {onPress, onRetry};
 };

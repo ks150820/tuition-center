@@ -32,22 +32,27 @@ axiosInstance.interceptors.response.use(
   async error => {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
+    console.log(JSON.stringify(error), 'ERROR>>>>>>>>>');
+
+    store.dispatch(
+      updateHaltedApis({
+        url: error?.config?.url,
+        method: error?.config?.method,
+        data: error?.config?.data,
+        headers: error?.config?.headers,
+      }),
+    );
     if (error.response.status !== 401) {
       return Promise.reject(error);
     }
+    // console.log(JSON.stringify(error), 'ERRPR>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+
     /*
      * When response code is 401, try to refresh the token.
      * Eject the interceptor so it doesn’t loop in case
      * token refresh causes the 401 response
      */
     // axios.interceptors.response.eject(interceptor);
-
-    store.dispatch(
-      updateHaltedApis({
-        url: error?.config?.url,
-        method: error?.config?.method,
-      }),
-    );
 
     return await axios
       .request(
@@ -57,11 +62,17 @@ axiosInstance.interceptors.response.use(
         }),
       )
       .then(tokenRefreshResponse => {
-        store.dispatch(handleAuthTokenUpdate(true));
-        error.response.config.headers.authorization =
-          'Bearer ' + tokenRefreshResponse.data.token;
-        //provide a success dispatch
-        return axios(error.response.config);
+        store.dispatch(
+          handleAuthTokenUpdate({
+            isUpdated: true,
+            refreshToken: tokenRefreshResponse.data.token,
+          }),
+        );
+
+        // error.response.config.headers.authorization =
+        //   'Bearer ' + tokenRefreshResponse.data.token;
+        // //provide a success dispatch
+        // return axios(error.response.config);
       })
       .catch(() => {
         //handleLogout
