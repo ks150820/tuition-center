@@ -30,8 +30,6 @@ public class MainActivity extends ReactActivity {
 
             // Get new FCM registration token
             String token = task.getResult();
-            Log.e("FCM", token);
-            Toast.makeText(MainActivity.this, token, Toast.LENGTH_LONG).show();
             MoEFireBaseHelper
               .getInstance()
               .passPushToken(getApplicationContext(), token);

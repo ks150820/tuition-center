@@ -81,9 +81,20 @@ public class MainApplication extends Application implements ReactApplication {
     // this is the instance of the application class and "XXXXXXXXXXX" is the APP ID from the dashboard.
     MoEngage.Builder moEngage = new MoEngage.Builder(
       this,
-      "UAIIRLJXLAVMA3I6TOFYHV8P"
+      "B2E68WVH8X21LQV6T71A765I"
     )
-    .setDataCenter(DataCenter.DATA_CENTER_3);
+      .setDataCenter(DataCenter.DATA_CENTER_3)
+      .configureNotificationMetaData(
+        new NotificationConfig(
+          R.drawable.jeet_logo,
+          R.drawable.jeet_logo,
+          R.color.colorPrimaryDark,
+          null,
+          true,
+          false,
+          true
+        )
+      );
     MoEInitializer.INSTANCE.initialize(getApplicationContext(), moEngage);
   }
 

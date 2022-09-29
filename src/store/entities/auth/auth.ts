@@ -7,29 +7,35 @@ import {AppDispatch, RootState} from '../../configureStore';
 import {CACHING_TIME, httpMethods} from '../../enum';
 import storeDispatch from '../../util/dispatch';
 //Slice => reducer and actions
-
 const slice = createSlice({
   name: 'authentication',
   initialState: <Authentication>{
-    authDetails: {name: '', authToken: '', phoneNumber: '', refreshToken: ''},
+    authDetails: {
+      name: '',
+      authToken: '',
+      phoneNumber: '',
+      refreshToken: '',
+    },
     isLoggedIn: false,
   },
   reducers: {
     authDetailsUpdated: (
       authentication: Authentication,
       action: PayloadAction<{
-        first_name: string;
-        refresh_token: string;
-        token: string;
-        mobile_number: string;
+        name: string;
+        refreshToken: string;
+        authToken: string;
+        phoneNumber: string;
       }>,
     ) => {
-      const {first_name, refresh_token, token, mobile_number} = action?.payload;
+      const {name, refreshToken, authToken, phoneNumber} = action?.payload;
+      console.log(action.payload);
+
       authentication.authDetails = {
-        name: first_name,
-        phoneNumber: mobile_number,
-        authToken: token,
-        refreshToken: refresh_token,
+        name,
+        phoneNumber,
+        authToken,
+        refreshToken,
       };
       authentication.isLoggedIn = true;
     },
@@ -50,7 +56,19 @@ const slice = createSlice({
         refreshToken: refresh_token,
       };
       authentication.isLoggedIn = true;
-      asyncStorage.storeData(authentication.authDetails);
+      asyncStorage.storeData('@keyAuthData', authentication.authDetails);
+    },
+    authTokenUpdated: (
+      authentication: Authentication,
+      action: PayloadAction<{
+        token: string;
+      }>,
+    ) => {
+      authentication.authDetails = {
+        ...authentication.authDetails,
+        authToken: action.payload.token,
+      };
+      asyncStorage.storeData('@keyAuthData', authentication.authDetails);
     },
     authenticationApiCalledStart: () => {},
     authenticationApiCalledFailed: () => {},
@@ -67,6 +85,7 @@ const {
   getOtpApiCalledSuccess,
   getOtpApiCalledStart,
   getOtpApiCalledFailed,
+  authTokenUpdated,
 } = slice.actions;
 export default slice.reducer;
 
@@ -74,7 +93,7 @@ export const callAuthenticationApi = () => () => {
   return storeDispatch({
     url: `v1/user/oauth/token`,
     method: httpMethods.POST,
-    data: {mobile_number: '7356704543', otp: '2088', grant_type: 'otp'},
+    data: {mobile_number: '7356704543', otp: '2098', grant_type: 'otp'},
     onStart: authenticationApiCalledStart.type,
     onSuccess: authenticationApiCalledSuccess.type,
     onError: authenticationApiCalledFailed.type,
@@ -107,7 +126,11 @@ export const updateUserDetails =
       payload: authData,
     });
   };
-
+export const updateAuthToken = (token: string) => (dispatch: AppDispatch) =>
+  dispatch({
+    type: authTokenUpdated.type,
+    payload: token,
+  });
 export const getUserLoggedInData = createSelector(
   (state: RootState) => state.auth.isLoggedIn,
   isLoggedIn => isLoggedIn,

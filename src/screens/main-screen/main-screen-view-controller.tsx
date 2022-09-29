@@ -11,20 +11,23 @@ import {
 const useMainScreenViewController = () => {
   const isLoggedIn = useSelector(getUserLoggedInData);
   const {MoEngage} = useDataTrackingService({});
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     if (isLoggedIn) {
       MoEngage.setUserUniqID();
       MoEngage.initUserDetails();
-      console.log('USE EFFECT');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn]);
-  const dispatch = useDispatch<AppDispatch>();
-  asyncStorage.getData().then(value => {
-    if (value != null) {
-      dispatch(updateUserDetails(value));
-    }
-  });
+  useEffect(() => {
+    asyncStorage.getData('@keyAuthData').then(value => {
+      if (value != null) {
+        console.log('recursive');
+        dispatch(updateUserDetails(value));
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {isLoggedIn};
 };

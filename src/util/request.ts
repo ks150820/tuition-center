@@ -28,7 +28,7 @@ const xUserAgent = hasher
   .sha256()
   .update(`${Math.floor(Math.random() * Math.floor(1000))}`)
   .digest('hex');
-const authToken = store?.getState()?.auth?.authDetails?.refreshToken;
+const authToken = store?.getState()?.auth?.authDetails?.authToken;
 export const createRequestObject = (
   url: string,
   method: requestMethodType,

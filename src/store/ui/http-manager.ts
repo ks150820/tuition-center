@@ -12,9 +12,12 @@ const slice = createSlice({
   name: 'httpManager',
   initialState: <httpManager>{
     error: {errorCode: '', errorMessage: 'Something went wrong'},
-    isAuthTokenUpdated: false,
     haltedAPiCalls: [],
-    refreshToken: '',
+    authToken: {
+      token: '',
+      isUpdated: false,
+      lastUpdated: 0,
+    },
   },
   reducers: {
     updateErrorMessage: (
@@ -28,14 +31,15 @@ const slice = createSlice({
     },
     authTokenUpdated: (
       httpManager: httpManager,
-      action: PayloadAction<{isUpdated: boolean; refreshToken: string}>,
+      action: PayloadAction<{isUpdated: boolean; token: string}>,
     ) => {
-      httpManager.isAuthTokenUpdated = action.payload.isUpdated;
-      httpManager.refreshToken = action.payload.refreshToken;
+      httpManager.authToken.isUpdated = action.payload.isUpdated;
+      httpManager.authToken.token = action.payload.token;
+      httpManager.authToken.lastUpdated = new Date().getTime();
     },
     initHaltedApis: (httpManager: httpManager) => {
       httpManager.haltedAPiCalls = [];
-      httpManager.isAuthTokenUpdated = false;
+      httpManager.authToken.isUpdated = false;
       httpManager.error = {errorCode: '', errorMessage: ''};
     },
     addToHaltedApis: (
@@ -75,11 +79,10 @@ export const handleError =
     });
   };
 export const handleAuthTokenUpdate =
-  (refreshToken: {isUpdated: boolean; refreshToken: string}) =>
-  (dispatch: AppDispatch) =>
+  (authToken: {isUpdated: boolean; token: string}) => (dispatch: AppDispatch) =>
     dispatch({
       type: authTokenUpdated.type,
-      payload: refreshToken,
+      payload: authToken,
     });
 
 export const initHttpManager = () => (dispatch: AppDispatch) =>
@@ -113,8 +116,8 @@ export const getApiErrorData = createSelector(
   error => error,
 );
 export const getIsAuthTokenUpdated = createSelector(
-  (state: RootState) => state.httpManager.isAuthTokenUpdated,
-  isAuthTokenUpdated => isAuthTokenUpdated,
+  (state: RootState) => state.httpManager.authToken.isUpdated,
+  isUpdated => isUpdated,
 );
 
 export const getHaltedApis = createSelector(

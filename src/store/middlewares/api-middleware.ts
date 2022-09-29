@@ -2,10 +2,11 @@ import {store} from '../configureStore';
 import * as actions from '../actions/actions';
 import apiQueue from '../config/apiQueue';
 import {createRequestObject} from '../../util/request';
-import {httpInterceptor} from '../../services/http/http-interceptor-service';
 import {handleError} from '../ui/http-manager';
 import {IDispatchType} from '../../@types';
 import {CACHING_TIME} from '../enum';
+import {axiosInterceptor} from '../../services/http/axios-interceptor-service';
+
 interface IDataType {
   type: string;
   payload: unknown;
@@ -54,7 +55,7 @@ const makeRequest = (payload: IDispatchType) => {
   ) {
     return;
   }
-  httpInterceptor
+  axiosInterceptor
     .request(requestObject)
     .then(response => {
       dispatch({type: actions.apiCallSuccess.type, payload: response.data});

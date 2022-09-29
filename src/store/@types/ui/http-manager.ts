@@ -10,7 +10,10 @@ type haltedApiType = {
 };
 export interface httpManager {
   error: {errorMessage: string; errorCode: string};
-  isAuthTokenUpdated: boolean;
   haltedAPiCalls: haltedApiType[];
-  refreshToken: string;
+  authToken: {
+    isUpdated: boolean;
+    token: string;
+    lastUpdated: number;
+  };
 }
