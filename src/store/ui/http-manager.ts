@@ -4,7 +4,7 @@ import {createSelector} from 'reselect';
 import {httpManager} from '../@types/ui/http-manager';
 import {AppDispatch, RootState} from '../configureStore';
 import {CACHING_TIME, httpMethods} from '../enum';
-import storeDispatch from '../util/dispatch';
+import apiDispatch from '../util/dispatch';
 // type action = {
 //   config: {url: string; method: httpMethods; data: any};
 // };
@@ -100,7 +100,7 @@ export const updateHaltedApis =
 
 export const makeApiCall =
   (url: string, method: httpMethods, data?: any) => () =>
-    storeDispatch({
+    apiDispatch({
       // url: '7789745b-9e42-4385-9c75-00e1cf1677c3',
       url: url,
       method: method,

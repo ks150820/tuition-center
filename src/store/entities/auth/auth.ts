@@ -5,7 +5,7 @@ import {apiRetry} from '../../actions/actions';
 // import {apiCallBegan} from '../actions/actions';
 import {AppDispatch, RootState} from '../../configureStore';
 import {CACHING_TIME, httpMethods} from '../../enum';
-import storeDispatch from '../../util/dispatch';
+import apiDispatch from '../../util/dispatch';
 //Slice => reducer and actions
 const slice = createSlice({
   name: 'authentication',
@@ -90,7 +90,7 @@ const {
 export default slice.reducer;
 
 export const callAuthenticationApi = () => () => {
-  return storeDispatch({
+  return apiDispatch({
     url: `v1/user/oauth/token`,
     method: httpMethods.POST,
     data: {mobile_number: '7356704543', otp: '2098', grant_type: 'otp'},
@@ -102,7 +102,7 @@ export const callAuthenticationApi = () => () => {
   });
 };
 export const callGetOtpApi = () => () => {
-  return storeDispatch({
+  return apiDispatch({
     url: `v1/user/oauth/otp?isLogin=true&v=2`,
     method: httpMethods.POST,
     data: {mobile_number: '7356704543'},
