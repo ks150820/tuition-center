@@ -1,6 +1,6 @@
+import {getAuthDetails} from '@store/entities/auth';
 import ReactMoE, {MoEProperties} from 'react-native-moengage';
 import {useSelector} from 'react-redux';
-import {getAuthDetails} from '../store/entities/auth/auth';
 
 interface dataObject {
   [key: string]: string;
@@ -38,15 +38,11 @@ const useDataTrackingService = ({
   const MoEngage = {
     setUserUniqID: () => {
       ReactMoE.setUserUniqueID(userDetails.mobile_number);
-      console.log('USER UNIQ ID', userDetails.mobile_number);
     },
     initUserDetails: () => {
       ReactMoE.setUserFirstName(userDetails.firstName);
       ReactMoE.setUserLastName(userDetails.lastName);
       ReactMoE.setUserContactNumber(userDetails.mobile_number);
-      console.log('First Name', userDetails.firstName);
-      console.log('last Name', userDetails.lastName);
-      console.log('Mobile Number', userDetails.mobile_number);
     },
     setCustomAttribute: (attributeName: string, attribute: string) => {
       ReactMoE.setUserAttribute(attributeName, attribute);
@@ -59,7 +55,6 @@ const useDataTrackingService = ({
         }),
       );
       ReactMoE.trackEvent(eventName, properties);
-      console.log(eventName, JSON.stringify(properties));
     },
   };
   return {

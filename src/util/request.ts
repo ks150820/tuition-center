@@ -48,8 +48,6 @@ export const createRequestObject = (
     url,
   };
 
-  console.log(method);
-
   let urlHash = hasher.sha256().update(JSON.stringify(request)).digest('hex');
 
   request.headers['x-hash'] = urlHash;

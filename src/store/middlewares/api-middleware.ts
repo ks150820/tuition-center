@@ -1,12 +1,10 @@
-import {store} from '../configureStore';
-import * as actions from '../actions/actions';
-import apiQueue from '../config/apiQueue';
-import {createRequestObject} from '../../util/request';
-import {handleError} from '../ui/http-manager';
-import {IDispatchType} from '../../@types';
-import {CACHING_TIME} from '../enum';
-import {axiosInterceptor} from '../../services/http/axios-interceptor-service';
-
+import * as actions from '@store/actions/actions';
+import {createRequestObject} from '@util/request';
+import {axiosInterceptor} from '@services/http/axios-interceptor-service';
+import {IDispatchType} from '@types';
+import {store} from 'store/configureStore';
+import {CACHING_TIME} from '@store/enum';
+import {handleError} from '@store/ui/http-manager';
 interface IDataType {
   type: string;
   payload: unknown;
@@ -90,15 +88,6 @@ const apiMiddleware =
   ) =>
   (next: any) =>
   async (action: any) => {
-    if (action?.type === actions.apiRetry.type) {
-      console.log(apiQueue.size());
-
-      for (let index = 0; index < apiQueue.size(); index++) {
-        const item = apiQueue.dequeue();
-        console.log(item);
-      }
-      return;
-    }
     if (action?.type !== actions.apiCallBegan.type) {
       return next(action);
     }

@@ -8,5 +8,23 @@ module.exports = {
         path: '.env',
       },
     ],
+    [
+      'module-resolver',
+      {
+        root: ['./src/'],
+        alias: {
+          '@util': 'util',
+          '@components': 'components',
+          '@services': 'services',
+          '@hooks': 'hooks',
+          '@navigators': 'navigators',
+          '@screens': 'screens',
+          '@store': 'store',
+          '@theme': 'theme',
+          '@widgets': 'widgets',
+          underscore: 'lodash',
+        },
+      },
+    ],
   ],
 };

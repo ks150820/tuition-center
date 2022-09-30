@@ -1,6 +1,7 @@
-import {IDispatchType} from '../../@types';
-import {apiCallBegan} from '../actions/actions';
-import {store} from '../configureStore';
+import {apiCallBegan} from '@store/actions/actions';
+import {store} from '@store/configureStore';
+import {IDispatchType} from '@types';
+
 const apiDispatch = (payload: IDispatchType) => {
   return store.dispatch({type: apiCallBegan.type, payload: payload});
 };

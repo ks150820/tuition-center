@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {httpManager} from '@store/@types/ui/http-manager';
+import {AppDispatch, RootState} from '@store/configureStore';
+import {CACHING_TIME, httpMethods} from '@store/enum';
+import apiDispatch from '@store/util/dispatch';
 import {createSelector} from 'reselect';
-import {httpManager} from '../@types/ui/http-manager';
-import {AppDispatch, RootState} from '../configureStore';
-import {CACHING_TIME, httpMethods} from '../enum';
-import apiDispatch from '../util/dispatch';
+
 // type action = {
 //   config: {url: string; method: httpMethods; data: any};
 // };
@@ -24,8 +25,6 @@ const slice = createSlice({
       httpManager: httpManager,
       action: PayloadAction<{errorCode: string; errorMessage: string}>,
     ) => {
-      console.log(JSON.stringify(action));
-
       const {errorCode, errorMessage} = action.payload;
       httpManager.error = {errorCode, errorMessage};
     },
@@ -49,14 +48,8 @@ const slice = createSlice({
       httpManager.haltedAPiCalls.push(action?.payload);
     },
     haltedApiCallSuccess: () => {},
-    haltedApiCallFailed: (httpManager: httpManager, action: any) => {
-      console.log(action.payload, 'PAYLOAD >>>>>>>>>>>>>>>>>>>>>');
-    },
-    haltedApiCallStarted: () => {
-      console.log(
-        'STARTED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',
-      );
-    },
+    haltedApiCallFailed: () => {},
+    haltedApiCallStarted: () => {},
   },
 });
 const {

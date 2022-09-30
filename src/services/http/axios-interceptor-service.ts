@@ -1,9 +1,9 @@
+import {store} from '@store/configureStore';
+import {updateAuthToken} from '@store/entities/auth';
+import {httpMethods} from '@store/enum';
+import {createRequestObject} from '@util/request';
 import axios, {AxiosRequestConfig} from 'axios';
 import createAuthRefreshInterceptor from 'axios-auth-refresh';
-import {store} from '../../store/configureStore';
-import {updateAuthToken} from '../../store/entities/auth/auth';
-import {httpMethods} from '../../store/enum';
-import {createRequestObject} from '../../util/request';
 
 const refreshAuthLogic = (failedRequest: any) =>
   axios

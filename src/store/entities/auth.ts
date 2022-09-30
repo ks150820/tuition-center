@@ -1,11 +1,11 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {createSelector} from 'reselect';
-import asyncStorage from '../../../services/async-storage-service';
-import {apiRetry} from '../../actions/actions';
+import asyncStorage from '../../services/async-storage-service';
+import {apiRetry} from '../actions/actions';
 // import {apiCallBegan} from '../actions/actions';
-import {AppDispatch, RootState} from '../../configureStore';
-import {CACHING_TIME, httpMethods} from '../../enum';
-import apiDispatch from '../../util/dispatch';
+import {AppDispatch, RootState} from '../configureStore';
+import {CACHING_TIME, httpMethods} from '../enum';
+import apiDispatch from '../util/dispatch';
 //Slice => reducer and actions
 const slice = createSlice({
   name: 'authentication',
@@ -29,7 +29,6 @@ const slice = createSlice({
       }>,
     ) => {
       const {name, refreshToken, authToken, phoneNumber} = action?.payload;
-      console.log(action.payload);
 
       authentication.authDetails = {
         name,
@@ -55,6 +54,7 @@ const slice = createSlice({
         authToken: token,
         refreshToken: refresh_token,
       };
+
       authentication.isLoggedIn = true;
       asyncStorage.storeData('@keyAuthData', authentication.authDetails);
     },
@@ -93,7 +93,7 @@ export const callAuthenticationApi = () => () => {
   return apiDispatch({
     url: `v1/user/oauth/token`,
     method: httpMethods.POST,
-    data: {mobile_number: '7356704543', otp: '2098', grant_type: 'otp'},
+    data: {mobile_number: '7356704543', otp: '3008', grant_type: 'otp'},
     onStart: authenticationApiCalledStart.type,
     onSuccess: authenticationApiCalledSuccess.type,
     onError: authenticationApiCalledFailed.type,

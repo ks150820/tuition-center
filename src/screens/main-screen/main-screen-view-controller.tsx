@@ -6,7 +6,7 @@ import {AppDispatch} from '../../store/configureStore';
 import {
   getUserLoggedInData,
   updateUserDetails,
-} from '../../store/entities/auth/auth';
+} from '../../store/entities/auth';
 
 const useMainScreenViewController = () => {
   const isLoggedIn = useSelector(getUserLoggedInData);
@@ -22,7 +22,6 @@ const useMainScreenViewController = () => {
   useEffect(() => {
     asyncStorage.getData('@keyAuthData').then(value => {
       if (value != null) {
-        console.log('recursive');
         dispatch(updateUserDetails(value));
       }
     });

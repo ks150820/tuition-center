@@ -1,5 +1,4 @@
 import {configureStore} from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
 import apiMiddleware from './middlewares/api-middleware';
 
 // import {api} from '../services';
@@ -15,7 +14,7 @@ export const store = configureStore({
   reducer: reducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware()
-      .prepend(thunk, apiMiddleware)
+      .prepend(apiMiddleware)
       // prepend and concat calls can be chained
       .concat(),
   enhancers: [],

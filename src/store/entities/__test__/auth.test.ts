@@ -1,7 +1,7 @@
 import {waitFor} from '@testing-library/react-native';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import {store} from '../../../configureStore';
+import {store} from '../../configureStore';
 let mock = new MockAdapter(axios);
 import * as auth from '../auth';
 const mockDispatch = jest.fn();
@@ -53,7 +53,7 @@ describe('testing authentication', async () => {
   });
   test('test get is user auth details', () => {
     let result = auth.getAuthDetails(store.getState());
-    console.log('🚀 ~ file: auth.test.ts ~ line 63 ~ test ~ result', result);
+
     if (result) {
       expect(result).toEqual({
         name: 'some',
