@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import NetInfo from '@react-native-community/netinfo';
-import NoInternetConnection from '@component/no-internet-connection-handle';
+// import NoInternetConnection from '@component/no-internet-connection-handle';
 
 const useInterNetHandlingService = () => {
   const [isConnected, setSsConnected] = useState<boolean | null>(true);
@@ -14,7 +14,7 @@ const useInterNetHandlingService = () => {
     };
   }, []);
   const NoInterNetConnectionView = () => {
-    return isConnected ? null : <NoInternetConnection />;
+    return isConnected ? null : <></>;
   };
   return {isConnected, NoInterNetConnectionView};
 };

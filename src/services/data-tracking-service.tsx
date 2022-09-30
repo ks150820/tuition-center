@@ -1,6 +1,6 @@
-import {getAuthDetails} from '@store/entities/auth';
 import ReactMoE, {MoEProperties} from 'react-native-moengage';
 import {useSelector} from 'react-redux';
+import {getAuthDetails} from '@store/entities/auth';
 
 interface dataObject {
   [key: string]: string;

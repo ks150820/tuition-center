@@ -1,11 +1,9 @@
 import {useDispatch} from 'react-redux';
-import {useHttpErrorHandlingService} from '../../services/http/http-error-handling-service';
 import {AppDispatch} from '../../store/configureStore';
 import {callAuthenticationApi, callGetOtpApi} from '../../store/entities/auth';
 
 const useAuthScreenViewController = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const {retryApiCall} = useHttpErrorHandlingService();
 
   const callLoginApi = () => {
     setTimeout(() => {
@@ -13,9 +11,7 @@ const useAuthScreenViewController = () => {
     }, 5000);
     dispatch(callGetOtpApi());
   };
-  const retryLogin = () => {
-    retryApiCall();
-  };
+  const retryLogin = () => {};
   return {callLoginApi, retryLogin};
 };
 
