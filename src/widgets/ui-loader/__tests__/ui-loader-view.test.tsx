@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {render} from '@test/test-utils';
+import {render} from '@store/util/test.util';
 import UILoaderView from '../ui-loader-view';
 
 test('pass color, size and style to loader', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {fireEvent} from '@testing-library/react-native';
 
-import {render} from '@test/test-utils';
+import {render} from '@store/util/test.util';
 import UIRadioButtonView from '../ui-radio-button-view';
 
 describe('ui-radio-button-view', () => {

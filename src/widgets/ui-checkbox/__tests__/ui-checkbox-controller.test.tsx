@@ -1,5 +1,5 @@
 import {waitFor} from '@testing-library/react-native';
-import {renderHook} from '@test/test-utils';
+import {renderHook} from '@store/util/test.util';
 
 import useUICheckboxController from '../ui-checkbox-controller';
 

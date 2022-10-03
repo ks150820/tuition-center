@@ -1,6 +1,6 @@
 import {fireEvent, waitFor} from '@testing-library/react-native';
 import React from 'react';
-import {render} from '@test/test-utils';
+import {render} from '@store/util/test.util';
 
 import UIDropDown from '../ui-drop-down';
 
