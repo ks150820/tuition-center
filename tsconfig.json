@@ -36,7 +36,8 @@
       ],
       "underscore": [
         "lodash"
-      ]
+      ],
+      "@resources/*": ["./resources/*"],
     },
   },
   "typeRoots": [
