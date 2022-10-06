@@ -128,9 +128,14 @@ const InstructionScreenView: React.FunctionComponent<
       <UIButton
         btnText={TXT_READY_TO_BEGIN}
         styles={{
-          btnElementWrapper: styles.buttonStyle,
+          btnElementWrapper: {
+            ...styles.buttonStyle,
+            borderColor: !isTermsChecked
+              ? COLORS.GREY.chinese_silver
+              : COLORS.RED.tomato,
+          },
         }}
-        color={COLORS.RED.tomato}
+        color={!isTermsChecked ? COLORS.GREY.chinese_silver : COLORS.RED.tomato}
         disabled={!isTermsChecked}
         onPress={handleStartTest}
       />

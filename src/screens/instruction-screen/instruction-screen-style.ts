@@ -22,7 +22,6 @@ export const styles = StyleSheet.create({
   },
   buttonStyle: {
     width: 'auto',
-    borderColor: COLORS.RED.tomato,
     borderWidth: 1,
     paddingVertical: 10,
     paddingHorizontal: 20,

@@ -23,7 +23,7 @@ const HeaderTop = ({sections, index = 0, onPress}: headerTopProps) => {
         </Text>
         {sections?.length > 1 && (
           <UIIcon
-            iconName="chevron-down"
+            name="chevron-down"
             style={[styles?.textColor, styles?.icon]}
           />
         )}
@@ -70,7 +70,7 @@ const HeaderBottomSheet: React.FC<headerBottomSheetProps> = ({
           {/* when selected sectionIndex is equal to the index of the section item then this icon will display */}
           {selectedSection === item?.section_name.en && (
             <UIIcon
-              iconName="checkmark-circle-sharp"
+              name="checkmark-circle-sharp"
               style={styles?.renderItemIcon}
             />
           )}
@@ -88,7 +88,7 @@ const HeaderBottomSheet: React.FC<headerBottomSheetProps> = ({
     return (
       <View style={styles?.listHeaderComponent}>
         <Pressable onPress={onPress} testID="listHeaderComponentPress">
-          <UIIcon iconName="chevron-down" style={styles?.flatListHeaderIcon} />
+          <UIIcon name="chevron-down" style={styles?.flatListHeaderIcon} />
         </Pressable>
         <View>
           <Text style={styles?.flatListHeaderText}>Sections</Text>
@@ -138,7 +138,7 @@ const SectionTabView = ({
       {/* --- bottom sheet --- */}
       <UIBottomSheet
         visible={isBottomSheetVisible}
-        height="50%"
+        height="40%"
         animationIn="slideInUp"
         animationOut="slideOutDown"
         swipeDirection="down"
