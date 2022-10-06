@@ -1,7 +1,7 @@
 import {fireEvent} from '@testing-library/react-native';
 import React from 'react';
 import {View} from 'react-native';
-import {render} from 'test-helper/test-renderer';
+import {render} from '@store/util/test.util';
 import UIPressable from '../ui-pressable';
 
 test('UI Pressable test cases', () => {

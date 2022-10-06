@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`instruction-screen-view-controller test component for English option value and test for loader and languages 1`] = `
+Array [
+  Object {
+    "id": "en",
+    "name": "English",
+  },
+  Object {
+    "id": "hi",
+    "name": "Hindi",
+  },
+]
+`;

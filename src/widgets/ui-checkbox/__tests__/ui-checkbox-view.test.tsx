@@ -2,7 +2,7 @@ import React from 'react';
 import {fireEvent} from '@testing-library/react-native';
 import {ReactTestInstance} from 'react-test-renderer';
 
-import {render} from '@test/test-utils';
+import {render} from '@store/util/test.util';
 import UICheckboxView from '../ui-checkbox-view';
 
 describe('ui-checkbox-view', () => {
