@@ -3,6 +3,7 @@ import {View} from 'react-native';
 
 import UIButton from '@widgets/ui-btn';
 import {footerStyle} from './test-screen-footer-view-style';
+import {COLORS} from '@resources/colors';
 
 type callbackFunctionTypes = () => void;
 interface IFooterViewProps {
@@ -36,39 +37,43 @@ const FooterView = ({
           ]}>
           <UIButton
             btnText="Clear Response"
-            style={{
-              buttonStyle: footerStyle?.clearResponseButton,
-              textStyle: footerStyle?.firstTextColor,
+            styles={{
+              outerWrapper: footerStyle?.clearResponseButton,
             }}
-            onClick={clearCurrentAnswer}
+            color={COLORS.BLACK}
+            onPress={clearCurrentAnswer}
           />
           <UIButton
             btnText="Mark for Review & Next"
-            style={{
-              buttonStyle: footerStyle?.clearResponseButton,
-              textStyle: footerStyle?.firstTextColor,
+            styles={{
+              outerWrapper: footerStyle?.clearResponseButton,
             }}
-            onClick={handleMarkAndReview}
+            color={COLORS.BLACK}
+            onPress={handleMarkAndReview}
           />
         </View>
         <View style={footerStyle?.commonComponent}>
           <UIButton
             btnText="Submit"
-            style={{
-              buttonStyle: footerStyle?.submitButton,
-              textStyle: footerStyle?.secTextColor,
-              componentStyle: footerStyle?.cmpStyle,
+            styles={{
+              outerWrapper: {
+                ...footerStyle?.submitButton,
+                ...footerStyle?.cmpStyle,
+              },
             }}
-            onClick={openBottomSheet}
+            color={COLORS.WHITE.white}
+            onPress={openBottomSheet}
           />
           <UIButton
             btnText="Save & Next"
-            style={{
-              buttonStyle: footerStyle?.saveAndNextButton,
-              textStyle: footerStyle?.secTextColor,
-              componentStyle: footerStyle?.cmpStyle,
+            styles={{
+              outerWrapper: {
+                ...footerStyle?.saveAndNextButton,
+                ...footerStyle?.cmpStyle,
+              },
             }}
-            onClick={saveNext}
+            color={COLORS.WHITE.white}
+            onPress={saveNext}
           />
         </View>
       </View>

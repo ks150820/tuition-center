@@ -11,7 +11,7 @@ import {
   CONSTANTS,
 } from '@screens/test-screen/question-panel/answer-instructions/constants/answer-instruction-constants';
 import {QUESTION_TYPES} from '@screens/components/resources/strings/question-types';
-import TestContext from '@component/contexts/test-context';
+import TestContext from '@components/contexts/test-context';
 
 const useAnswerInstructionsViewController = () => {
   const [showOptions, setShowOptions] = useState<boolean>(false);

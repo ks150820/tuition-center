@@ -24,6 +24,7 @@ import VideoPlayer from '@screens/video-player-screen/video-player';
 import {VIDEO_TYPES} from '@screens/video-player-screen/video-player/resources/constants';
 import VideoController from '@screens/video-player-screen/ui-video-controller';
 import UIControllerContainer from '@screens/video-player-screen/components/ui-controller-container';
+
 const App = () => {
   const {requestSinglePermission} = useAndroidPermission();
   useEffect(() => {

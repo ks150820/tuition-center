@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {render} from '@store/util/test.util';
-import TestContext from '@component/contexts/test-context';
+import TestContext from '@components/contexts/test-context';
 import BottomHeaderView from '../bottom-header-tab-view';
 
 test('test component for heading and timer when test duration is passed', () => {

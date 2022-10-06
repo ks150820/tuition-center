@@ -2,7 +2,7 @@ import {useState, useEffect, useCallback, useContext} from 'react';
 
 import {useLogStatus} from '@screens/components/hooks/log-status-hook/log-status';
 // import useNavigator from '@navigate/common/navigation';
-import TestContext from '@component/contexts/test-context';
+import TestContext from '@components/contexts/test-context';
 import {CONSTANTS} from '@screens/test-screen/question-panel/answer-instructions/constants/answer-instruction-constants';
 
 interface IUseSummaryStatusControllerProps {

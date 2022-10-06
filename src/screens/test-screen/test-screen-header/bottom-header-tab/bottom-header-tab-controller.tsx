@@ -5,7 +5,7 @@ import {
   getTotalSectionLength,
   getTestDuration,
 } from '@store/entities/test-experience';
-import TestContext from '@component/contexts/test-context';
+import TestContext from '@components/contexts/test-context';
 
 interface UseBottomHeaderControllerReturn {
   questionIndex: number;

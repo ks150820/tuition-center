@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Pressable} from 'react-native';
 
-import UIIcon from '../ui-icons';
+import UIIcon from '../ui-icon';
 import {styles} from './ui-drop-down-view-style';
 /**
  *
@@ -31,8 +31,8 @@ const UIDropDownView: IDropdownViewComponent<IUIDropDownViewProps> = ({
               <Text style={styles?.textColor}>{optionsValue || 'Select'}</Text>
             </View>
             <UIIcon
-              iconName="chevron-down"
-              style={[styles?.iconSize, styles?.textColor]}
+              name="chevron-down"
+              containerStyle={[styles?.iconSize, styles?.textColor]}
             />
           </View>
         </Pressable>

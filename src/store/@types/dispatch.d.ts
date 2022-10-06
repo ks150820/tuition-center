@@ -1,6 +1,5 @@
 type Action = import('@reduxjs/toolkit').Action;
 type AnyAction = import('@reduxjs/toolkit').AnyAction;
+type AppDispatch = import('@store/configureStore').AppDispatch;
 
-interface Dispatch<A extends Action = AnyAction> {
-  <T extends A>(action: T): T;
-}
+type Dispatch = AppDispatch;

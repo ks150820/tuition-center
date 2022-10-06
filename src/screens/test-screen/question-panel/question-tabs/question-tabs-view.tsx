@@ -3,7 +3,6 @@ import {View, FlatList} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 
 import UIButton from '@widgets/ui-btn';
-import UIIcon from '@widgets/ui-icon';
 import {COLORS} from '@resources/colors';
 import {questionTabStyle} from './question-tab-view-style';
 
@@ -47,18 +46,15 @@ const QuestionTabsView: React.FunctionComponent<IQuestionTabsViewProps> = ({
     return (
       <View>
         <UIButton
-          buttonTitle={index + 1 + ''}
-          style={{
-            buttonStyle: {
+          btnText={index + 1 + ''}
+          styles={{
+            outerWrapper: {
               ...questionTabStyle?.btnComponent,
               backgroundColor: colorCode,
             },
-            textStyle: {
-              ...questionTabStyle?.btnTextStyle,
-              color: status > 0 ? COLORS.WHITE.white : COLORS.BLACK,
-            },
           }}
-          onClick={(value: string) => {
+          color={status > 0 ? COLORS.WHITE.white : COLORS.BLACK}
+          onPress={(value: string) => {
             setQuestionIndex(parseInt(value) - 1);
             setQuestionNo(parseInt(value) - 1);
             handleQuestion(question?._id);
@@ -88,17 +84,13 @@ const QuestionTabsView: React.FunctionComponent<IQuestionTabsViewProps> = ({
         />
         <View style={questionTabStyle?.iButtonComponent}>
           <UIButton
-            buttonTitle={
-              <UIIcon
-                iconName="information-circle-sharp"
-                style={questionTabStyle?.btnIconText}
-              />
-            }
-            style={{
-              buttonStyle: questionTabStyle?.iButton,
-              textStyle: questionTabStyle?.iButtonTextStyle,
+            iconName="information-circle-sharp"
+            iconSize={30}
+            styles={{
+              outerWrapper: questionTabStyle?.iButton,
             }}
-            onClick={toggleInfoButton}
+            color={COLORS.BLUE.french_sky_blue}
+            onPress={toggleInfoButton}
           />
         </View>
       </View>

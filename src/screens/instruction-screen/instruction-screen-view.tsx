@@ -126,13 +126,13 @@ const InstructionScreenView: React.FunctionComponent<
         </View>
       </ScrollView>
       <UIButton
-        buttonTitle={TXT_READY_TO_BEGIN}
-        style={{
-          textStyle: styles.buttonText,
-          buttonStyle: styles.buttonStyle,
+        btnText={TXT_READY_TO_BEGIN}
+        styles={{
+          outerWrapper: styles.buttonStyle,
         }}
+        color={COLORS.RED.tomato}
         disabled={!isTermsChecked}
-        onClick={handleStartTest}
+        onPress={handleStartTest}
       />
     </View>
   );

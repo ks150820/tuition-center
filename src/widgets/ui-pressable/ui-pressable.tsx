@@ -8,6 +8,7 @@ interface IUIPressableProps {
   style?: ViewStyle | ViewStyle[];
   testID?: string;
   rippleColor?: string;
+  disabled?: boolean;
 }
 
 /**
@@ -21,11 +22,13 @@ const UIPressable: React.FunctionComponent<IUIPressableProps> = ({
   rippleColor = COLORS.WHITE.white,
   style,
   testID,
+  disabled,
 }) => {
   return (
     <Pressable
       onPress={onPress}
       children={children}
+      disabled={disabled}
       style={style}
       testID={testID}
       android_ripple={{color: rippleColor}}

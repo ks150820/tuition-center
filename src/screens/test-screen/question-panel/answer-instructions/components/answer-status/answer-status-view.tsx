@@ -23,14 +23,14 @@ const AnswerStatusView: React.FC<IAnswerStatus> = ({
   return (
     <View style={answerStyle?.component}>
       <UIButton
-        style={{
-          buttonStyle: {backgroundColor: bgColor, ...answerStyle?.buttonstyle},
-          textStyle: {color: textColor},
+        styles={{
+          outerWrapper: {backgroundColor: bgColor, ...answerStyle?.buttonstyle},
         }}
-        buttonTitle={number}
+        color={textColor}
+        btnText={number}
       />
       {text === CONSTANTS.TXT_ANSWERED_MARKED && (
-        <UIIcon iconName="reader-outline" style={answerStyle?.icon} />
+        <UIIcon name="reader-outline" style={answerStyle?.icon} />
       )}
       <Text style={answerStyle?.textStyle}>{text}</Text>
     </View>

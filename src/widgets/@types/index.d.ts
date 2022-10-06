@@ -143,7 +143,7 @@ interface ISettingOptionWrapperViewProps {
 }
 
 interface IUIBtnViewProps extends IUITextViewProps {
-  btnText?: string;
+  btnText?: string | number;
   // Icon name
   iconName?: string;
   // Icon type
@@ -164,6 +164,7 @@ interface IUIBtnViewProps extends IUITextViewProps {
   };
   // TestId assignment
   testID?: string;
+  disabled?: boolean;
 }
 
 // interface IUIFullScreenToggleButtonViewProps {
