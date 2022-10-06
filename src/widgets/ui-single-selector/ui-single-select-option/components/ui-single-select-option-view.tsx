@@ -1,8 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
 import {styles} from '../resources/styles/styles';
-import {ICON_TYPES} from 'themes/icons';
-import COLORS from 'themes/colors';
+import {ICON_TYPES} from 'theme/icons';
+import {COLORS} from 'resources/colors';
 import UIPressable from 'widgets/ui-pressable';
 import UIText from 'widgets/ui-text';
 import UIIcon from 'widgets/ui-icon';
@@ -31,7 +31,7 @@ const SingleSelectOptionView: React.FunctionComponent<
             testID="selectIcon"
             type={ICON_TYPES.ionicon}
             size={ICON_SIZE}
-            color={COLORS.primary}
+            color={COLORS.PRIMARY}
           />
         )}
       </View>

@@ -73,6 +73,7 @@ interface IBottomSheetProps {
   swipeDirection?: SwipeDirection;
   borderTopRadius?: number;
   children: JSX.Element;
+  containerStyle?: ViewStyle;
   onBackDropPress?: () => void;
   onBackButtonPress?: () => void;
 }

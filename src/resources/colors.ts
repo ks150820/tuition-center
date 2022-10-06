@@ -1,11 +1,14 @@
 export const COLORS = {
   BLACK: '#000',
+  TRANS_BLACK: 'rgba(0, 0, 0, 0.7)',
+  PRIMARY: '#ED2E3D',
   WHITE: {
     white: '#fff',
     anti_flash_white: '#f1f1f1',
     azureish_white: '#d9e4fd',
     cultured: '#f6f6f6',
     light_silver: '#d7d7d7',
+    transWhite: 'rgba(256, 256, 256, 0.4)',
   },
   RED: {
     venetian_red: '#ee2c3c',
