@@ -296,8 +296,8 @@ export const updateSection = (section: String) => (dispatch: Dispatch) => {
  */
 
 export const updateTestLanguage =
-  (language: updatingLanguageType) => (dispatch: Dispatch) => {
-    dispatch({
+  (language: Language) => (dispatch: Dispatch) => {
+    return dispatch({
       type: updateLanguage.type,
       payload: language,
     });

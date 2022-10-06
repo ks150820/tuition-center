@@ -26,6 +26,7 @@ const UIBtnView: React.FunctionComponent<IUIBtnViewProps> = ({
   rippleColor = '',
   styles,
   testID = TEST_ID,
+  disabled,
   ...restTextProps
 }) => {
   const containerStyle = [
@@ -38,6 +39,7 @@ const UIBtnView: React.FunctionComponent<IUIBtnViewProps> = ({
       <UIPressable
         style={containerStyle}
         onPress={onPress}
+        disabled={disabled}
         rippleColor={rippleColor}>
         {iconName && (
           <UIIcon

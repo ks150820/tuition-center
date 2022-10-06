@@ -65,7 +65,3 @@ interface questionsItemType {
   mark: number;
   negative_mark: number;
 }
-
-interface Dispatch<A extends Action = AnyAction> {
-  <T extends A>(action: T): T;
-}

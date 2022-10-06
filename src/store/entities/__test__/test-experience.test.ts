@@ -123,7 +123,7 @@ describe('testExperience', () => {
   test('test upadateTestSectionDetail', () => {
     store.subscribe(() => {
       const test_experience: testExperienceType =
-        store.getState().testExperience;
+        store.getState().entities.testExperience;
 
       expect(test_experience.sectionInfo.index).toStrictEqual(1);
     });
@@ -136,7 +136,7 @@ describe('testExperience', () => {
   test('updateAnsOfCurrentQuestion method', () => {
     store.subscribe(() => {
       const test_experience: testExperienceType =
-        store.getState().testExperience;
+        store.getState().entities.testExperience;
       expect(
         test_experience.list.responseData.logs[0].selected_option,
       ).toStrictEqual(['A']);
@@ -152,7 +152,7 @@ describe('testExperience', () => {
   test('test updateTotalNoQuestions reducer', () => {
     store.subscribe(async () => {
       const test_experience: testExperienceType =
-        store.getState().testExperience;
+        store.getState().entities.testExperience;
       expect(test_experience.testInfo.totalQuestions).toStrictEqual(25);
     });
 
@@ -164,7 +164,7 @@ describe('testExperience', () => {
   test('test updateQuestionsIndex reducer method', () => {
     store.subscribe(() => {
       const test_experience: testExperienceType =
-        store.getState().testExperience;
+        store.getState().entities.testExperience;
       expect(test_experience.testInfo.questionIndex).toStrictEqual(2);
     });
 
@@ -176,7 +176,7 @@ describe('testExperience', () => {
   test('test updateSection reducer method', () => {
     store.subscribe(() => {
       const test_experience: testExperienceType =
-        store.getState().testExperience;
+        store.getState().entities.testExperience;
       expect(test_experience.list.selectedSection).toStrictEqual('ALGEBRA');
     });
 
@@ -188,7 +188,7 @@ describe('testExperience', () => {
   test('test updateTestLanguage reducer method', () => {
     store.subscribe(() => {
       const test_experience: testExperienceType =
-        store.getState().testExperience;
+        store.getState().entities.testExperience;
       expect(test_experience.test_language).toStrictEqual('en');
     });
 
@@ -200,7 +200,7 @@ describe('testExperience', () => {
   test('test updateTimeSpentOnQuestion reducer method', () => {
     store.subscribe(async () => {
       const test_experience: testExperienceType =
-        store.getState().testExperience;
+        store.getState().entities.testExperience;
       expect(await test_experience.examStartTime).toBe(10);
     });
 
@@ -217,7 +217,7 @@ describe('testExperience', () => {
   test('test editLogsAttempt reducer method', () => {
     store.subscribe(() => {
       const test_experience: testExperienceType =
-        store.getState().testExperience;
+        store.getState().entities.testExperience;
       expect(test_experience.list.responseData.logs[0].status).toStrictEqual(2);
     });
 
@@ -231,7 +231,7 @@ describe('testExperience', () => {
   test('test editLogsAttempt reducer method when reducer Data is not passed as na argument', () => {
     store.subscribe(() => {
       const test_experience: testExperienceType =
-        store.getState().testExperience;
+        store.getState().entities.testExperience;
       expect(test_experience.list.responseData.logs[0].status).toStrictEqual(2);
     });
 
@@ -243,7 +243,7 @@ describe('testExperience', () => {
   test('test updateCurrentQuestionId reducer method', () => {
     store.subscribe(() => {
       const test_experience: testExperienceType =
-        store.getState().testExperience;
+        store.getState().entities.testExperience;
       expect(test_experience.questionId).toStrictEqual('123');
     });
 

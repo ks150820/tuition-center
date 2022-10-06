@@ -5,6 +5,7 @@ import UIBottomSheet from '@widgets/ui-bottom-sheet';
 import UIIcon from '@widgets/ui-icon';
 import {summaryStyle} from './summary-style';
 import UIButton from '@widgets/ui-btn';
+import {COLORS} from '@resources/colors';
 
 interface statusDataTypes {
   text: string;
@@ -40,23 +41,24 @@ const SummaryView = ({
   handleSubmitButton,
 }: ISummaryViewProps) => {
   const Footer = () => {
-    const className = {
-      buttonStyle: summaryStyle?.btn,
-      textStyle: summaryStyle?.btnText,
+    const style = {
+      outerWrapper: summaryStyle?.btn,
     };
     return (
       <View style={summaryStyle?.footerComponent}>
         <UIButton
-          buttonTitle="Cancel"
-          style={className}
+          btnText="Cancel"
+          color={COLORS.RED.venetian_red}
+          styles={style}
           disabled={false}
-          onClick={toggleBottomSheet}
+          onPress={toggleBottomSheet}
         />
         <UIButton
-          buttonTitle="Submit"
-          style={className}
+          btnText="Submit"
+          color={COLORS.RED.venetian_red}
+          styles={style}
           disabled={false}
-          onClick={handleSubmitButton}
+          onPress={handleSubmitButton}
         />
       </View>
     );
@@ -126,7 +128,7 @@ const SummaryView = ({
       onBackButtonPress={toggleBottomSheet}>
       <View style={summaryStyle?.component}>
         <Pressable onPress={toggleBottomSheet} testID="downIcon">
-          <UIIcon iconName="chevron-down" style={summaryStyle?.icon} />
+          <UIIcon name="chevron-down" style={summaryStyle?.icon} />
         </Pressable>
         <FlatList
           keyExtractor={(_item, index) => index + ''}
