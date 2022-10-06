@@ -1,3 +1,4 @@
+import {COLORS} from '@resources/colors';
 import React from 'react';
 import {View, Text, Pressable} from 'react-native';
 
@@ -31,8 +32,11 @@ const UIDropDownView: IDropdownViewComponent<IUIDropDownViewProps> = ({
               <Text style={styles?.textColor}>{optionsValue || 'Select'}</Text>
             </View>
             <UIIcon
+              type="ionicon"
               name="chevron-down"
-              containerStyle={[styles?.iconSize, styles?.textColor]}
+              containerStyle={{...styles?.iconSize}}
+              size={20}
+              color={COLORS.BLACK}
             />
           </View>
         </Pressable>

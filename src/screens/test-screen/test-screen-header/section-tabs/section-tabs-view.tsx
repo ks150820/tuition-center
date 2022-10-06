@@ -4,6 +4,7 @@ import {View, Text, Pressable, FlatList} from 'react-native';
 import UIBottomSheet from '@widgets/ui-bottom-sheet';
 import UIIcon from '@widgets/ui-icon';
 import {styles} from './section-tabs-style';
+import {COLORS} from '@resources/colors';
 
 /**
  *
@@ -24,7 +25,10 @@ const HeaderTop = ({sections, index = 0, onPress}: headerTopProps) => {
         {sections?.length > 1 && (
           <UIIcon
             name="chevron-down"
-            style={[styles?.textColor, styles?.icon]}
+            type="ionicon"
+            containerStyle={styles.icon}
+            size={20}
+            color={COLORS.WHITE.white}
           />
         )}
       </View>
@@ -71,7 +75,9 @@ const HeaderBottomSheet: React.FC<headerBottomSheetProps> = ({
           {selectedSection === item?.section_name.en && (
             <UIIcon
               name="checkmark-circle-sharp"
-              style={styles?.renderItemIcon}
+              type="ionicon"
+              color={COLORS.RED.indian_red}
+              size={15}
             />
           )}
         </View>
@@ -88,7 +94,13 @@ const HeaderBottomSheet: React.FC<headerBottomSheetProps> = ({
     return (
       <View style={styles?.listHeaderComponent}>
         <Pressable onPress={onPress} testID="listHeaderComponentPress">
-          <UIIcon name="chevron-down" style={styles?.flatListHeaderIcon} />
+          <UIIcon
+            name="chevron-down"
+            type="ionicon"
+            color="COLORS.GREY.american_silver"
+            iconStyle={{...styles?.flatListHeaderIcon}}
+            size={23}
+          />
         </Pressable>
         <View>
           <Text style={styles?.flatListHeaderText}>Sections</Text>

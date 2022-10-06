@@ -13,7 +13,6 @@ export const styles = StyleSheet.create({
     color: COLORS.WHITE.white,
   },
   icon: {
-    fontSize: 20,
     marginLeft: 7,
   },
   listHeaderComponent: {
@@ -33,8 +32,6 @@ export const styles = StyleSheet.create({
     color: COLORS.RED.indian_red,
   },
   flatListHeaderIcon: {
-    color: COLORS.GREY.american_silver,
-    fontSize: 23,
     textAlign: 'center',
   },
   renderItemComponent: {

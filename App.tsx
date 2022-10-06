@@ -56,7 +56,7 @@ const App = () => {
     <Provider store={store}>
       <NavigationContainer theme={AppTheme}>
         {/* <MyDownloads /> */}
-        <VideoPlayer
+        {/* <VideoPlayer
           // videoType={VIDEO_TYPES.LIVE_VIDEO}
           source={{
             // uri: '',
@@ -86,8 +86,8 @@ const App = () => {
               </UIControllerContainer.RightControllerActions>
             </UIControllerContainer>
           </VideoController>
-        </VideoPlayer>
-        {/* <HomeNavigator /> */}
+        </VideoPlayer> */}
+        <HomeNavigator />
         {/* <MainScreen /> */}
         <NoInterNetConnectionView />
       </NavigationContainer>

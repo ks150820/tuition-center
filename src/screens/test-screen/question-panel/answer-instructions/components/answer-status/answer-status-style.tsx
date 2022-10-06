@@ -14,10 +14,8 @@ export const answerStyle = StyleSheet.create({
   icon: {
     position: 'absolute',
     padding: 1,
-    color: '#fff',
     left: 25,
     top: 22,
-    fontSize: 10,
     backgroundColor: COLORS.GREEN.russian_green,
     borderRadius: 20,
   },

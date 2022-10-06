@@ -33,7 +33,13 @@ const AnswerStatusView: React.FC<IAnswerStatus> = ({
         btnText={number}
       />
       {text === CONSTANTS.TXT_ANSWERED_MARKED && (
-        <UIIcon name="reader-outline" style={answerStyle?.icon} />
+        <UIIcon
+          name="reader-outline"
+          type="ionicon"
+          containerStyle={answerStyle?.icon}
+          size={10}
+          color={COLORS.WHITE.white}
+        />
       )}
       <Text style={answerStyle?.textStyle}>{text}</Text>
     </View>

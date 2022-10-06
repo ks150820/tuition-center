@@ -104,7 +104,12 @@ const SummaryView = ({
   const Timer = () => {
     return (
       <View style={summaryStyle?.timerComponent}>
-        <UIIcon name="timer-outline" style={summaryStyle?.timerIcon} />
+        <UIIcon
+          type="ionicon"
+          name="timer-outline"
+          size={30}
+          color={COLORS.RED.venetian_red}
+        />
         <Text style={summaryStyle?.timerText}>
           Test will auto submit in 5 seconds
         </Text>

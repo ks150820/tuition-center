@@ -85,11 +85,12 @@ const QuestionTabsView: React.FunctionComponent<IQuestionTabsViewProps> = ({
         <View style={questionTabStyle?.iButtonComponent}>
           <UIButton
             iconName="information-circle-sharp"
+            iconType="ionicon"
             iconSize={30}
             styles={{
               btnElementWrapper: questionTabStyle?.iButton,
             }}
-            color={COLORS.BLUE.french_sky_blue}
+            iconColor={COLORS.BLUE.french_sky_blue}
             onPress={toggleInfoButton}
           />
         </View>

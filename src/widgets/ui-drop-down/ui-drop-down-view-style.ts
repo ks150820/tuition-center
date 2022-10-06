@@ -46,7 +46,6 @@ export const styles = StyleSheet.create({
     color: COLORS.BLACK,
   },
   iconSize: {
-    fontSize: 20,
     marginLeft: 5,
   },
 });
