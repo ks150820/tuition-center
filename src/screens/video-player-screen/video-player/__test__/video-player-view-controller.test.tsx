@@ -1,6 +1,6 @@
 import {act} from '@testing-library/react-native';
 import {PORTRAIT} from 'react-native-orientation-locker';
-import {renderHook} from 'test-helper/test-renderer';
+import {renderHook} from '@store/util/test.util';
 import useVideoPlayerController from '../video-player-view-controller';
 
 test('Video player view controller test', () => {

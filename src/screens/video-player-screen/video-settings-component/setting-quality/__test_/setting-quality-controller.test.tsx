@@ -1,4 +1,4 @@
-import {renderHook} from 'test-helper/test-renderer';
+import {renderHook} from '@store/util/test.util';
 import useSettingQualityViewController from '../setting-quality-controller';
 
 test('Quality setting controller test cases', () => {

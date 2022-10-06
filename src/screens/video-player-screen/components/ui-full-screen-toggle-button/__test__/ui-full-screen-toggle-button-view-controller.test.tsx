@@ -1,5 +1,5 @@
 import {act} from 'react-test-renderer';
-import {renderHook} from 'test-helper/test-renderer';
+import {renderHook} from '@store/util/test.util';
 import useUIFullScreenToggleButtonViewController from '../ui-full-screen-toggle-button-view-controller';
 
 test('Full screen toggler test cases', () => {

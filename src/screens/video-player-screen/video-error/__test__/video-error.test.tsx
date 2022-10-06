@@ -1,6 +1,6 @@
 import React from 'react';
 import {act, fireEvent} from '@testing-library/react-native';
-import {render} from 'test-helper/test-renderer';
+import {render} from '@store/util/test.util';
 import VideoError from '../video-error';
 
 test('Video error test cases', () => {

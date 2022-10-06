@@ -1,5 +1,5 @@
-import {VIDEO_TYPES} from 'components/video-player/resources/constants';
-import {useVideoPlayerContext} from 'components/video-player/video-player-view-controller';
+import {VIDEO_TYPES} from '@screens/video-player-screen/video-player/resources/constants';
+import {useVideoPlayerContext} from '@screens/video-player-screen/video-player/video-player-view-controller';
 import {useEffect, useRef} from 'react';
 import {Animated} from 'react-native';
 

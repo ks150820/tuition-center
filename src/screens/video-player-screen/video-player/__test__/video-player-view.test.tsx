@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from 'test-helper/test-renderer';
+import {render} from '@store/util/test.util';
 import VideoPlayerView from '../video-player-view';
 
 test('Video player view test cases', () => {

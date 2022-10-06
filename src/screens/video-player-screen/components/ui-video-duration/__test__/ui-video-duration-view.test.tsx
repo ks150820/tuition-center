@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from 'test-helper/test-renderer';
+import {render} from '@store/util/test.util';
 import VideoDurationView from '../ui-video-duration-view';
 
 test('Video duration test cases', () => {

@@ -1,6 +1,6 @@
 import {fireEvent} from '@testing-library/react-native';
 import React from 'react';
-import {render} from '../../../../test-helper/test-renderer';
+import {render} from '../../../../@store/util/test.util';
 import SettingItemView from '../setting-item-view';
 
 test('Setting item view test cases', () => {

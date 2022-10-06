@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from 'test-helper/test-renderer';
+import {render} from '@store/util/test.util';
 import UIFullScreenToggleButton from '../ui-full-screen-toggle-button';
 
 test('Full screen button test cases', () => {

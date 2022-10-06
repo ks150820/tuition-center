@@ -1,5 +1,5 @@
 import {act} from 'react-test-renderer';
-import {renderHook} from 'test-helper/test-renderer';
+import {renderHook} from '@store/util/test.util';
 import useVideoSettingsComponentController from '../video-settings-component-view-controller';
 
 test('Video setting controller test cases', () => {

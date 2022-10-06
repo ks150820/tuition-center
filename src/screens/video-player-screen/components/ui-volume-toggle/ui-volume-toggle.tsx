@@ -1,6 +1,6 @@
 import React from 'react';
 import COLORS from 'theme/colors';
-import {ICON_TYPES} from 'themes/icons';
+import {ICON_TYPES} from '@theme/icons';
 import UIToggleButton from 'widgets/ui-toggle-button';
 import useVolumeToggleViewController from './ui-volume-toggle-view-controller';
 

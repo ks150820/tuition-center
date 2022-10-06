@@ -1,6 +1,6 @@
 import React from 'react';
 import {act} from '@testing-library/react-native';
-import {renderHook, render} from 'test-helper/test-renderer';
+import {renderHook, render} from '@store/util/test.util';
 import useVolumeToggleController from '../ui-volume-toggle-view-controller';
 import VolumeToggle from '../ui-volume-toggle';
 

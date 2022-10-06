@@ -26,10 +26,9 @@ const VideoSettingsComponentView: React.FunctionComponent<
 }) => {
   return (
     <UIBottomSheet
-      testID={'settingModal'}
-      isVisible={toggleSettings}
+      visible={toggleSettings}
       onBackButtonPress={onHideSettingOption}
-      onBackdropPress={onHideSettingOption}>
+      onBackDropPress={onHideSettingOption}>
       <View style={[styles.container, style]}>
         {!selectedSettingOption.show && (
           <>

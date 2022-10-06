@@ -27,9 +27,11 @@ module.exports = {
         alias: {
           '@util': './src/util',
           '@components': './src/components',
+          '@helpers': './src/helpers',
           '@services': './src/services',
           '@hooks': './src/hooks',
           '@navigators': './src/navigators',
+          '@resources': './src/resources',
           '@screens': './src/screens',
           '@store': './src/store',
           '@theme': './src/theme',

@@ -1,4 +1,4 @@
-import {renderHook} from 'test-helper/test-renderer';
+import {renderHook} from '@store/util/test.util';
 import useSettingPlaybackSpeedViewController from '../setting-playback-speed-controller';
 
 test('Playback speed setting controller test cases', () => {

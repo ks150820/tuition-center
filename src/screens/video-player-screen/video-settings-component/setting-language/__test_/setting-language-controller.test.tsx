@@ -1,4 +1,4 @@
-import {renderHook} from 'test-helper/test-renderer';
+import {renderHook} from '@store/util/test.util';
 import useSettingLanguageViewController from '../setting-language-controller';
 
 test('Language setting controller test cases', () => {

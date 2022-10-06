@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {render} from 'test-helper/test-renderer';
+import {render} from '@store/util/test.util';
 import VideoControllerView from '../ui-video-controller-view';
 
 test('Video controller view test cases', () => {

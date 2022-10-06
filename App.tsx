@@ -17,9 +17,13 @@ import MainScreen from './src/screens/main-screen';
 import AppTheme from './src/theme/theme';
 import * as Sentry from '@sentry/react-native';
 import ReactMoE, {MoEAppStatus} from 'react-native-moengage';
-import {PermissionsAndroid} from 'react-native';
+import {PermissionsAndroid, StyleSheet} from 'react-native';
 import useAndroidPermission from '@hooks/use-android-permission';
 import MyDownloads from '@screens/a-temp-download/MyDownloads';
+import VideoPlayer from '@screens/video-player-screen/video-player';
+import {VIDEO_TYPES} from '@screens/video-player-screen/video-player/resources/constants';
+import VideoController from '@screens/video-player-screen/ui-video-controller';
+import UIControllerContainer from '@screens/video-player-screen/components/ui-controller-container';
 const App = () => {
   const {requestSinglePermission} = useAndroidPermission();
   useEffect(() => {
@@ -49,12 +53,52 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer theme={AppTheme}>
-        <MyDownloads />
+        {/* <MyDownloads /> */}
+        <VideoPlayer
+          // videoType={VIDEO_TYPES.LIVE_VIDEO}
+          source={{
+            // uri: '',
+            // uri: 'https://dgrq3wfo7a6z.cloudfront.net/out/v1/87b7af39bef94f64a8a4e098a28d5799/index.m3u8',
+            uri: 'https://upgadjeet-hls-encryption-testing.s3.ap-south-1.amazonaws.com/video_1635237462373_479/playlist.m3u8',
+            // uri: 'https://dgrq3wfo7a6z.cloudfront.net/out/v1/b4a42e34708a4fdfa5d94f72ac8b25c6/index.m3u8',
+            // uri: 'https://d15kshxka6et4q.cloudfront.net/out/v1/e9902099175d40d0a761a85ec1b49b7b/index.m3u8',
+            // uri: 'https://d15kshxka6et4q.cloudfront.net/out/v1/9ae1108d8fcf453e995c1501764ce8d2/index.m3u8',
+            // uri: 'https://dgrq3wfo7a6z.cloudfront.net/out/v1/c235333fda5a46e1a4ceca66f957f9ef/index.m3u8',
+            // uri: 'https://upgadjeet-hls-encryption-testing.s3.ap-south-1.amazonaws.com/video_1635237462373_479/playlist.m3u8',
+          }}>
+          <VideoController>
+            <VideoController.SeekBar />
+            <UIControllerContainer>
+              <UIControllerContainer.LeftControllerActions>
+                <VideoController.PlayBtn style={styles.play} />
+                <VideoController.VolumeMuteBtn />
+              </UIControllerContainer.LeftControllerActions>
+              <UIControllerContainer.RightControllerActions>
+                <VideoController.FullScreenBtn
+                  containerStyle={styles.fullScreen}
+                />
+                <VideoController.Settings>
+                  <VideoController.PlaybackSpeed />
+                  <VideoController.Quality />
+                </VideoController.Settings>
+              </UIControllerContainer.RightControllerActions>
+            </UIControllerContainer>
+          </VideoController>
+        </VideoPlayer>
         {/* <MainScreen /> */}
         <NoInterNetConnectionView />
       </NavigationContainer>
     </Provider>
   );
 };
+
+const styles = StyleSheet.create({
+  play: {
+    marginRight: 15,
+  },
+  fullScreen: {
+    marginRight: 10,
+  },
+});
 
 export default Sentry.wrap(App);

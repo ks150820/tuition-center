@@ -1,5 +1,5 @@
 import {act} from '@testing-library/react-native';
-import {renderHook} from 'test-helper/test-renderer';
+import {renderHook} from '@store/util/test.util';
 import useQualitySelectorModalController from '../quality-selector-modal-view-controller';
 
 test('Quality selector controller test cases', () => {

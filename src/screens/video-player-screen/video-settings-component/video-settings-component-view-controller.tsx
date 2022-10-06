@@ -1,5 +1,5 @@
 import {useSelector} from 'react-redux';
-import {getAppLanguage} from '../../store/entities/user-preferences';
+import {getAppLanguage} from '@store/entities/user-preferences';
 import {useState} from 'react';
 
 /**

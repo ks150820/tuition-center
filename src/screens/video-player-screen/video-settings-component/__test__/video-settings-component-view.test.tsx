@@ -35,7 +35,7 @@ test('Video setting view test cases', () => {
   expect(header.props.children).toEqual(PLAYER_TEXT.SETTINGS.en);
 
   // Fire function programmatically and validate handler call
-  const settingModal = getByTestId('settingModal');
+  const settingModal = getByTestId('backButtonPress');
   act(() => {
     settingModal.props.onBackdropPress();
   });

@@ -1,6 +1,6 @@
 import React from 'react';
 import {fireEvent} from '@testing-library/react-native';
-import {render} from 'test-helper/test-renderer';
+import {render} from '@store/util/test.util';
 import QualitySelectorModalView from '../quality-selector-modal-view';
 
 test('Quality selector test cases', () => {

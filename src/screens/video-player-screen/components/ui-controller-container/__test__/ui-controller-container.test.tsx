@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text} from 'react-native';
-import {render} from 'test-helper/test-renderer';
+import {render} from '@store/util/test.util';
 import {UIControllerContainer} from '../ui-controller-container';
 
 test('Controller container test cases', () => {

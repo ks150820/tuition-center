@@ -1,5 +1,5 @@
 import {act} from '@testing-library/react-native';
-import {renderHook} from 'test-helper/test-renderer';
+import {renderHook} from '@store/util/test.util';
 import useVolumeToggleController from '../ui-volume-toggle-view-controller';
 
 test('mute should toggle to true when toggleMute is called', () => {
