@@ -24,7 +24,7 @@ import {
   handleContentDownloadComplete,
   initializeContentDownload,
 } from 'store/entities/downloadManager';
-import COLORS from 'themes/colors';
+import COLORS from 'theme/colors';
 import {TEXT_DOWNLOAD_FLOW} from 'screens/video-player-screen/offline-videos/resources/values/strings';
 import RNFetchBlob from 'rn-fetch-blob';
 

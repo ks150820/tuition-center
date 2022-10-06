@@ -13,6 +13,9 @@
       "@component/*": [
         "./components/*"
       ],
+      "@helpers/*": [
+        "./helpers/*"
+      ],
       "@services/*": [
         "./services/*"
       ],

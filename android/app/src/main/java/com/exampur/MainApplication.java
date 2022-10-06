@@ -19,6 +19,7 @@ import com.moengage.react.MoEInitializer;
 import com.moengage.react.MoEReactPackage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import com.exampur.downloadService.DownloadPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -33,6 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
       @SuppressWarnings("UnnecessaryLocalVariable")
       List<ReactPackage> packages = new PackageList(this).getPackages();
       packages.add(new AppPackages());
+      packages.add(new DownloadPackage());
       // packages.add(new MoEReactPackage());
 
       // Packages that cannot be autolinked yet can be added manually here, for example:

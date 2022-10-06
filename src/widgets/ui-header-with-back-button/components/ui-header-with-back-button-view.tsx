@@ -1,5 +1,5 @@
 import React from 'react';
-import {FONT_SIZE, FONT_TYPE} from '../../../themes/font';
+import {FONT_SIZE, FONT_TYPE} from '../../../theme/font';
 import {styles} from '../resources/styles/styles';
 import UIRow from '../../ui-row';
 import UIText from '../../ui-text';

@@ -1,7 +1,7 @@
 import React from 'react';
 import UIIcon from 'widgets/ui-icon';
 import UIPressable from 'widgets/ui-pressable';
-import COLORS from '../../themes/colors';
+import COLORS from '../../theme/colors';
 
 /**
  * View for BackButton with customizable back icon

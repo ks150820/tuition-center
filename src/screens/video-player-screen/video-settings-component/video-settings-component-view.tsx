@@ -1,10 +1,10 @@
 import React from 'react';
 import {View} from 'react-native';
-import UIBottomSheet from 'widgets/ui-bottom-sheet';
+import UIBottomSheet from '@widgets/ui-bottom-sheet';
 import SingleSelector from 'widgets/ui-single-selector';
 import UIText from 'widgets/ui-text';
-import {PLAYER_TEXT} from '../../resources/values/strings';
-import {FONT_SIZE, FONT_TYPE} from '../../themes/font';
+import {PLAYER_TEXT} from '@resources/values/strings';
+import {FONT_SIZE, FONT_TYPE} from '@theme/font';
 import {styles} from './resources/styles/styles';
 
 /**

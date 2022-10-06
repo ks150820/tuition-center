@@ -1,6 +1,6 @@
 import React from 'react';
 import {ViewStyle} from 'react-native';
-import COLORS from 'themes/colors';
+import COLORS from 'theme/colors';
 import {ICON_TYPES} from 'themes/icons';
 import UIToggleButton from 'widgets/ui-toggle-button';
 
