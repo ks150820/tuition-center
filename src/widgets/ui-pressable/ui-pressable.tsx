@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import {Pressable, ViewStyle} from 'react-native';
-import COLORS from 'themes/colors';
+import {COLORS} from 'resources/colors';
 
 interface IUIPressableProps {
   children: ReactNode;
@@ -18,7 +18,7 @@ interface IUIPressableProps {
 const UIPressable: React.FunctionComponent<IUIPressableProps> = ({
   children,
   onPress,
-  rippleColor = COLORS.white,
+  rippleColor = COLORS.WHITE.white,
   style,
   testID,
 }) => {

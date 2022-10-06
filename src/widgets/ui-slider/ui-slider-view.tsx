@@ -28,9 +28,9 @@ const SliderView: React.FunctionComponent<ISliderViewProps> = ({
   currentProgress,
   onValueChange,
   maximumTrackTintColor = COLORS.grey_light,
-  minimumTrackTintColor = COLORS.primary,
+  minimumTrackTintColor = COLORS.PRIMARY,
   trackStyle = styles.track,
-  thumbTintColor = COLORS.white,
+  thumbTintColor = COLORS.WHITE.white,
   thumbStyle = styles.thumb,
   ...rest
 }) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import COLORS from 'themes/colors';
+import {COLORS} from 'resources/colors';
 import UIIcon from 'widgets/ui-icon';
 import UIPressable from 'widgets/ui-pressable';
 import UIText from 'widgets/ui-text';
@@ -13,7 +13,7 @@ import {styles as btnStyles} from './resources/styles';
  */
 
 const ICON_SIZE = 22;
-const ICON_COLOR = COLORS.black;
+const ICON_COLOR = COLORS.BLACK;
 const TEST_ID = 'UI-btn';
 
 const UIBtnView: React.FunctionComponent<IUIBtnViewProps> = ({

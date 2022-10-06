@@ -1,4 +1,6 @@
 import React from 'react';
+import {View} from 'react-native';
+import {styles} from './ui-bottom-sheet-style';
 import UIBottomSheetView from './ui-bottom-sheet-view';
 
 /**
@@ -22,6 +24,7 @@ const UIBottomSheet: React.FC<IBottomSheetProps> = ({
   swipeDirection = 'down',
   borderTopRadius = 10,
   children,
+  containerStyle,
   onBackDropPress,
   onBackButtonPress,
 }) => {
@@ -33,10 +36,10 @@ const UIBottomSheet: React.FC<IBottomSheetProps> = ({
       animationOut={animationOut}
       swipeDirection={swipeDirection}
       borderTopRadius={borderTopRadius}
-      children={children}
       onBackDropPress={onBackDropPress}
-      onBackButtonPress={onBackButtonPress}
-    />
+      onBackButtonPress={onBackButtonPress}>
+      <View style={[styles.contentContainer, containerStyle]}>{children}</View>
+    </UIBottomSheetView>
   );
 };
 

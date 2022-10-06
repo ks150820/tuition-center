@@ -19,6 +19,7 @@ import * as Sentry from '@sentry/react-native';
 import ReactMoE, {MoEAppStatus} from 'react-native-moengage';
 import {PermissionsAndroid} from 'react-native';
 import useAndroidPermission from '@hooks/use-android-permission';
+import MyDownloads from '@screens/a-temp-download/MyDownloads';
 const App = () => {
   const {requestSinglePermission} = useAndroidPermission();
   useEffect(() => {
@@ -48,7 +49,8 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer theme={AppTheme}>
-        <MainScreen />
+        <MyDownloads />
+        {/* <MainScreen /> */}
         <NoInterNetConnectionView />
       </NavigationContainer>
     </Provider>

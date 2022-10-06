@@ -10,7 +10,7 @@ test('UI Text test cases', () => {
     <UITextView
       type={FONT_TYPE.bold}
       size={FONT_SIZE.large}
-      color={COLORS.primary}>
+      color={COLORS.PRIMARY}>
       Sample text
     </UITextView>,
   );
@@ -19,5 +19,5 @@ test('UI Text test cases', () => {
   const textView = getByText('Sample text');
   expect(textView.props.children).toEqual('Sample text');
   expect(textView.props.style[0].fontFamily).toEqual('OpenSans-Bold');
-  expect(textView.props.style[1].color).toEqual(COLORS.primary);
+  expect(textView.props.style[1].color).toEqual(COLORS.PRIMARY);
 });

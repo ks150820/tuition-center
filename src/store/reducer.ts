@@ -1,6 +1,7 @@
 import {combineReducers} from '@reduxjs/toolkit';
 import authentication from '@store/entities/auth';
 import httpManager from '@store/ui/http-manager';
+import entities from './entities';
 
 /**
  * Combine all reducers and return a ReducersMapObject
@@ -8,5 +9,6 @@ import httpManager from '@store/ui/http-manager';
  */
 export default combineReducers({
   auth: authentication,
-  httpManager: httpManager,
+  entities,
+  httpManager,
 });
