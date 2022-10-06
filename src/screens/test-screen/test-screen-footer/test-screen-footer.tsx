@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 
 import FooterView from './test-screen-footer-view';
-import TestContext from '@component/contexts/test-context';
+import TestContext from '@components/contexts/test-context';
 
 /**
  *

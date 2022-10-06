@@ -10,7 +10,7 @@
       "@util/*": [
         "util/*",
       ],
-      "@component/*": [
+      "@components/*": [
         "./components/*"
       ],
       "@helpers/*": [

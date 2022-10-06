@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 
 import QuestionPanelView from './question-panel-view';
-import TextContext from '@component/contexts/test-context';
+import TextContext from '@components/contexts/test-context';
 
 interface IQuestionPanel {}
 

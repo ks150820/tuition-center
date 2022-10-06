@@ -3,7 +3,7 @@ import {NavigationContext} from '@react-navigation/native';
 import {fireEvent} from '@testing-library/react-native';
 
 import {render} from '@store/util/test.util';
-import TestContext from '@component/contexts/test-context';
+import TestContext from '@components/contexts/test-context';
 import QuestionPanelView from '../question-panel-view';
 
 describe('question-panel-view', () => {

@@ -1,7 +1,7 @@
 import {renderHook} from '@store/util/test.util';
 
 import useSummaryStatusController from '../summary-view-controller';
-import TestContext from '@component/contexts/test-context';
+import TestContext from '@components/contexts/test-context';
 import {waitFor} from '@testing-library/react-native';
 
 jest.mock('@react-navigation/native', () => {

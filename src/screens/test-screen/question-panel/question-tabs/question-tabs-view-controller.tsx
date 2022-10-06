@@ -4,7 +4,7 @@ import {
   getSectionDetail,
   updateCurrentQuestionId,
 } from '@store/entities/test-experience';
-import TestContext from '@component/contexts/test-context';
+import TestContext from '@components/contexts/test-context';
 
 /**
  * View Controller for QuestionTabs consisting of all the functions required to handle the question tabs on header

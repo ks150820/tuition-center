@@ -1,5 +1,5 @@
 import {renderHook} from '@store/util/test.util';
-import TestContext from '@component/contexts/test-context';
+import TestContext from '@components/contexts/test-context';
 import useQuestionTabsViewController from '../question-tabs-view-controller';
 
 describe('question-tabs-view-controller', () => {
