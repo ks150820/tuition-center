@@ -1,6 +1,6 @@
 import React from 'react';
 import {Slider, SliderProps} from '@rneui/themed';
-import COLORS from '../../theme/colors';
+import {COLORS} from '@resources/colors';
 import {styles} from './resources/styles';
 
 /**
@@ -27,7 +27,7 @@ const SliderView: React.FunctionComponent<ISliderViewProps> = ({
   style,
   currentProgress,
   onValueChange,
-  maximumTrackTintColor = COLORS.grey_light,
+  maximumTrackTintColor = COLORS.GREY.bright_gray,
   minimumTrackTintColor = COLORS.PRIMARY,
   trackStyle = styles.track,
   thumbTintColor = COLORS.WHITE.white,
