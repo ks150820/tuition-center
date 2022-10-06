@@ -24,7 +24,10 @@ const AnswerStatusView: React.FC<IAnswerStatus> = ({
     <View style={answerStyle?.component}>
       <UIButton
         styles={{
-          outerWrapper: {backgroundColor: bgColor, ...answerStyle?.buttonstyle},
+          btnElementWrapper: {
+            backgroundColor: bgColor,
+            ...answerStyle?.buttonstyle,
+          },
         }}
         color={textColor}
         btnText={number}

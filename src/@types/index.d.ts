@@ -7,6 +7,7 @@ interface IDispatchType {
   url: string;
   method: httpMethods;
   data?: object;
+  reducerData?: object;
   onStart: string;
   onSuccess: string;
   onError: string;

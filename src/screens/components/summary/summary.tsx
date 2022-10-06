@@ -1,10 +1,12 @@
 import React from 'react';
-import {homeScreenProps} from '@navigators/home-navigator/@types/home-navigator-param-list';
+// import {homeScreenProps} from '@navigators/home-navigator/@types/home-navigator-param-list';
 
 import SummaryView from './summary-view';
 import useSummaryStatusController from './summary-view-controller';
 
-interface ISummaryProps extends homeScreenProps {}
+interface ISummaryProps {
+  navigation: any;
+}
 
 const Summary: React.FC<ISummaryProps> = ({navigation}) => {
   const {

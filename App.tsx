@@ -13,12 +13,13 @@ import {Provider} from 'react-redux';
 import useInterNetHandlingService from './src/services/internet-handling-service';
 import {store} from './src/store/configureStore';
 import {NavigationContainer} from '@react-navigation/native';
-import MainScreen from './src/screens/main-screen';
+// import MainScreen from './src/screens/main-screen';
 import AppTheme from './src/theme/theme';
 import * as Sentry from '@sentry/react-native';
 import ReactMoE, {MoEAppStatus} from 'react-native-moengage';
 import {PermissionsAndroid} from 'react-native';
 import useAndroidPermission from '@hooks/use-android-permission';
+import HomeNavigator from '@navigators/home-navigator';
 // import MyDownloads from '@screens/a-temp-download/MyDownloads';
 const App = () => {
   const {requestSinglePermission} = useAndroidPermission();
@@ -50,7 +51,8 @@ const App = () => {
     <Provider store={store}>
       <NavigationContainer theme={AppTheme}>
         {/* <MyDownloads /> */}
-        <MainScreen />
+        <HomeNavigator />
+        {/* <MainScreen /> */}
         <NoInterNetConnectionView />
       </NavigationContainer>
     </Provider>

@@ -42,7 +42,7 @@ const SummaryView = ({
 }: ISummaryViewProps) => {
   const Footer = () => {
     const style = {
-      outerWrapper: summaryStyle?.btn,
+      btnElementWrapper: summaryStyle?.btn,
     };
     return (
       <View style={summaryStyle?.footerComponent}>

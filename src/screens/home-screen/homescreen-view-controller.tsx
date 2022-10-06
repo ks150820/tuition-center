@@ -3,6 +3,7 @@ import {callRetry} from '../../store/entities/auth';
 import {AppDispatch} from '../../store/configureStore';
 import useDataTrackingService from '../../services/data-tracking-service';
 import {useEffect} from 'react';
+import {loadTestDetails} from '@store/entities/test-experience';
 
 // import {postNavigationProp} from '../../navigators/post-auth-navigator/@types/post-auth-param-list';;
 /**
@@ -10,7 +11,7 @@ import {useEffect} from 'react';
  * @param props
  * @returns
  */
-const useHomeScreenViewController = () => {
+const useHomeScreenViewController = ({navigation}: any) => {
   const dispatch = useDispatch<AppDispatch>();
   const {MoEngage} = useDataTrackingService({});
 
@@ -26,7 +27,12 @@ const useHomeScreenViewController = () => {
     dispatch(callRetry());
     // retryApiCall();
   };
-  return {onPress, onRetry};
+
+  const onStartTest = () => {
+    navigation.navigate('InstructionScreen');
+    dispatch(loadTestDetails('6299efb1e51fe25d77f6b191'));
+  };
+  return {onPress, onRetry, onStartTest};
 };
 
 export default useHomeScreenViewController;

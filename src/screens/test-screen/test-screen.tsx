@@ -4,18 +4,21 @@ import TestContext from '@components/contexts/test-context';
 import useTestExperienceController from './test-screen-controller';
 import TestExperienceView from './test-screen-view';
 
-interface ITestExperienceProps {}
+type homeScreenProps =
+  import('@navigators/home-navigator/@types/home-navigator-param-list').homeScreenProps;
+
+interface ITestExperienceProps extends homeScreenProps {}
 
 /**
  * this is the root component of test experience, to display the all properties of tests
  * @returns
  */
-const TestExperience: React.FC<ITestExperienceProps> = () => {
-  const {isLoading, contextObject} = useTestExperienceController();
+const TestExperience: React.FC<ITestExperienceProps> = ({navigation}) => {
+  const {isLoading, contextObject} = useTestExperienceController({navigation});
 
   return (
     <TestContext.Provider value={contextObject}>
-      <TestExperienceView isLoading={isLoading} />
+      <TestExperienceView isLoading={isLoading} navigation={navigation} />
     </TestContext.Provider>
   );
 };

@@ -40,6 +40,7 @@ const FooterView = ({
             styles={{
               outerWrapper: footerStyle?.clearResponseButton,
             }}
+            textAlign="center"
             color={COLORS.BLACK}
             onPress={clearCurrentAnswer}
           />
@@ -48,6 +49,7 @@ const FooterView = ({
             styles={{
               outerWrapper: footerStyle?.clearResponseButton,
             }}
+            textAlign="center"
             color={COLORS.BLACK}
             onPress={handleMarkAndReview}
           />
@@ -57,10 +59,11 @@ const FooterView = ({
             btnText="Submit"
             styles={{
               outerWrapper: {
-                ...footerStyle?.submitButton,
                 ...footerStyle?.cmpStyle,
               },
+              btnElementWrapper: {...footerStyle?.submitButton},
             }}
+            textAlign="center"
             color={COLORS.WHITE.white}
             onPress={openBottomSheet}
           />
@@ -68,11 +71,12 @@ const FooterView = ({
             btnText="Save & Next"
             styles={{
               outerWrapper: {
-                ...footerStyle?.saveAndNextButton,
                 ...footerStyle?.cmpStyle,
               },
+              btnElementWrapper: {...footerStyle?.saveAndNextButton},
             }}
             color={COLORS.WHITE.white}
+            textAlign="center"
             onPress={saveNext}
           />
         </View>

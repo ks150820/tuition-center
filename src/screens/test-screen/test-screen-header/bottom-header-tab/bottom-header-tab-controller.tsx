@@ -19,6 +19,7 @@ type UseBottomHeaderControllerType = () => UseBottomHeaderControllerReturn;
 const useBottomHeaderController: UseBottomHeaderControllerType = () => {
   const questionIndex: number = useSelector(getQuestionIndex);
   const totalQuestions: number = useSelector(getTotalSectionLength);
+  // useSelector(getTestDuration);
   const testDuration: number = useSelector(getTestDuration);
 
   /**
