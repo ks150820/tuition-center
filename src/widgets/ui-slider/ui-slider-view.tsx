@@ -1,6 +1,6 @@
 import React from 'react';
 import {Slider, SliderProps} from '@rneui/themed';
-import COLORS from '../../themes/colors';
+import COLORS from '../../theme/colors';
 import {styles} from './resources/styles';
 
 /**

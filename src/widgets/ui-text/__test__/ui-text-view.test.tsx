@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from '@testing-library/react-native';
 import UITextView from '../ui-text-view';
-import {FONT_SIZE, FONT_TYPE} from '../../../themes/font';
-import COLORS from '../../../themes/colors';
+import {FONT_SIZE, FONT_TYPE} from '../../../theme/font';
+import COLORS from '../../../theme/colors';
 
 test('UI Text test cases', () => {
   // Render view

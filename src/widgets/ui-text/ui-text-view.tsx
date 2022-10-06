@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import COLORS from '../../themes/colors';
-import {FONT_SIZE, FONT_TYPE} from '../../themes/font';
+import COLORS from '../../theme/colors';
+import {FONT_SIZE, FONT_TYPE} from '../../theme/font';
 
 const FontLight = styled.Text`
   font-family: OpenSans-Light;

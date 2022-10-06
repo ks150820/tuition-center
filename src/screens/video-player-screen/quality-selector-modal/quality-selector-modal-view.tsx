@@ -6,7 +6,7 @@ import {getAppLanguage} from 'store/entities/user-preferences';
 import {COLORS} from 'resources/colors';
 import {FONT_SIZE, FONT_TYPE} from 'theme/font';
 import UIBtn from 'widgets/ui-btn';
-import UIBottomSheet from 'widgets/ui-bottom-sheet';
+import UIBottomSheet from '@widgets/ui-bottom-sheet';
 import UIRow from 'widgets/ui-row';
 import SingleSelector from 'widgets/ui-single-selector';
 import UIText from 'widgets/ui-text';

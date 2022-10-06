@@ -3,7 +3,7 @@ import {Animated, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import {PLAYER_TEXT} from 'resources/values/strings';
 import {getAppLanguage} from 'store/entities/user-preferences';
-import COLORS from 'themes/colors';
+import COLORS from 'theme/colors';
 import UIPressable from 'widgets/ui-pressable';
 import UIText from 'widgets/ui-text';
 import {styles} from './resources/styles/style';

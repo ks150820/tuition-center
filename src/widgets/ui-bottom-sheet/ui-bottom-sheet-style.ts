@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
-import {COLORS} from '@resources/colors';
-import {DEVICE_HEIGHT} from 'helpers/screenDimensions';
+import {COLORS} from '../../resources/colors';
+import {DEVICE_HEIGHT} from '../../helpers/screenDimensions';
 
 export const styles = StyleSheet.create({
   sideMenuStyle: {
