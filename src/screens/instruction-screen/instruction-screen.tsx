@@ -1,7 +1,10 @@
-import {testExperienceScreenProps} from '@navigators/home-navigator/@types/home-navigator-param-list';
+// import {testExperienceScreenProps} from '@navigators/home-navigator/@types/home-navigator-param-list';
 import React from 'react';
 import InstructionScreenView from './instruction-screen-view';
 import useInstructionScreenViewController from './instruction-screen-view-controller';
+
+type testExperienceScreenProps =
+  import('@navigators/home-navigator/@types/home-navigator-param-list').instructionScreenProps;
 
 interface IInstructionScreenProps extends testExperienceScreenProps {}
 

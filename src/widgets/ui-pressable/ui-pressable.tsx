@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {Pressable, ViewStyle} from 'react-native';
+import {Pressable, View, ViewStyle} from 'react-native';
 import {COLORS} from 'resources/colors';
 
 interface IUIPressableProps {
@@ -27,12 +27,12 @@ const UIPressable: React.FunctionComponent<IUIPressableProps> = ({
   return (
     <Pressable
       onPress={onPress}
-      children={children}
       disabled={disabled}
       style={style}
       testID={testID}
-      android_ripple={{color: rippleColor}}
-    />
+      android_ripple={{color: rippleColor}}>
+      <View>{children}</View>
+    </Pressable>
   );
 };
 

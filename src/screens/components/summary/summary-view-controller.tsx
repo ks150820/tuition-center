@@ -33,16 +33,17 @@ const useSummaryStatusController = ({
     totalLogs,
   } = useLogStatus();
 
+  const {isVisible, toggleBottomSheet, timeUp} = useContext(
+    TestContext,
+  ) as contextType;
+
   /**
    * callback is their because this method used in useEffect, so to prevent the rerendering we used callback here
    */
   const handleSubmitButton = useCallback(() => {
+    toggleBottomSheet();
     navigation.navigate('Home');
-  }, [navigation]);
-
-  const {isVisible, toggleBottomSheet, timeUp} = useContext(
-    TestContext,
-  ) as contextType;
+  }, [navigation, toggleBottomSheet]);
 
   useEffect(() => {
     if (timeUp) {

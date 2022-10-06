@@ -13,4 +13,8 @@ type testExperienceScreenProps = StackScreenProps<
   homeParamList,
   'TestExperience'
 >;
+type instructionScreenProps = StackScreenProps<
+  homeParamList,
+  'InstructionScreen'
+>;
 type homeScreenProps = StackScreenProps<homeParamList, 'Home'>;

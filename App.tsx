@@ -13,18 +13,19 @@ import {Provider} from 'react-redux';
 import useInterNetHandlingService from './src/services/internet-handling-service';
 import {store} from './src/store/configureStore';
 import {NavigationContainer} from '@react-navigation/native';
-import MainScreen from './src/screens/main-screen';
+// import MainScreen from './src/screens/main-screen';
 import AppTheme from './src/theme/theme';
 import * as Sentry from '@sentry/react-native';
 import ReactMoE, {MoEAppStatus} from 'react-native-moengage';
 import {PermissionsAndroid, StyleSheet} from 'react-native';
 import useAndroidPermission from '@hooks/use-android-permission';
-import MyDownloads from '@screens/a-temp-download/MyDownloads';
 import VideoPlayer from '@screens/video-player-screen/video-player';
 import {VIDEO_TYPES} from '@screens/video-player-screen/video-player/resources/constants';
 import VideoController from '@screens/video-player-screen/ui-video-controller';
 import UIControllerContainer from '@screens/video-player-screen/components/ui-controller-container';
 
+import HomeNavigator from '@navigators/home-navigator';
+import MyDownloads from '@screens/a-temp-download/MyDownloads';
 const App = () => {
   const {requestSinglePermission} = useAndroidPermission();
   useEffect(() => {
@@ -86,6 +87,7 @@ const App = () => {
             </UIControllerContainer>
           </VideoController>
         </VideoPlayer>
+        {/* <HomeNavigator /> */}
         {/* <MainScreen /> */}
         <NoInterNetConnectionView />
       </NavigationContainer>

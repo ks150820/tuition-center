@@ -22,7 +22,10 @@ import {
   updateQuestionsIndex,
 } from '@store/entities/test-experience';
 import useNavigationBackHandler from '@screens/components/hooks/use-navigate-back';
-import {homeScreenProps} from '@navigators/home-navigator/@types/home-navigator-param-list';
+// import {homeScreenProps} from '@navigators/home-navigator/@types/home-navigator-param-list';
+
+// type homeScreenProps =
+//   import('@navigators/home-navigator/@types/home-navigator-param-list').homeScreenProps;
 
 /**
  *
@@ -40,7 +43,9 @@ function usePrevious(id: string) {
   return ref.current;
 }
 
-interface IuseTestExperienceController extends homeScreenProps {}
+interface IuseTestExperienceController {
+  navigation: any;
+}
 
 const useTestExperienceController = ({
   navigation,

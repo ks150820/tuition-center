@@ -13,7 +13,7 @@ export interface thunkType {
 export const store = configureStore({
   reducer: reducer,
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware()
+    getDefaultMiddleware({serializableCheck: false})
       .prepend(apiMiddleware)
       // prepend and concat calls can be chained
       .concat(),

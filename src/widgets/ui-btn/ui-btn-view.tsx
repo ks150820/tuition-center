@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import {COLORS} from 'resources/colors';
 import UIIcon from 'widgets/ui-icon';
 import UIPressable from 'widgets/ui-pressable';
@@ -22,6 +22,7 @@ const UIBtnView: React.FunctionComponent<IUIBtnViewProps> = ({
   iconType = '',
   iconSize = ICON_SIZE,
   iconColor = ICON_COLOR,
+  textStyle,
   onPress,
   rippleColor = '',
   styles,
@@ -41,28 +42,32 @@ const UIBtnView: React.FunctionComponent<IUIBtnViewProps> = ({
         onPress={onPress}
         disabled={disabled}
         rippleColor={rippleColor}>
-        {iconName && (
-          <UIIcon
-            name={iconName}
-            testID={testID}
-            type={iconType}
-            size={iconSize}
-            color={iconColor}
-            containerStyle={[
-              btnStyles.iconContainer,
-              styles?.iconContainerStyle,
-            ]}
-          />
-        )}
-        {btnText && (
-          <UIText
-            type={restTextProps?.type}
-            size={restTextProps?.size}
-            color={restTextProps?.color}
-            containerStyle={restTextProps?.containerStyle}>
-            {btnText}
-          </UIText>
-        )}
+        <Text>
+          {iconName && (
+            <UIIcon
+              name={iconName}
+              testID={testID}
+              type={iconType}
+              size={iconSize}
+              color={iconColor}
+              containerStyle={[
+                btnStyles.iconContainer,
+                styles?.iconContainerStyle,
+              ]}
+            />
+          )}
+          {btnText && (
+            <UIText
+              type={restTextProps?.type}
+              size={restTextProps?.size}
+              color={restTextProps?.color}
+              textStyle={textStyle}
+              textAlign={restTextProps?.textAlign}
+              containerStyle={restTextProps?.containerStyle}>
+              {btnText}
+            </UIText>
+          )}
+        </Text>
       </UIPressable>
     </View>
   );

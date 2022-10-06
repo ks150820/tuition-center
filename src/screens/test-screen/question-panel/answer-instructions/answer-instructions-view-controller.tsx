@@ -61,7 +61,7 @@ const useAnswerInstructionsViewController = () => {
   const handleOptionValue = (value: optionNames) => {
     setOptionsValue(value?.name);
     setInstructionLanguage(value?.id);
-    dispatch(updateTestLanguage(value?.id));
+    dispatch(updateTestLanguage(value?.id as Language));
     setShowOptions(false);
   };
 

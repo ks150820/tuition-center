@@ -1,6 +1,8 @@
 import {createSelector, createSlice} from '@reduxjs/toolkit';
+import {httpMethods} from '@store/enum';
+import apiDispatch from '@store/util/dispatch';
 // import TestExperience from '../../components/testExperience';
-import * as action from '../actions/actions';
+// import * as action from '../actions/actions';
 
 const slice = createSlice({
   name: 'testExperience',
@@ -67,7 +69,7 @@ const slice = createSlice({
   reducers: {
     testDetailsReceive: (testExperience: testExperienceType, {payload}) => {
       //   testExperience.details = payload;
-      let test = payload.data;
+      let test = payload;
       testExperience.questions = test?.questions;
       testExperience.testId = test._id;
       let newLogs: Log[] = [];
@@ -124,7 +126,7 @@ const slice = createSlice({
       testExperience.list.totalTimeSpent = timeSpent;
       testExperience.details[test._id] = test;
       testExperience.list.responseData = test;
-      testExperience.specific_instructions = payload.data.specific_instructions;
+      testExperience.specific_instructions = payload.specific_instructions;
       testExperience.list.selectedSection =
         test.test_type == ('BT0' || 'BT1')
           ? test.sections.find(
@@ -347,17 +349,16 @@ export const updateCurrentQuestionId =
  * @returns an action that updates saves the data in respective states.
  */
 
-export const loadTestDetails = (testId: String) => (dispatch: Dispatch) => {
-  return dispatch({
-    type: action.apiCallBegan.type,
-    payload: {
-      url: `v1/user/test/sampling/${testId}`,
-      reducerData: {testId: testId},
-      onStart: testsRequested.type,
-      onError: testsRequestFailed.type,
-      onSuccess: testDetailsReceive.type,
-      auth: true,
-    },
+export const loadTestDetails = (testId: String) => () => {
+  return apiDispatch({
+    url: `v1/user/test/sampling/${testId}`,
+    reducerData: {testId: testId},
+    onStart: testsRequested.type,
+    onError: testsRequestFailed.type,
+    onSuccess: testDetailsReceive.type,
+    auth: false,
+    method: httpMethods.GET,
+    cacheValidityDuration: 10,
   });
 };
 
@@ -370,20 +371,19 @@ export const loadTestDetails = (testId: String) => (dispatch: Dispatch) => {
  */
 
 export const updateQuestionAnsStatus =
-  (testId: string, questionId: string, body: bodyType) =>
-  (dispatch: Dispatch) => {
-    return dispatch({
-      type: action.apiCallBegan.type,
-      payload: {
-        url: `v1/user/test/${testId}/question/${questionId}`,
-        // onStart: testsRequested.type,
-        method: 'patch',
-        data: body,
-        reducerData: {currentQuestionId: questionId, status: body.status},
-        // onError: testsRequestFailed.type,
-        onSuccess: editLogsVisit.type,
-        auth: true,
-      },
+  (testId: string, questionId: string, body: bodyType) => () => {
+    return apiDispatch({
+      url: `v1/user/test/${testId}/question/${questionId}`,
+      // onStart: testsRequested.type,
+      method: httpMethods.PATCH,
+      data: body,
+      reducerData: {currentQuestionId: questionId, status: body.status},
+      // onError: testsRequestFailed.type,
+      onSuccess: editLogsVisit.type,
+      auth: false,
+      onStart: '',
+      onError: '',
+      cacheValidityDuration: 10,
     });
   };
 

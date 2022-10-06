@@ -12,6 +12,7 @@ import {style} from './test-screen-view-style';
 
 interface ITestExperienceViewProps {
   isLoading: boolean;
+  navigation: any;
 }
 
 /**
@@ -21,6 +22,7 @@ interface ITestExperienceViewProps {
  */
 const TestExperienceView: React.FC<ITestExperienceViewProps> = ({
   isLoading,
+  navigation,
 }) => {
   const handleEventEmitter = () => {
     DeviceEventEmitter.emit('click-outside');
@@ -40,7 +42,7 @@ const TestExperienceView: React.FC<ITestExperienceViewProps> = ({
         <QuestionPanel />
         <QuestionsAndOptions />
         <Footer />
-        <Summary />
+        <Summary navigation={navigation} />
       </View>
     </Pressable>
   );

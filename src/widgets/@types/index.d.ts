@@ -146,6 +146,7 @@ interface IUIBtnViewProps extends IUITextViewProps {
   btnText?: string | number;
   // Icon name
   iconName?: string;
+  textStyle?: object;
   // Icon type
   iconType?: string;
   // Icon size
@@ -158,7 +159,7 @@ interface IUIBtnViewProps extends IUITextViewProps {
   rippleColor?: string;
   // Style object
   styles?: {
-    outerWrapper: ViewStyle;
+    outerWrapper?: ViewStyle;
     btnElementWrapper?: ViewStyle;
     iconContainerStyle?: ViewStyle;
   };
