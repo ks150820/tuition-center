@@ -10,7 +10,7 @@ import HelpFeedbackScreen from '@screens/help-feedback-screen';
 const homeNavigator = createStackNavigator<homeParamList>();
 const HomeNavigator = () => {
   return (
-    <homeNavigator.Navigator initialRouteName="HelpFeedback">
+    <homeNavigator.Navigator>
       <homeNavigator.Screen
         options={{headerShown: true}}
         name="Home"

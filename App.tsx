@@ -17,7 +17,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import AppTheme from './src/theme/theme';
 import * as Sentry from '@sentry/react-native';
 import ReactMoE, {MoEAppStatus} from 'react-native-moengage';
-import {PermissionsAndroid, StyleSheet} from 'react-native';
+import {PermissionsAndroid, StyleSheet, NativeModules} from 'react-native';
 import useAndroidPermission from '@hooks/use-android-permission';
 import VideoPlayer from '@screens/video-player-screen/video-player';
 import {VIDEO_TYPES} from '@screens/video-player-screen/video-player/resources/constants';
@@ -30,6 +30,11 @@ import HomeNavigator from '@navigators/home-navigator';
 import MyDownloads from '@screens/a-temp-download/MyDownloads';
 const App = () => {
   const {requestSinglePermission} = useAndroidPermission();
+  const {InAppUpdate} = NativeModules;
+
+  useEffect(() => {
+    InAppUpdate.inAppUpdate();
+  }, [InAppUpdate]);
   useEffect(() => {
     Sentry.init({
       dsn: 'https://6c631e420b2744b8a2303cee731cb4e7@o1054483.ingest.sentry.io/6743885',

@@ -35,6 +35,7 @@ public class MainApplication extends Application implements ReactApplication {
       List<ReactPackage> packages = new PackageList(this).getPackages();
       packages.add(new AppPackages());
       packages.add(new DownloadPackage());
+      packages.add(new MyInAppUpdatePackage());
       // packages.add(new MoEReactPackage());
 
       // Packages that cannot be autolinked yet can be added manually here, for example:
