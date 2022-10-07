@@ -28,6 +28,7 @@ import FeedbackModal from '@components/feedback-modal';
 
 import HomeNavigator from '@navigators/home-navigator';
 import MyDownloads from '@screens/a-temp-download/MyDownloads';
+import RazorpayPayment from '@screens/a-temp-payment/RazorpayPayment';
 const App = () => {
   const {requestSinglePermission} = useAndroidPermission();
   const {InAppUpdate} = NativeModules;
@@ -97,6 +98,7 @@ const App = () => {
     <Provider store={store}>
       <FeedBackContextProvider>
         <NavigationContainer theme={AppTheme}>
+          <RazorpayPayment />
           {/* <MyDownloads /> */}
           {/* <VideoPlayer
           // videoType={VIDEO_TYPES.LIVE_VIDEO}
@@ -129,10 +131,10 @@ const App = () => {
             </UIControllerContainer>
           </VideoController>
         </VideoPlayer> */}
-          <HomeNavigator />
+          {/* <HomeNavigator />
           <FeedbackModal data={dummyData} />
-          {/* <MainScreen /> */}
-          <NoInterNetConnectionView />
+          <MainScreen />
+          <NoInterNetConnectionView /> */}
         </NavigationContainer>
       </FeedBackContextProvider>
     </Provider>
