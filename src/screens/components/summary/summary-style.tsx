@@ -20,8 +20,6 @@ export const summaryStyle = StyleSheet.create({
   },
   icon: {
     textAlign: 'center',
-    fontSize: 23,
-    color: COLORS.GREY.american_silver,
   },
   renderItemComponent: {
     padding: 8,

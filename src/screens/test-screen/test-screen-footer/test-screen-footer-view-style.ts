@@ -36,6 +36,7 @@ export const footerStyle = StyleSheet.create({
     padding: 10,
     backgroundColor: COLORS.BLUE.jordy_blue,
     borderRadius: 0,
+    textAlign: 'center',
   },
   saveAndNextButton: {
     padding: 10,

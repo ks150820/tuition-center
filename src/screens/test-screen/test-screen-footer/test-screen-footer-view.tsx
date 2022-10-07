@@ -41,6 +41,7 @@ const FooterView = ({
               outerWrapper: footerStyle?.clearResponseButton,
             }}
             textAlign="center"
+            size={13}
             color={COLORS.BLACK}
             onPress={clearCurrentAnswer}
           />
@@ -50,6 +51,7 @@ const FooterView = ({
               outerWrapper: footerStyle?.clearResponseButton,
             }}
             textAlign="center"
+            size={13}
             color={COLORS.BLACK}
             onPress={handleMarkAndReview}
           />

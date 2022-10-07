@@ -124,7 +124,7 @@ const SummaryView = ({
   return (
     <UIBottomSheet
       visible={isVisible}
-      height="80%"
+      height="60%"
       animationIn="slideInUp"
       animationOut="slideOutDown"
       swipeDirection="down"
@@ -133,7 +133,13 @@ const SummaryView = ({
       onBackButtonPress={toggleBottomSheet}>
       <View style={summaryStyle?.component}>
         <Pressable onPress={toggleBottomSheet} testID="downIcon">
-          <UIIcon name="chevron-down" style={summaryStyle?.icon} />
+          <UIIcon
+            name="chevron-down"
+            type="ionicon"
+            color={COLORS.GREY.american_silver}
+            size={23}
+            iconStyle={summaryStyle?.icon}
+          />
         </Pressable>
         <FlatList
           keyExtractor={(_item, index) => index + ''}
