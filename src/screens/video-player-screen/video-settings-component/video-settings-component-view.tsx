@@ -1,11 +1,11 @@
 import React from 'react';
 import {View} from 'react-native';
-import UIBottomSheet from '@widgets/ui-bottom-sheet';
 import SingleSelector from 'widgets/ui-single-selector';
 import UIText from 'widgets/ui-text';
 import {PLAYER_TEXT} from '@resources/values/strings';
 import {FONT_SIZE, FONT_TYPE} from '@theme/font';
 import {styles} from './resources/styles/styles';
+import Modal from '@widgets/ui-video-modal';
 
 /**
  * View for VideoSettingsComponent
@@ -25,10 +25,11 @@ const VideoSettingsComponentView: React.FunctionComponent<
   handleOnChange,
 }) => {
   return (
-    <UIBottomSheet
-      visible={toggleSettings}
+    <Modal
+      testID={'settingModal'}
+      isVisible={toggleSettings}
       onBackButtonPress={onHideSettingOption}
-      onBackDropPress={onHideSettingOption}>
+      onBackdropPress={onHideSettingOption}>
       <View style={[styles.container, style]}>
         {!selectedSettingOption.show && (
           <>
@@ -51,7 +52,7 @@ const VideoSettingsComponentView: React.FunctionComponent<
           />
         )}
       </View>
-    </UIBottomSheet>
+    </Modal>
   );
 };
 

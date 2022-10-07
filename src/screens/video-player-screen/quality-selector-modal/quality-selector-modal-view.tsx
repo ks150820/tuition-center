@@ -6,11 +6,11 @@ import {getAppLanguage} from 'store/entities/user-preferences';
 import {COLORS} from 'resources/colors';
 import {FONT_SIZE, FONT_TYPE} from 'theme/font';
 import UIBtn from 'widgets/ui-btn';
-import UIBottomSheet from '@widgets/ui-bottom-sheet';
 import UIRow from 'widgets/ui-row';
 import SingleSelector from 'widgets/ui-single-selector';
 import UIText from 'widgets/ui-text';
 import {styles} from './resources/styles';
+import Modal from '@widgets/ui-video-modal';
 
 /**
  * View for QualitySelectorModal
@@ -31,10 +31,10 @@ const QualitySelectorModalView: React.FunctionComponent<
   };
 
   return (
-    <UIBottomSheet
-      visible={isVisible}
+    <Modal
+      isVisible={isVisible}
       onBackButtonPress={onHideModal}
-      onBackDropPress={onHideModal}
+      onBackdropPress={onHideModal}
       containerStyle={styles.container}>
       <View>
         <UIText type={FONT_TYPE.bold} size={FONT_SIZE.large}>
@@ -70,7 +70,7 @@ const QualitySelectorModalView: React.FunctionComponent<
           />
         </UIRow>
       </View>
-    </UIBottomSheet>
+    </Modal>
   );
 };
 
