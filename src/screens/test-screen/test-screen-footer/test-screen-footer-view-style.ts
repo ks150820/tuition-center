@@ -37,11 +37,13 @@ export const footerStyle = StyleSheet.create({
     backgroundColor: COLORS.BLUE.jordy_blue,
     borderRadius: 0,
     textAlign: 'center',
+    justifyContent: 'center',
   },
   saveAndNextButton: {
     padding: 10,
     backgroundColor: COLORS.GREEN.russian_green,
     borderRadius: 0,
+    justifyContent: 'center',
   },
   cmpStyle: {
     flex: 0.5,

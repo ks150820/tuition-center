@@ -98,7 +98,7 @@ const App = () => {
     <Provider store={store}>
       <FeedBackContextProvider>
         <NavigationContainer theme={AppTheme}>
-          <RazorpayPayment />
+          {/* <RazorpayPayment /> */}
           {/* <MyDownloads /> */}
           {/* <VideoPlayer
           // videoType={VIDEO_TYPES.LIVE_VIDEO}
@@ -131,8 +131,8 @@ const App = () => {
             </UIControllerContainer>
           </VideoController>
         </VideoPlayer> */}
-          {/* <HomeNavigator />
-          <FeedbackModal data={dummyData} />
+          <HomeNavigator />
+          {/* <FeedbackModal data={dummyData} />
           <MainScreen />
           <NoInterNetConnectionView /> */}
         </NavigationContainer>

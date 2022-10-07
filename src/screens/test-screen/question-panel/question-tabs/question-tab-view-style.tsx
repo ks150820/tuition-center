@@ -19,6 +19,7 @@ export const questionTabStyle = StyleSheet.create({
     padding: 10,
     width: 40,
     height: 40,
+    justifyContent: 'center',
   },
   iButtonComponent: {
     padding: 10,

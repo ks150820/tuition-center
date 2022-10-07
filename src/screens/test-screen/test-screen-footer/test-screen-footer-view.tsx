@@ -39,6 +39,7 @@ const FooterView = ({
             btnText="Clear Response"
             styles={{
               outerWrapper: footerStyle?.clearResponseButton,
+              btnElementWrapper: {justifyContent: 'center'},
             }}
             textAlign="center"
             size={13}
@@ -49,6 +50,7 @@ const FooterView = ({
             btnText="Mark for Review & Next"
             styles={{
               outerWrapper: footerStyle?.clearResponseButton,
+              btnElementWrapper: {justifyContent: 'center'},
             }}
             textAlign="center"
             size={13}
