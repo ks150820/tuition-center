@@ -15,7 +15,11 @@ const UIInputView: React.FC<IUIInputProps> = ({
   placeholder,
   keyboardType,
   inputValue,
+  multiline = false,
+  numberOfLines = 0,
+  editable,
   onChangeText,
+  style,
 }) => {
   return (
     <View style={inputStyle?.component}>
@@ -25,6 +29,10 @@ const UIInputView: React.FC<IUIInputProps> = ({
         onChangeText={e => onChangeText(e)}
         value={inputValue}
         testID="input"
+        multiline={multiline}
+        numberOfLines={numberOfLines}
+        editable={editable}
+        style={style}
       />
     </View>
   );

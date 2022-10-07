@@ -18,3 +18,15 @@ interface contextType {
   clearCurrentAnswer: () => void;
   setTimeUp: (value: boolean) => void;
 }
+
+interface feedContextType {
+  openModal: () => void;
+  toggleState: boolean;
+  handleDontAskAgain: () => void;
+  closeModal: () => void;
+  setDontAskCondtionOnAsyncStore: () => void;
+}
+
+interface feedbackContextProvider {
+  children: any;
+}

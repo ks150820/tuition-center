@@ -5,11 +5,12 @@ import MyCourse from '../../screens/my-course-screen';
 import TestExperience from '@screens/test-screen';
 import InstructionScreen from '@screens/instruction-screen';
 import {homeParamList} from './@types/home-navigator-param-list';
+import HelpFeedbackScreen from '@screens/help-feedback-screen';
 
 const homeNavigator = createStackNavigator<homeParamList>();
 const HomeNavigator = () => {
   return (
-    <homeNavigator.Navigator>
+    <homeNavigator.Navigator initialRouteName="HelpFeedback">
       <homeNavigator.Screen
         options={{headerShown: true}}
         name="Home"
@@ -30,6 +31,10 @@ const HomeNavigator = () => {
         name={TestExperience.name as keyof homeParamList}
         component={TestExperience}
         options={{headerShown: false}}
+      />
+      <homeNavigator.Screen
+        name="HelpFeedback"
+        component={HelpFeedbackScreen}
       />
     </homeNavigator.Navigator>
   );

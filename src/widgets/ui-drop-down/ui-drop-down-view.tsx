@@ -17,6 +17,7 @@ const UIDropDownView: IDropdownViewComponent<IUIDropDownViewProps> = ({
   label,
   children,
   optionsValue,
+  dropDownStyle,
   layoutStyle,
   handleShowOptions,
 }) => {
@@ -27,7 +28,7 @@ const UIDropDownView: IDropdownViewComponent<IUIDropDownViewProps> = ({
       </View>
       <View style={styles.outerComponent}>
         <Pressable onPress={handleShowOptions} testID="selectInputPress">
-          <View style={[styles.dropdownComponent]}>
+          <View style={{...styles.dropdownComponent, ...dropDownStyle}}>
             <View>
               <Text style={styles?.textColor}>{optionsValue || 'Select'}</Text>
             </View>

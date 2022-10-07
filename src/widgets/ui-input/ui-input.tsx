@@ -10,18 +10,26 @@ import UIInputView from './ui-input-view';
  * @param {NumberPadClick} params.onNumberPadClick this method used to update the text of input text
  * @returns returns the UIInputView component ui
  */
-const UIInput = ({
+const UIInput: React.FC<IUIInputProps> = ({
   placeholder = '',
   inputValue,
   keyboardType = 'default',
+  editable,
   onChangeText,
-}: IUIInputProps) => {
+  numberOfLines,
+  multiline,
+  style,
+}) => {
   return (
     <UIInputView
       keyboardType={keyboardType}
       placeholder={placeholder}
       inputValue={inputValue}
       onChangeText={onChangeText} // TODO: change onNumberPAdClick to onChange method
+      multiline={multiline}
+      numberOfLines={numberOfLines}
+      editable={editable}
+      style={style}
     />
   );
 };

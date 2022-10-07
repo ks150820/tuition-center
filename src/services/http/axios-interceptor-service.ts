@@ -32,4 +32,5 @@ createAuthRefreshInterceptor(axios, refreshAuthLogic, {
     return requestConfig;
   }, // default: false
 });
+
 export const axiosInterceptor = axios.create();

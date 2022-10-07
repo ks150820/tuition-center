@@ -5,6 +5,7 @@ type homeParamList = {
   MyCourse: {courseList: Array<String>} | undefined;
   TestExperience: {value: string | number} | undefined;
   InstructionScreen: undefined;
+  HelpFeedback: {componentName: string} | undefined;
 };
 
 type myCourseNavigationProps = StackNavigationProp<homeParamList>;
@@ -18,3 +19,4 @@ type instructionScreenProps = StackScreenProps<
   'InstructionScreen'
 >;
 type homeScreenProps = StackScreenProps<homeParamList, 'Home'>;
+type feedbackScreenProps = StackScreenProps<homeParamList, 'HelpFeedback'>;

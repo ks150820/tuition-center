@@ -16,6 +16,7 @@ const apiLastCalledTimeMap = new Map<
 >();
 
 const makeRequest = (payload: IDispatchType) => {
+  console.log('payload :', payload);
   const {
     url,
     method,
@@ -93,4 +94,5 @@ const apiMiddleware =
     }
     makeRequest(action.payload);
   };
+
 export default apiMiddleware;

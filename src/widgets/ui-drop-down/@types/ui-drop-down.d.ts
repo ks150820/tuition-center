@@ -15,6 +15,7 @@ interface IUIDropDownViewProps {
   label?: string;
   children: childrenType;
   layoutStyle?: Object;
+  dropDownStyle?: object;
   optionsValue: string;
   handleShowOptions: ShowOptionType;
 }

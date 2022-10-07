@@ -26,5 +26,9 @@ interface IUIInputProps {
   placeholder: string;
   keyboardType: KeyboardTypes;
   inputValue: string;
+  numberOfLines?: number;
+  editable?: boolean;
   onChangeText: NumberPadClick;
+  multiline?: boolean;
+  style?: object;
 }

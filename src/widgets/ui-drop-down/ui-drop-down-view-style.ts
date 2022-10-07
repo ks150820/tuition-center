@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
     // marginStart: 10,
     padding: 5,
     // alignSelf: 'auto',
-    width: 'auto',
+    width: '100%',
     left: 1,
     top: 40,
     zIndex: 10,

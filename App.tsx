@@ -23,6 +23,8 @@ import VideoPlayer from '@screens/video-player-screen/video-player';
 import {VIDEO_TYPES} from '@screens/video-player-screen/video-player/resources/constants';
 import VideoController from '@screens/video-player-screen/ui-video-controller';
 import UIControllerContainer from '@screens/video-player-screen/components/ui-controller-container';
+import FeedBackContextProvider from '@components/contexts/feedback-context';
+import FeedbackModal from '@components/feedback-modal';
 
 import HomeNavigator from '@navigators/home-navigator';
 import MyDownloads from '@screens/a-temp-download/MyDownloads';
@@ -52,11 +54,46 @@ const App = () => {
 
     return response;
   };
+
+  const dummyData = [
+    {
+      image: require('@assets/avatar/avatar.jpg'),
+      text: 'I am the modal content!',
+      url: 'https://play.google.com/store/search?q=exampur&c=apps',
+      rating: 5,
+    },
+    {
+      image: require('@assets/avatar/avatar.jpg'),
+      text: 'I am the modal content!',
+      url: 'https://play.google.com/store/search?q=exampur&c=apps',
+      rating: 4,
+    },
+    {
+      image: require('@assets/avatar/avatar.jpg'),
+      text: 'I am the modal content!',
+      url: 'HelpFeedback',
+      rating: 3,
+    },
+    {
+      image: require('@assets/avatar/avatar.jpg'),
+      text: 'I am the modal content!',
+      url: 'HelpFeedback',
+      rating: 2,
+    },
+    {
+      image: require('@assets/avatar/avatar.jpg'),
+      text: 'I am the modal content!',
+      url: 'HelpFeedback',
+      rating: 1,
+    },
+  ];
+
   return (
     <Provider store={store}>
-      <NavigationContainer theme={AppTheme}>
-        {/* <MyDownloads /> */}
-        {/* <VideoPlayer
+      <FeedBackContextProvider>
+        <NavigationContainer theme={AppTheme}>
+          {/* <MyDownloads /> */}
+          {/* <VideoPlayer
           // videoType={VIDEO_TYPES.LIVE_VIDEO}
           source={{
             // uri: '',
@@ -87,10 +124,12 @@ const App = () => {
             </UIControllerContainer>
           </VideoController>
         </VideoPlayer> */}
-        <HomeNavigator />
-        {/* <MainScreen /> */}
-        <NoInterNetConnectionView />
-      </NavigationContainer>
+          <HomeNavigator />
+          <FeedbackModal data={dummyData} />
+          {/* <MainScreen /> */}
+          <NoInterNetConnectionView />
+        </NavigationContainer>
+      </FeedBackContextProvider>
     </Provider>
   );
 };

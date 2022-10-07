@@ -14,9 +14,10 @@ interface IHomeScreenViewProps {
 const HomeScreenView: React.FunctionComponent<IHomeScreenViewProps> = ({
   navigation,
 }: any) => {
-  const {onPress, onRetry, onStartTest} = useHomeScreenViewController({
-    navigation,
-  });
+  const {onPress, onRetry, onStartTest, openFeedBackModal} =
+    useHomeScreenViewController({
+      navigation,
+    });
   return (
     <View style={{flex: 1, backgroundColor: 'pink'}}>
       <Pressable
@@ -33,6 +34,11 @@ const HomeScreenView: React.FunctionComponent<IHomeScreenViewProps> = ({
         onPress={onStartTest}
         style={{backgroundColor: 'blue', padding: 20}}>
         <Text>Start Test</Text>
+      </Pressable>
+      <Pressable
+        onPress={openFeedBackModal}
+        style={{backgroundColor: 'tomato', padding: 20}}>
+        <Text>Open Feedback Modal</Text>
       </Pressable>
     </View>
   );

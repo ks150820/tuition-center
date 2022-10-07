@@ -16,6 +16,7 @@ const UIDropDown: IDropdownViewComponent<IUIDropDownViewProps> = ({
   children,
   optionsValue,
   layoutStyle,
+  dropDownStyle,
   handleShowOptions,
 }) => {
   return (
@@ -25,6 +26,7 @@ const UIDropDown: IDropdownViewComponent<IUIDropDownViewProps> = ({
       handleShowOptions={handleShowOptions}
       optionsValue={optionsValue}
       layoutStyle={layoutStyle}
+      dropDownStyle={dropDownStyle}
     />
   );
 };
