@@ -5,6 +5,7 @@ import {COLORS} from 'resources/colors';
 import HeaderWithBackButton from 'widgets/ui-header-with-back-button';
 import PlayButton from '../components/ui-play-button';
 import {styles} from './resources/styles/styles';
+import {PORTRAIT} from 'react-native-orientation-locker';
 
 interface IVideoControllerViewProps {
   children: ReactNode;
@@ -26,11 +27,15 @@ const VideoControllerView: React.FunctionComponent<
   IVideoControllerViewProps
 > = ({children, showController = true, onControllerOverlayPress}) => {
   // Destructure required data from player context
-  const {isPaused, isVideoEnded, togglePlayPause} = useVideoPlayerContext();
+  const {isPaused, isVideoEnded, togglePlayPause, orientation} =
+    useVideoPlayerContext();
 
   return (
     <Pressable
-      style={styles.controllerOverlay}
+      style={[
+        styles.controllerOverlay,
+        orientation === PORTRAIT ? styles.bottomPortrait : {},
+      ]}
       onPress={onControllerOverlayPress}>
       <View
         style={[

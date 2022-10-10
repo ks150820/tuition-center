@@ -4,11 +4,17 @@ import useLiveClassChatController from './live-class-chat-controller';
 import LiveClassChatScreenView from './live-class-chat-screen-view';
 import {LiveChatContext} from '@components/contexts/live-chat-context';
 
+interface ILiveClassChatScreenProps {
+  containerStyle?: ViewStyle;
+}
+
 /**
  *
  * @returns returns the live chat ui
  */
-const LiveClassChatScreen = () => {
+const LiveClassChatScreen: React.FC<ILiveClassChatScreenProps> = ({
+  containerStyle,
+}) => {
   const {
     handleMessage,
     handleSendMessage,
@@ -29,7 +35,7 @@ const LiveClassChatScreen = () => {
         userId: USER_ID,
         isLoading: isLoading,
       }}>
-      <LiveClassChatScreenView />
+      <LiveClassChatScreenView containerStyle={containerStyle} />
     </LiveChatContext.Provider>
   );
 };

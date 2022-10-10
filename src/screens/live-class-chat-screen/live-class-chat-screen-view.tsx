@@ -5,13 +5,19 @@ import MessageComponent from '@screens/components/message-component';
 import InputComponent from '@screens/components/input-component';
 import {styles} from './live-class-chat-screen-style';
 
+interface ILiveClassChatScreenViewProps {
+  containerStyle?: ViewStyle;
+}
+
 /**
  *
  * @returns returns the live chat ui
  */
-const LiveClassChatScreenView = () => {
+const LiveClassChatScreenView: React.FC<ILiveClassChatScreenViewProps> = ({
+  containerStyle,
+}) => {
   return (
-    <KeyboardAvoidingView style={styles.component}>
+    <KeyboardAvoidingView style={[styles.component, containerStyle]}>
       <MessageComponent />
       <InputComponent />
     </KeyboardAvoidingView>

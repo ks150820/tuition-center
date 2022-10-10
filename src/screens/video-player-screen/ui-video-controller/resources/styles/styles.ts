@@ -3,7 +3,15 @@ import {COLORS} from 'resources/colors';
 
 export const styles = StyleSheet.create({
   controllerOverlay: {
-    height: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+
+  bottomPortrait: {
+    bottom: '40%',
   },
 
   controllerOverlayView: {
