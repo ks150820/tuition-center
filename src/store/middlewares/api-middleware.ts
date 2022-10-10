@@ -16,7 +16,6 @@ const apiLastCalledTimeMap = new Map<
 >();
 
 const makeRequest = (payload: IDispatchType) => {
-  console.log('payload :', payload);
   const {
     url,
     method,

@@ -154,7 +154,7 @@ interface IUIBtnViewProps extends IUITextViewProps {
   // Icon color
   iconColor?: string;
   // Button click handler
-  onPress?: () => void;
+  onPress?: (value: any) => void;
   // Ripple color for touch event
   rippleColor?: string;
   // Style object

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, DeviceEventEmitter} from 'react-native';
 import {COLORS} from 'resources/colors';
 import UIIcon from 'widgets/ui-icon';
 import UIPressable from 'widgets/ui-pressable';
@@ -35,11 +35,18 @@ const UIBtnView: React.FunctionComponent<IUIBtnViewProps> = ({
     styles?.btnElementWrapper ? styles.btnElementWrapper : {},
   ];
 
+  const buttonPress = () => {
+    DeviceEventEmitter.emit('click-outside');
+    if (onPress) {
+      onPress(btnText);
+    }
+  };
+
   return (
     <View style={[styles?.outerWrapper]}>
       <UIPressable
         style={containerStyle}
-        onPress={onPress}
+        onPress={buttonPress}
         disabled={disabled}
         rippleColor={rippleColor}>
         <Text>
