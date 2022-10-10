@@ -1,10 +1,12 @@
 import React from 'react';
-import {SafeAreaView, ActivityIndicator} from 'react-native';
+import {SafeAreaView, ActivityIndicator, View} from 'react-native';
 import Video, {VideoProperties} from 'react-native-video';
-import {OrientationLocker} from 'react-native-orientation-locker';
+import {OrientationLocker, PORTRAIT} from 'react-native-orientation-locker';
 import {styles} from './resources/styles';
+import {styles as controllerStyles} from '../ui-video-controller/resources/styles/styles';
 import VideoError from 'screens/video-player-screen/video-error';
 import {COLORS} from 'resources/colors';
+import LiveClassChatScreen from '@screens/live-class-chat-screen';
 
 interface IVideoPlayerViewProps extends VideoProperties {
   // Screen orientation
@@ -68,6 +70,7 @@ const VideoPlayerView: React.FunctionComponent<IVideoPlayerViewProps> = ({
           color={COLORS.PRIMARY}
           style={[
             styles.activityIndicator,
+            orientation === PORTRAIT ? controllerStyles.bottomPortrait : {},
             showLoader ? styles.opacityLevel : {},
           ]}
           testID="loader"
@@ -79,30 +82,35 @@ const VideoPlayerView: React.FunctionComponent<IVideoPlayerViewProps> = ({
           onRetryPress={onRetryPress}
         />
       ) : (
-        <>
-          <Video
-            ref={playerRef}
-            source={source}
-            style={style}
-            controls={controls}
-            onBuffer={onBuffer}
-            resizeMode={resizeMode}
-            paused={paused}
-            onError={onError}
-            muted={muted}
-            rate={rate}
-            onLoad={onLoad}
-            onLoadStart={onLoadStart}
-            selectedVideoTrack={{
-              type: selectedTrack.type ? selectedTrack.type : 'auto',
-              value: selectedTrack.value,
-            }}
-            onProgress={onProgress}
-            onEnd={onVideoEnd}
-            onSeek={onSeekCb}
-          />
-          {children}
-        </>
+        <View style={styles.chatVideoContainer}>
+          <>
+            <Video
+              ref={playerRef}
+              source={source}
+              style={style}
+              controls={controls}
+              onBuffer={onBuffer}
+              resizeMode={resizeMode}
+              paused={paused}
+              onError={onError}
+              muted={muted}
+              rate={rate}
+              onLoad={onLoad}
+              onLoadStart={onLoadStart}
+              selectedVideoTrack={{
+                type: selectedTrack.type ? selectedTrack.type : 'auto',
+                value: selectedTrack.value,
+              }}
+              onProgress={onProgress}
+              onEnd={onVideoEnd}
+              onSeek={onSeekCb}
+            />
+            {children}
+          </>
+          {orientation === PORTRAIT && (
+            <LiveClassChatScreen containerStyle={styles.chatContainer} />
+          )}
+        </View>
       )}
     </SafeAreaView>
   );

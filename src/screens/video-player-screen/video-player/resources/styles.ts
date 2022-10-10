@@ -1,13 +1,15 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: 'black'},
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
+  chatVideoContainer: {
+    flex: 1,
+  },
   videoContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
+    flex: 1,
   },
   activityIndicator: {
     zIndex: 1,
@@ -21,5 +23,8 @@ export const styles = StyleSheet.create({
   },
   opacityLevel: {
     opacity: 1,
+  },
+  chatContainer: {
+    flex: 0.75,
   },
 });
