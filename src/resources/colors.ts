@@ -9,6 +9,7 @@ export const COLORS = {
     cultured: '#f6f6f6',
     light_silver: '#d7d7d7',
     transWhite: 'rgba(256, 256, 256, 0.4)',
+    ghost_white: '#f5f7fB',
   },
   RED: {
     venetian_red: '#ee2c3c',
@@ -30,6 +31,7 @@ export const COLORS = {
   FRESH_AIR: '#b3e5fc',
   GREEN: {
     russian_green: '#58a55c',
+    polished_pine: '#5aa28c',
   },
   BLUE: {
     blue: '#0000ff',

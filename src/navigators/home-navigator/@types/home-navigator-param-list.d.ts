@@ -6,6 +6,7 @@ type homeParamList = {
   TestExperience: {value: string | number} | undefined;
   InstructionScreen: undefined;
   HelpFeedback: {componentName: string} | undefined;
+  LiveClassChatScreen: undefined;
 };
 
 type myCourseNavigationProps = StackNavigationProp<homeParamList>;

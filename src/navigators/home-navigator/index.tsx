@@ -6,6 +6,7 @@ import TestExperience from '@screens/test-screen';
 import InstructionScreen from '@screens/instruction-screen';
 import {homeParamList} from './@types/home-navigator-param-list';
 import HelpFeedbackScreen from '@screens/help-feedback-screen';
+import LiveClassChatScreen from '@screens/live-class-chat-screen';
 
 const homeNavigator = createStackNavigator<homeParamList>();
 const HomeNavigator = () => {
@@ -35,6 +36,10 @@ const HomeNavigator = () => {
       <homeNavigator.Screen
         name="HelpFeedback"
         component={HelpFeedbackScreen}
+      />
+      <homeNavigator.Screen
+        name={LiveClassChatScreen.name as keyof homeParamList}
+        component={LiveClassChatScreen}
       />
     </homeNavigator.Navigator>
   );

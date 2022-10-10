@@ -39,7 +39,11 @@ const useHomeScreenViewController = ({navigation}: any) => {
     // navigation.navigate('HelpFeedback');
     dispatch(loadTestDetails('6299efb1e51fe25d77f6b191'));
   };
-  return {onPress, onRetry, onStartTest, openFeedBackModal};
+  const liveChat = () => {
+    navigation.navigate('LiveClassChatScreen');
+  };
+
+  return {onPress, onRetry, onStartTest, openFeedBackModal, liveChat};
 };
 
 export default useHomeScreenViewController;

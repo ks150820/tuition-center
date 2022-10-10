@@ -31,4 +31,5 @@ interface IUIInputProps {
   onChangeText: NumberPadClick;
   multiline?: boolean;
   style?: object;
+  placeholderTextColor?: string;
 }

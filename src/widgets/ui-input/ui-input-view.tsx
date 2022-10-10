@@ -19,6 +19,7 @@ const UIInputView: React.FC<IUIInputProps> = ({
   numberOfLines = 0,
   editable,
   onChangeText,
+  placeholderTextColor,
   style,
 }) => {
   return (
@@ -33,6 +34,7 @@ const UIInputView: React.FC<IUIInputProps> = ({
         numberOfLines={numberOfLines}
         editable={editable}
         style={style}
+        placeholderTextColor={placeholderTextColor}
       />
     </View>
   );

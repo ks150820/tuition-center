@@ -30,3 +30,12 @@ interface feedContextType {
 interface feedbackContextProvider {
   children: any;
 }
+interface liveChatContext {
+  chatInput: (textEvent: string) => void;
+  sendMessage: () => void;
+  handlePagination: () => void;
+  isLoading: boolean;
+  message: string;
+  messageResponse: any;
+  userId: string;
+}
