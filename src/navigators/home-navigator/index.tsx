@@ -23,13 +23,13 @@ const HomeNavigator = () => {
         component={MyCourse}
       />
       <homeNavigator.Screen
-        name={InstructionScreen.name as keyof homeParamList}
+        name="InstructionScreen"
         component={InstructionScreen}
         options={{headerShown: false}}
       />
 
       <homeNavigator.Screen
-        name={TestExperience.name as keyof homeParamList}
+        name="TestExperience"
         component={TestExperience}
         options={{headerShown: false}}
       />

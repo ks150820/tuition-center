@@ -12,7 +12,7 @@ interface IInstructionScreenProps extends testExperienceScreenProps {}
  * this component is used to display the all instructions
  * @returns
  */
-const InstructionScreen: React.FC<IInstructionScreenProps> = ({navigation}) => {
+const InstructionScreen = ({navigation}: IInstructionScreenProps) => {
   const {
     loader,
     isTermsChecked,
