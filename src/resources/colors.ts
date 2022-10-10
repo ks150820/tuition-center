@@ -42,6 +42,7 @@ export const COLORS = {
     space_cadet: '#1e2c54',
     regalia: '#573383',
     brilliant_azure: '#3498ff',
+    independence: '#4b436a',
   },
   ROYAL_PURPLE: '#764eb1',
 };

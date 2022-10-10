@@ -209,6 +209,7 @@ public class FirebaseModule extends ReactContextBaseJavaModule {
                                 storeLastMessageTimeStamp(response);
 
                                 callback.invoke(response + "");
+                                Log.e("All firebse data", "calling inside");
 //                            response.get(response.size() - 1);
                             }
 
