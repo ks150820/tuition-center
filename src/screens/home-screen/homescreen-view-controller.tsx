@@ -6,7 +6,6 @@ import {useEffect, useContext} from 'react';
 import {loadTestDetails} from '@store/entities/test-experience';
 import {FeedBackContext} from '@components/contexts/feedback-context';
 
-// import {postNavigationProp} from '../../navigators/post-auth-navigator/@types/post-auth-param-list';;
 /**
  * View Controller for Homescreen
  * @param props

@@ -1,3 +1,3 @@
-import {httpMethods} from '../../enum';
+type httpMethods = import('../../enum').httpMethods;
 
 type requestMethodType = httpMethods;

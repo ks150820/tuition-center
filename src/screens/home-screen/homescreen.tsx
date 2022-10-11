@@ -1,11 +1,9 @@
 import React from 'react';
 import HomeScreenView from './home-screen-view';
-// import useHomescreenViewController from './homescreen-view-controller';
 
-type homeScreenProps =
-  import('@navigators/home-navigator/@types/home-navigator-param-list').homeScreenProps;
-
-interface IHomeScreenProps extends homeScreenProps {}
+interface IHomeScreenProps extends homeScreenProps {
+  navigation: any;
+}
 
 /**
  *

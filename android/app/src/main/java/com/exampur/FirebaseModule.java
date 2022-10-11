@@ -53,9 +53,9 @@ public class FirebaseModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void addFirebaseData(ReadableMap data,String video_id,String timeStamp, Callback error) {
+    public void addFirebaseData(ReadableMap data, String video_id, String timeStamp, Callback error) {
 
-        Context context = mContext.getApplicationContext();
+        // to getting the server current timestamp
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
         String dbName= "live-chatting";
@@ -88,6 +88,7 @@ public class FirebaseModule extends ReactContextBaseJavaModule {
                     }
                 });
     }
+    
     @ReactMethod
     public void startAddChatListener(Callback callback) {
         initialLoad = true;
@@ -136,9 +137,8 @@ public class FirebaseModule extends ReactContextBaseJavaModule {
 
         try {
             JSONObject json = new JSONObject(response.get(response.size() - 1).toString());
-//            Double number = Double.parseDouble(json.getString("timestamp"));
+
             lastMessageTimestamp = Double.parseDouble(json.getString("timestamp"));
-//            Log.e("size of Array :",json.getString("timestamp"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -147,10 +147,10 @@ public class FirebaseModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void paginationQuery(Callback callback){
         ArrayList<Object> response = new ArrayList<>();
-//        callback.invoke(timstamp);
-//        Integer timestamplast = Integer.valueOf(timstamp);
 
-        db.collection("live-chatting").document("video.adfse112334").collection("chats")
+        db.collection("live-chatting")
+                .document("video.adfse112334")
+                .collection("chats")
                 .whereLessThan("timestamp", lastMessageTimestamp)
                 .orderBy("timestamp", Query.Direction.DESCENDING)
 //                .startAfter(lastVisible)
@@ -184,10 +184,14 @@ public class FirebaseModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void getAllchatsfromfirebase(String videoId, Callback callback){
-        Context context = mContext.getApplicationContext();
+
         ArrayList<Object> response = new ArrayList<>();
 
-        db.collection("live-chatting").document("video.adfse112334").collection("chats").orderBy("timestamp", Query.Direction.DESCENDING).limit(20)
+        db.collection("live-chatting")
+                .document("video.adfse112334")
+                .collection("chats")
+                .orderBy("timestamp", Query.Direction.DESCENDING)
+                .limit(20)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -210,7 +214,6 @@ public class FirebaseModule extends ReactContextBaseJavaModule {
 
                                 callback.invoke(response + "");
                                 Log.e("All firebse data", "calling inside");
-//                            response.get(response.size() - 1);
                             }
 
                         } else {
@@ -226,7 +229,9 @@ public class FirebaseModule extends ReactContextBaseJavaModule {
         ArrayList<Object> response = new ArrayList<>();
         String video_id = "video." + videoId;
 
-        db.collection("live-chatting").document(video_id).collection("blocked-user")
+        db.collection("live-chatting")
+                .document(video_id)
+                .collection("blocked-user")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

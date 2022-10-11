@@ -1,5 +1,6 @@
-import {StackNavigationProp, StackScreenProps} from '@react-navigation/stack';
-
+type StackNavigationProp =
+  import('@react-navigation/stack').StackNavigationProp;
+type StackScreenProps = import('@react-navigation/stack').StackScreenProps;
 type homeParamList = {
   Home: undefined;
   MyCourse: {courseList: Array<String>} | undefined;

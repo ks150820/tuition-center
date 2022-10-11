@@ -3,10 +3,10 @@ import React from 'react';
 import HelpFeedBackScreenView from './help-feedback-screen-view';
 import useHelpFeedbackScreenController from './help-feedback-screen-controller';
 
-type feedbackScreenProps =
-  import('@navigators/home-navigator/@types/home-navigator-param-list').feedbackScreenProps;
-
-interface IHelpFeedbackScreenProps extends feedbackScreenProps {}
+interface IHelpFeedbackScreenProps extends feedbackScreenProps {
+  navigation: any;
+  route: any;
+}
 
 /**
  * returns the ui of help and feedback component

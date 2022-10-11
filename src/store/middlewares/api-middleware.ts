@@ -1,7 +1,6 @@
 import * as actions from '@store/actions/actions';
 import {createRequestObject} from '@util/request';
 import {axiosInterceptor} from '@services/http/axios-interceptor-service';
-import {IDispatchType} from '@types';
 import {store} from 'store/configureStore';
 import {CACHING_TIME} from '@store/enum';
 import {handleError} from '@store/ui/http-manager';

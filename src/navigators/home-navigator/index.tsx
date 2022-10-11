@@ -4,7 +4,6 @@ import HomeScreen from '../../screens/home-screen';
 import MyCourse from '../../screens/my-course-screen';
 import TestExperience from '@screens/test-screen';
 import InstructionScreen from '@screens/instruction-screen';
-import {homeParamList} from './@types/home-navigator-param-list';
 import HelpFeedbackScreen from '@screens/help-feedback-screen';
 import LiveClassChatScreen from '@screens/live-class-chat-screen';
 

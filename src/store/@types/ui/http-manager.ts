@@ -1,4 +1,4 @@
-import {httpMethods} from '../../enum';
+type httpMethods = import('../../enum').httpMethods;
 
 interface dataObject {
   [key: string]: string | object | number | boolean;

@@ -1,5 +1,4 @@
 import React from 'react';
-// import {homeScreenProps} from '@navigators/home-navigator/@types/home-navigator-param-list';
 
 import SummaryView from './summary-view';
 import useSummaryStatusController from './summary-view-controller';

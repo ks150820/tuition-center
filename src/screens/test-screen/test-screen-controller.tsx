@@ -22,10 +22,6 @@ import {
   updateQuestionsIndex,
 } from '@store/entities/test-experience';
 import useNavigationBackHandler from '@screens/components/hooks/use-navigate-back';
-// import {homeScreenProps} from '@navigators/home-navigator/@types/home-navigator-param-list';
-
-// type homeScreenProps =
-//   import('@navigators/home-navigator/@types/home-navigator-param-list').homeScreenProps;
 
 /**
  *

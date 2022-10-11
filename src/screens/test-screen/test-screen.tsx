@@ -4,10 +4,9 @@ import TestContext from '@components/contexts/test-context';
 import useTestExperienceController from './test-screen-controller';
 import TestExperienceView from './test-screen-view';
 
-type homeScreenProps =
-  import('@navigators/home-navigator/@types/home-navigator-param-list').testExperienceScreenProps;
-
-interface ITestExperienceProps extends homeScreenProps {}
+interface ITestExperienceProps extends homeScreenProps {
+  navigation: any;
+}
 
 /**
  * this is the root component of test experience, to display the all properties of tests

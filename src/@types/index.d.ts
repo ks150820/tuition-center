@@ -1,4 +1,5 @@
-import {CACHING_TIME, httpMethods} from '../store/enum';
+type CACHING_TIME = import('../store/enum').CACHING_TIME;
+type httpMethods = import('../store/enum').httpMethods;
 
 interface LooseObject {
   [key: string]: any;

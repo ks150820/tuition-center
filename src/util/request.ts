@@ -1,4 +1,3 @@
-import {requestMethodType} from '../store/@types/api/api';
 import {BASE_URL} from '../store/enum';
 import hasher from 'hash.js';
 import {store} from '../store/configureStore';

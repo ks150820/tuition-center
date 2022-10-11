@@ -1,5 +1,3 @@
-// import {Language} from '../../components/@types';
-
 type emptyObject = {
   logs: Logs[];
 };
