@@ -20,7 +20,6 @@ public class FirebasePackage implements ReactPackage {
         List<NativeModule> modules = new ArrayList<>();
 
         modules.add(new FirebaseModule(reactContext));
-
         return modules;
     }
 }
