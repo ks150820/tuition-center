@@ -27,7 +27,10 @@ module.exports = {
         alias: {
           '@util': './src/util',
           '@components': './src/components',
+          '@helpers': './src/helpers',
+          '@common': './src/common',
           '@services': './src/services',
+          '@assets': './src/assets',
           '@hooks': './src/hooks',
           '@navigators': './src/navigators',
           '@screens': './src/screens',
@@ -35,6 +38,7 @@ module.exports = {
           '@theme': './src/theme',
           '@widgets': './src/widgets',
           '@icons': './src/icons',
+          '@resources': './src/resources',
           underscore: 'lodash',
         },
       },

@@ -10,14 +10,14 @@
 
 import React, {useEffect} from 'react';
 import {Provider} from 'react-redux';
-import useInterNetHandlingService from './src/services/internet-handling-service';
+// import useInterNetHandlingService from './src/services/internet-handling-service';
 import {store} from './src/store/configureStore';
 import {NavigationContainer} from '@react-navigation/native';
-import MainScreen from './src/screens/main-screen';
 import AppTheme from './src/theme/theme';
 import * as Sentry from '@sentry/react-native';
 import ReactMoE, {MoEAppStatus} from 'react-native-moengage';
 import useAndroidPermission from '@hooks/use-permission/use-android-permission';
+import MainScreen from '@screens/main-screen';
 const App = () => {
   const {requestNotificationPermission, NotificationPermissionView} =
     useAndroidPermission();
@@ -46,5 +46,14 @@ const App = () => {
     </Provider>
   );
 };
+
+// const styles = StyleSheet.create({
+//   play: {
+//     marginRight: 15,
+//   },
+//   fullScreen: {
+//     marginRight: 10,
+//   },
+// });
 
 export default Sentry.wrap(App);

@@ -13,6 +13,9 @@
       "@components/*": [
         "./components/*"
       ],
+      "@helpers/*": [
+        "./helpers/*"
+      ],
       "@services/*": [
         "./services/*"
       ],
@@ -34,12 +37,16 @@
       "@widgets/*": [
         "./widgets/*"
       ],
-      "@icons/*": [
-        "./icons/*"
+      "@common/*": [
+        "./common/*"
+      ],
+      "@assets/*": [
+        "./assets/*"
       ],
       "underscore": [
         "lodash"
-      ]
+      ],
+      "@resources/*": ["./resources/*"],
     },
   },
   "typeRoots": [

@@ -1,6 +1,9 @@
-import {NavigatorScreenParams} from '@react-navigation/native';
+type NavigatorScreenParams =
+  import('@react-navigation/native').NavigatorScreenParams;
 
 type bottomTabParamList = {
   HomeNavigator: NavigatorScreenParams<homeParamList>;
-  Profile: undefined;
+  Courses: undefined;
+  FreeVideo: undefined;
+  StudyMaterial: undefined;
 };

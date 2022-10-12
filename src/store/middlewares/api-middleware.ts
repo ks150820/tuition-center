@@ -98,4 +98,5 @@ const apiMiddleware =
     }
     makeRequest(action.payload);
   };
+
 export default apiMiddleware;
