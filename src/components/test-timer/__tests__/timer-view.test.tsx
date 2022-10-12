@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from '@store/util/test.util';
 
-import TimerView from '@common/test-timer/timer-view';
+import TimerView from '@components/test-timer/timer-view';
 
 describe('timer-view', () => {
   test('test component when timeSpentStatus is false', () => {

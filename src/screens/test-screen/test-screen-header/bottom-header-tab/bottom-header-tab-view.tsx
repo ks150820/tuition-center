@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-import Timer from '@common/test-timer';
+import Timer from '@components/test-timer';
 import {COLORS} from '@resources/colors';
 import {bottomHeaderStyle} from './bottom-header-tab-style';
 

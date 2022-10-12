@@ -3,7 +3,7 @@ import React from 'react';
 import {renderHook} from '@store/util/test.util';
 // import TestContext from '../../../contexts/test-context';
 
-import useTimerViewController from '@common/test-timer/timer-view-controller';
+import useTimerViewController from '@components/test-timer/timer-view-controller';
 
 describe('timer-view-controller', () => {
   test('test controller', async () => {
