@@ -1,17 +1,29 @@
 import {store} from '@store/configureStore';
 import {updateAuthToken} from '@store/entities/auth';
-import {httpMethods} from '@store/enum';
-import {createRequestObject} from '@util/request';
+import {BASE_URL} from '@store/enum';
+
 import axios, {AxiosRequestConfig} from 'axios';
 import createAuthRefreshInterceptor from 'axios-auth-refresh';
+import {
+  createRequest,
+  HttpMethod,
+  HttpClient,
+} from 'axios-secure-access-control';
 
 const refreshAuthLogic = (failedRequest: any) =>
   axios
     .request(
-      createRequestObject('v1/user/oauth/token', httpMethods.POST, true, {
-        grant_type: 'refresh_token',
-        refresh_token: store.getState().auth.authDetails.refreshToken,
-      }),
+      createRequest(
+        BASE_URL.PRODUCTION,
+        'v1/user/oauth/token',
+        HttpMethod.POST,
+        HttpClient.MOBILE,
+        null,
+        {
+          grant_type: 'refresh_token',
+          refresh_token: store.getState().auth.authDetails.refreshToken,
+        },
+      ),
     )
     .then(tokenRefreshResponse => {
       store.dispatch(updateAuthToken(tokenRefreshResponse.data.token));

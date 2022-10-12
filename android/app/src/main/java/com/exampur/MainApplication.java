@@ -2,6 +2,7 @@ package com.exampur;
 
 import android.app.Application;
 import android.content.Context;
+import com.exampur.downloadService.DownloadPackage;
 import com.exampur.newarchitecture.MainApplicationReactNativeHost;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -19,7 +20,6 @@ import com.moengage.react.MoEInitializer;
 import com.moengage.react.MoEReactPackage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import com.exampur.downloadService.DownloadPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 

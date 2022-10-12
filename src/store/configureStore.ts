@@ -5,10 +5,6 @@ import apiMiddleware from './middlewares/api-middleware';
 // import createDebugger from 'redux-flipper';
 import reducer from './reducer';
 // import addLastFetchMiddleware from './middlewares/add-last-fetch-middleware';
-export interface thunkType {
-  dispatch: AppDispatch;
-  getState: RootState;
-}
 
 export const store = configureStore({
   reducer: reducer,
