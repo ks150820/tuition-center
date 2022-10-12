@@ -1,9 +1,8 @@
 import * as actions from '@store/actions/actions';
-import {createRequestObject} from '@util/request';
+import {createRequest, HttpClient} from 'axios-secure-access-control';
 import {axiosInterceptor} from '@services/http/axios-interceptor-service';
-import {IDispatchType} from '@types';
 import {store} from 'store/configureStore';
-import {CACHING_TIME} from '@store/enum';
+import {BASE_URL, CACHING_TIME} from '@store/enum';
 import {handleError} from '@store/ui/http-manager';
 interface IDataType {
   type: string;
@@ -14,7 +13,7 @@ const apiLastCalledTimeMap = new Map<
   string,
   {url: string; method: string; lastCalled: number}
 >();
-
+const authToken = store?.getState()?.auth?.authDetails?.authToken;
 const makeRequest = (payload: IDispatchType) => {
   const {
     url,
@@ -23,7 +22,6 @@ const makeRequest = (payload: IDispatchType) => {
     onError,
     onStart,
     onSuccess,
-    auth,
     cacheValidityDuration,
   } = payload;
   const dispatch = (oData: IDataType) => {
@@ -42,7 +40,14 @@ const makeRequest = (payload: IDispatchType) => {
   };
 
   let apiLastCalledApiKey = url + method;
-  const requestObject = createRequestObject(url, method, auth, data);
+  const requestObject = createRequest(
+    BASE_URL.PRODUCTION,
+    url,
+    method,
+    HttpClient.MOBILE,
+    authToken ? authToken : undefined,
+    data,
+  );
   let lastCalledTimeApi =
     apiLastCalledTimeMap.get(apiLastCalledApiKey)?.lastCalled;
 

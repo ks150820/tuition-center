@@ -17,10 +17,11 @@ import MainScreen from './src/screens/main-screen';
 import AppTheme from './src/theme/theme';
 import * as Sentry from '@sentry/react-native';
 import ReactMoE, {MoEAppStatus} from 'react-native-moengage';
-import {PermissionsAndroid} from 'react-native';
-import useAndroidPermission from '@hooks/use-android-permission';
+import useAndroidPermission from '@hooks/use-permission/use-android-permission';
 const App = () => {
-  const {requestSinglePermission} = useAndroidPermission();
+  const {requestNotificationPermission, NotificationPermissionView} =
+    useAndroidPermission();
+  const {NoInterNetConnectionView} = useInterNetHandlingService();
   useEffect(() => {
     Sentry.init({
       dsn: 'https://6c631e420b2744b8a2303cee731cb4e7@o1054483.ingest.sentry.io/6743885',
@@ -31,25 +32,16 @@ const App = () => {
     // ReactMoE.initialize();
     ReactMoE.initialize();
     ReactMoE.setAppStatus(MoEAppStatus.Install);
-    let response = askPermission();
-    console.log(response, 'RES>>>>>>>>>');
+    requestNotificationPermission();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const {NoInterNetConnectionView} = useInterNetHandlingService();
-  const askPermission = async () => {
-    const response = await requestSinglePermission(
-      PermissionsAndroid.PERMISSIONS.CAMERA,
-    );
-    console.log(response, 'MANGO');
-
-    return response;
-  };
   return (
     <Provider store={store}>
       <NavigationContainer theme={AppTheme}>
         <MainScreen />
         <NoInterNetConnectionView />
+        <NotificationPermissionView />
       </NavigationContainer>
     </Provider>
   );

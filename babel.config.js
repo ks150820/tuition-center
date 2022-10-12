@@ -34,6 +34,7 @@ module.exports = {
           '@store': './src/store',
           '@theme': './src/theme',
           '@widgets': './src/widgets',
+          '@icons': './src/icons',
           underscore: 'lodash',
         },
       },

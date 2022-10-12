@@ -10,7 +10,7 @@
       "@util/*": [
         "util/*",
       ],
-      "@component/*": [
+      "@components/*": [
         "./components/*"
       ],
       "@services/*": [
@@ -33,6 +33,9 @@
       ],
       "@widgets/*": [
         "./widgets/*"
+      ],
+      "@icons/*": [
+        "./icons/*"
       ],
       "underscore": [
         "lodash"

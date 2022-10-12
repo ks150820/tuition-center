@@ -1,12 +1,12 @@
 import {requestMethodType} from '../store/@types/api/api';
-import {BASE_URL} from '../store/enum';
+import {BASE_URL, httpMethods} from '../store/enum';
 import hasher from 'hash.js';
 import {store} from '../store/configureStore';
 
 type progressHandlerType = (progressEvent: number) => {};
 interface IRequestType {
   url: string; // `url` is the server URL that will be used for the request
-  method: requestMethodType; // `method` is the request method to be used when making the request
+  method: httpMethods; // `method` is the request method to be used when making the request
   // `baseURL` will be prepended to `url` unless `url` is absolute.
   // It can be convenient to set `baseURL` for an instance of axios to pass relative URLs
   // to methods of that instance.
