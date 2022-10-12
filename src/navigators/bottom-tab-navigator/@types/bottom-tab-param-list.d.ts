@@ -3,5 +3,7 @@ type NavigatorScreenParams =
 
 type bottomTabParamList = {
   HomeNavigator: NavigatorScreenParams<homeParamList>;
-  Profile: undefined;
+  Courses: undefined;
+  FreeVideo: undefined;
+  StudyMaterial: undefined;
 };

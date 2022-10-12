@@ -18,6 +18,8 @@ export const COLORS = {
     cedar_chest: '#CA5A48',
     indian_red: '#DF5F61',
     medium_vermilion: '#d95440',
+    misty_rose: '#ffe0e0',
+    tab_item: '#bf1e2d',
   },
   GREY: {
     davys_grey: '#575757',
@@ -27,6 +29,7 @@ export const COLORS = {
     philippine_grey: '#919191',
     bright_gray: '#eaeaea',
     dark_silver: '#6d6d6d',
+    gray: '#999999',
   },
   FRESH_AIR: '#b3e5fc',
   GREEN: {

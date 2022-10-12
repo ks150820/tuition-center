@@ -10,25 +10,18 @@
 
 import React, {useEffect} from 'react';
 import {Provider} from 'react-redux';
-import useInterNetHandlingService from './src/services/internet-handling-service';
+// import useInterNetHandlingService from './src/services/internet-handling-service';
 import {store} from './src/store/configureStore';
 import {NavigationContainer} from '@react-navigation/native';
-// import MainScreen from './src/screens/main-screen';
 import AppTheme from './src/theme/theme';
 import * as Sentry from '@sentry/react-native';
 import ReactMoE, {MoEAppStatus} from 'react-native-moengage';
-import {PermissionsAndroid, StyleSheet, NativeModules} from 'react-native';
+import {PermissionsAndroid, NativeModules} from 'react-native';
 import useAndroidPermission from '@hooks/use-android-permission';
-import VideoPlayer from '@screens/video-player-screen/video-player';
-import {VIDEO_TYPES} from '@screens/video-player-screen/video-player/resources/constants';
-import VideoController from '@screens/video-player-screen/ui-video-controller';
-import UIControllerContainer from '@screens/video-player-screen/components/ui-controller-container';
 import FeedBackContextProvider from '@components/contexts/feedback-context';
-import FeedbackModal from '@components/feedback-modal';
+// import HomeNavigator from '@navigators/home-navigator';
+import BottomTabBarNavigator from '@navigators/bottom-tab-navigator';
 
-import HomeNavigator from '@navigators/home-navigator';
-import MyDownloads from '@screens/a-temp-download/MyDownloads';
-import RazorpayPayment from '@screens/a-temp-payment/RazorpayPayment';
 const App = () => {
   const {requestSinglePermission} = useAndroidPermission();
   const {InAppUpdate} = NativeModules;
@@ -51,7 +44,7 @@ const App = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const {NoInterNetConnectionView} = useInterNetHandlingService();
+  // const {NoInterNetConnectionView} = useInterNetHandlingService();
   const askPermission = async () => {
     const response = await requestSinglePermission(
       PermissionsAndroid.PERMISSIONS.CAMERA,
@@ -61,38 +54,38 @@ const App = () => {
     return response;
   };
 
-  const dummyData = [
-    {
-      image: require('@assets/avatar/avatar.jpg'),
-      text: 'I am the modal content!',
-      url: 'https://play.google.com/store/search?q=exampur&c=apps',
-      rating: 5,
-    },
-    {
-      image: require('@assets/avatar/avatar.jpg'),
-      text: 'I am the modal content!',
-      url: 'https://play.google.com/store/search?q=exampur&c=apps',
-      rating: 4,
-    },
-    {
-      image: require('@assets/avatar/avatar.jpg'),
-      text: 'I am the modal content!',
-      url: 'HelpFeedback',
-      rating: 3,
-    },
-    {
-      image: require('@assets/avatar/avatar.jpg'),
-      text: 'I am the modal content!',
-      url: 'HelpFeedback',
-      rating: 2,
-    },
-    {
-      image: require('@assets/avatar/avatar.jpg'),
-      text: 'I am the modal content!',
-      url: 'HelpFeedback',
-      rating: 1,
-    },
-  ];
+  // const dummyData = [
+  //   {
+  //     image: require('@assets/avatar/avatar.jpg'),
+  //     text: 'I am the modal content!',
+  //     url: 'https://play.google.com/store/search?q=exampur&c=apps',
+  //     rating: 5,
+  //   },
+  //   {
+  //     image: require('@assets/avatar/avatar.jpg'),
+  //     text: 'I am the modal content!',
+  //     url: 'https://play.google.com/store/search?q=exampur&c=apps',
+  //     rating: 4,
+  //   },
+  //   {
+  //     image: require('@assets/avatar/avatar.jpg'),
+  //     text: 'I am the modal content!',
+  //     url: 'HelpFeedback',
+  //     rating: 3,
+  //   },
+  //   {
+  //     image: require('@assets/avatar/avatar.jpg'),
+  //     text: 'I am the modal content!',
+  //     url: 'HelpFeedback',
+  //     rating: 2,
+  //   },
+  //   {
+  //     image: require('@assets/avatar/avatar.jpg'),
+  //     text: 'I am the modal content!',
+  //     url: 'HelpFeedback',
+  //     rating: 1,
+  //   },
+  // ];
 
   return (
     <Provider store={store}>
@@ -131,7 +124,8 @@ const App = () => {
             </UIControllerContainer>
           </VideoController>
         </VideoPlayer> */}
-          <HomeNavigator />
+          {/* <HomeNavigator /> */}
+          <BottomTabBarNavigator />
           {/* <FeedbackModal data={dummyData} />
           <MainScreen />
           <NoInterNetConnectionView /> */}
@@ -141,13 +135,13 @@ const App = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  play: {
-    marginRight: 15,
-  },
-  fullScreen: {
-    marginRight: 10,
-  },
-});
+// const styles = StyleSheet.create({
+//   play: {
+//     marginRight: 15,
+//   },
+//   fullScreen: {
+//     marginRight: 10,
+//   },
+// });
 
 export default Sentry.wrap(App);
