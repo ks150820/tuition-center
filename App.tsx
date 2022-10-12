@@ -10,7 +10,7 @@
 
 import React, {useEffect} from 'react';
 import {Provider} from 'react-redux';
-// import useInterNetHandlingService from './src/services/internet-handling-service';
+import useInterNetHandlingService from './src/services/internet-handling-service';
 import {store} from './src/store/configureStore';
 import {NavigationContainer} from '@react-navigation/native';
 import AppTheme from './src/theme/theme';
