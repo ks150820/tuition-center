@@ -11,11 +11,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.moengage.firebase.MoEFireBaseHelper;
+import com.zoontek.rnbootsplash.RNBootSplash;
 
 public class MainActivity extends ReactActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    RNBootSplash.init(this);
     super.onCreate(null);
     FirebaseMessaging
       .getInstance()

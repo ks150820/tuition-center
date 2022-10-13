@@ -18,6 +18,8 @@ import * as Sentry from '@sentry/react-native';
 import ReactMoE, {MoEAppStatus} from 'react-native-moengage';
 import useAndroidPermission from '@hooks/use-permission/use-android-permission';
 import MainScreen from '@screens/main-screen';
+import RNBootSplash from 'react-native-bootsplash';
+
 import {SENTRY_URL} from '@env';
 const App = () => {
   const {requestNotificationPermission, NotificationPermissionView} =
@@ -39,7 +41,9 @@ const App = () => {
   }, []);
   return (
     <Provider store={store}>
-      <NavigationContainer theme={AppTheme}>
+      <NavigationContainer
+        onReady={() => RNBootSplash.hide({fade: true})}
+        theme={AppTheme}>
         <MainScreen />
         <NoInterNetConnectionView />
         <NotificationPermissionView />

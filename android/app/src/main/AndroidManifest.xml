@@ -3,8 +3,8 @@
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-	<application android:name=".MainApplication" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" android:allowBackup="false" android:theme="@style/AppTheme">
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<application android:name=".MainApplication" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" android:allowBackup="false" android:theme="@style/BootTheme">
 		<activity android:name=".MainActivity" android:label="@string/app_name" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:launchMode="singleTask" android:windowSoftInputMode="adjustResize" android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
 			</intent-filter>
 		</service>
 		<service android:name=".downloadService.DownloadService" android:enabled="true" android:exported="false" />
-        <service android:name=".downloadService.DownloadEventService" />
-        <receiver android:name=".downloadService.DownloadActionReceiver" />
+		<service android:name=".downloadService.DownloadEventService" />
+		<receiver android:name=".downloadService.DownloadActionReceiver" />
 	</application>
 </manifest>
