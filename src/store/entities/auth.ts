@@ -113,20 +113,20 @@ export const callGetOtpApi = () => () => {
     cacheValidityDuration: CACHING_TIME.INVALIDATE,
   });
 };
-export const callRetry = () => (dispatch: AppDispatch) => {
+export const callRetry = () => (dispatch: Dispatch) => {
   return dispatch({
     type: apiRetry.type,
     payload: {},
   });
 };
 export const updateUserDetails =
-  (authData: Authentication) => (dispatch: AppDispatch) => {
+  (authData: Authentication) => (dispatch: Dispatch) => {
     return dispatch({
       type: authDetailsUpdated.type,
       payload: authData,
     });
   };
-export const updateAuthToken = (token: string) => (dispatch: AppDispatch) =>
+export const updateAuthToken = (token: string) => (dispatch: Dispatch) =>
   dispatch({
     type: authTokenUpdated.type,
     payload: token,
