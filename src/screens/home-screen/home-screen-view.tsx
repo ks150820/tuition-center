@@ -1,3 +1,5 @@
+import {FONT_TYPE} from '@theme/font';
+import UIText from '@widgets/ui-text';
 import React from 'react';
 import {Pressable, View, Text} from 'react-native';
 import useHomeScreenViewController from './homescreen-view-controller';
@@ -23,12 +25,14 @@ const HomeScreenView: React.FunctionComponent<IHomeScreenViewProps> = ({
       <Pressable
         onPress={onPress}
         style={{backgroundColor: 'orange', padding: 20}}>
-        <Text>Click Me</Text>
+        <Text style={{fontFamily: 'Mukta-Regular', fontSize: 14}}>
+          Click Me 2
+        </Text>
       </Pressable>
       <Pressable
         onPress={onRetry}
         style={{backgroundColor: 'red', padding: 20}}>
-        <Text>Retry</Text>
+        <UIText FontType={FONT_TYPE.PARAGRAPH}>Click Me 2 3</UIText>
       </Pressable>
       <Pressable
         onPress={onStartTest}

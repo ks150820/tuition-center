@@ -188,27 +188,6 @@ interface IUIRowViewProps {
   style?: ViewStyle;
 }
 
-interface IUITextViewProps {
-  // Font type
-  type?: string;
-  // Font size
-  size?: number;
-  // Font color
-  color?: string;
-  // Styling for container
-  containerStyle?: ViewStyle;
-  // Max number of lines
-  numberOfLines?: number;
-  // Alignment of text
-  textAlign?: string;
-  // Styling for text
-  textStyle?: object;
-  // Flag to strike out text
-  strikeText?: boolean;
-  // Children to render
-  children?: ReactNode;
-}
-
 interface IVolumeToggleViewProps {
   // Toggler for mute/unmute
   toggleMute: () => void;

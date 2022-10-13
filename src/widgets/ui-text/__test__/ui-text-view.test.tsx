@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from '@testing-library/react-native';
-import UITextView from '../ui-text-view';
+import UITextView from '../ui-text';
 import {FONT_SIZE, FONT_TYPE} from '../../../theme/font';
 import COLORS from '../../../theme/colors';
 
