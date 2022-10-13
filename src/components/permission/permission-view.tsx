@@ -1,5 +1,5 @@
 import Modal from '@components/modal';
-import CloseIcon from '@icons/close';
+import CloseIcon from '@resources/icons/close';
 import React from 'react';
 import {Linking, Pressable} from 'react-native';
 import {Text, View} from 'react-native';
