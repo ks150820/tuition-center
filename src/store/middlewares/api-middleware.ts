@@ -1,5 +1,5 @@
 import * as actions from '@store/actions/actions';
-import {createRequest, HttpClient} from 'axios-secure-access-control';
+import {createRequest, HttpClient} from '@secure-access-control/client';
 import {axiosInterceptor} from '@services/http/axios-interceptor-service';
 import {store} from 'store/configureStore';
 import {BASE_URL, CACHING_TIME} from '@store/enum';

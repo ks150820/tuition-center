@@ -8,7 +8,7 @@ import {
   createRequest,
   HttpMethod,
   HttpClient,
-} from 'axios-secure-access-control';
+} from '@secure-access-control/client';
 
 const refreshAuthLogic = (failedRequest: any) =>
   axios

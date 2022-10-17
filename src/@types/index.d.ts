@@ -1,6 +1,6 @@
 // import {CACHING_TIME, httpMethods} from '../store/enum';
 
-type HttpMethod = import('axios-secure-access-control').HttpMethod;
+type HttpMethod = import('@secure-access-control/client').HttpMethod;
 type CACHING_TIME = import('../store/enum').CACHING_TIME;
 
 interface LooseObject {
