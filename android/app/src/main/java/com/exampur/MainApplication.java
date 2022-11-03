@@ -11,13 +11,13 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
-import com.moe.pushlibrary.MoEHelper;
-import com.moengage.core.DataCenter;
-import com.moengage.core.MoEngage;
-import com.moengage.core.MoEngage;
-import com.moengage.core.config.NotificationConfig;
-import com.moengage.react.MoEInitializer;
-import com.moengage.react.MoEReactPackage;
+// import com.moe.pushlibrary.MoEHelper;
+// import com.moengage.core.DataCenter;
+// import com.moengage.core.MoEngage;
+// import com.moengage.core.MoEngage;
+// import com.moengage.core.config.NotificationConfig;
+// import com.moengage.react.MoEInitializer;
+// import com.moengage.react.MoEReactPackage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -83,23 +83,23 @@ public class MainApplication extends Application implements ReactApplication {
     // }
 
     // this is the instance of the application class and "XXXXXXXXXXX" is the APP ID from the dashboard.
-    MoEngage.Builder moEngage = new MoEngage.Builder(
-      this,
-      "B2E68WVH8X21LQV6T71A765I"
-    )
-      .setDataCenter(DataCenter.DATA_CENTER_3)
-      .configureNotificationMetaData(
-        new NotificationConfig(
-          R.drawable.jeet_logo,
-          R.drawable.jeet_logo,
-          R.color.colorPrimaryDark,
-          null,
-          true,
-          false,
-          true
-        )
-      );
-    MoEInitializer.INSTANCE.initialize(getApplicationContext(), moEngage);
+    // MoEngage.Builder moEngage = new MoEngage.Builder(
+    //   this,
+    //   "B2E68WVH8X21LQV6T71A765I"
+    // )
+    //   .setDataCenter(DataCenter.DATA_CENTER_3)
+    //   .configureNotificationMetaData(
+    //     new NotificationConfig(
+    //       R.drawable.jeet_logo,
+    //       R.drawable.jeet_logo,
+    //       R.color.colorPrimaryDark,
+    //       null,
+    //       true,
+    //       false,
+    //       true
+    //     )
+    //   );
+    // MoEInitializer.INSTANCE.initialize(getApplicationContext(), moEngage);
   }
 
   /**

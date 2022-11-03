@@ -15,7 +15,7 @@ import {store} from './src/store/configureStore';
 import {NavigationContainer} from '@react-navigation/native';
 import AppTheme from './src/theme/theme';
 import * as Sentry from '@sentry/react-native';
-import ReactMoE, {MoEAppStatus} from 'react-native-moengage';
+// import ReactMoE, {MoEAppStatus} from 'react-native-moengage';
 import useAndroidPermission from '@hooks/use-permission/use-android-permission';
 import MainScreen from '@screens/main-screen';
 import RNBootSplash from 'react-native-bootsplash';
@@ -33,8 +33,8 @@ const App = () => {
       tracesSampleRate: 1.0,
     });
     // ReactMoE.initialize();
-    ReactMoE.initialize();
-    ReactMoE.setAppStatus(MoEAppStatus.Install);
+    // ReactMoE.initialize('B2E68WVH8X21LQV6T71A765I');
+    // ReactMoE.setAppStatus(MoEAppStatus.Install);
     requestNotificationPermission();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
