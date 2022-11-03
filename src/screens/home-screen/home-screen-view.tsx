@@ -1,6 +1,7 @@
+import HamburgerMenu from '@components/hamburger-menu/hamburger-menu-view';
 import {FONT_TYPE} from '@theme/font';
 import UIText from '@widgets/ui-text';
-import React from 'react';
+import React, {useState} from 'react';
 import {Pressable, View, Text} from 'react-native';
 import useHomeScreenViewController from './homescreen-view-controller';
 
@@ -20,6 +21,8 @@ const HomeScreenView: React.FunctionComponent<IHomeScreenViewProps> = ({
     useHomeScreenViewController({
       navigation,
     });
+
+  const [isVisible, setIsVisible] = useState(false);
   return (
     <View style={{flex: 1, backgroundColor: 'pink'}}>
       <Pressable
@@ -45,10 +48,13 @@ const HomeScreenView: React.FunctionComponent<IHomeScreenViewProps> = ({
         <Text>Open Feedback Modal</Text>
       </Pressable>
       <Pressable
-        onPress={liveChat}
+        onPress={() => {
+          setIsVisible(!isVisible);
+        }}
         style={{backgroundColor: 'tomato', padding: 20}}>
         <Text>Live Chat</Text>
       </Pressable>
+      <HamburgerMenu setIsVisible={setIsVisible} isVisible={isVisible} />
     </View>
   );
 };

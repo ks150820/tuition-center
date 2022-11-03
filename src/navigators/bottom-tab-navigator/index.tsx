@@ -23,8 +23,6 @@ const BottomTabBarNavigator = () => {
   return (
     <BottomTab.Navigator
       screenOptions={() => ({
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
         tabBarStyle: {
           height: 60,
         },
@@ -35,24 +33,19 @@ const BottomTabBarNavigator = () => {
           headerShown: false,
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {
-            return focused ? (
+            return (
               <BottomTabItem
-                componentStyle={styles.labelFocusedContainer}
-                icon={ACTIVE_HOME_ICON}
+                componentStyle={
+                  focused ? styles.labelFocusedContainer : styles.labelContainer
+                }
+                icon={focused ? ACTIVE_HOME_ICON : INACTIVE_HOME_ICON}
                 height={24}
                 width={24}
                 iconStyle={styles.iconStyle}
-                textStyle={styles.labelFocusedStyle}
-                tabTitle="Home"
-              />
-            ) : (
-              <BottomTabItem
-                componentStyle={styles.labelContainer}
-                icon={INACTIVE_HOME_ICON}
-                height={24}
-                width={24}
-                iconStyle={styles.iconStyle}
-                textStyle={styles.labelStyle}
+                textStyle={[
+                  focused ? styles.MyCourseLabel : styles.MyCourseInActiveLabel,
+                  styles.commonMyCourseLabel,
+                ]}
                 tabTitle="Home"
               />
             );
@@ -66,25 +59,19 @@ const BottomTabBarNavigator = () => {
         options={{
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {
-            return focused ? (
+            return (
               <BottomTabItem
-                componentStyle={styles.labelFocusedContainer}
-                icon={ACTIVE_MY_COURSE_ICON}
-                height={24}
-                width={24}
-                iconStyle={styles.iconStyle}
-                textStyle={[styles.MyCourseLabel, styles.commonMyCourseLabel]}
-                tabTitle="My Course"
-              />
-            ) : (
-              <BottomTabItem
-                componentStyle={styles.labelContainer}
-                icon={IN_ACTIVE_MY_COURSE_ICON}
+                componentStyle={
+                  focused ? styles.labelFocusedContainer : styles.labelContainer
+                }
+                icon={
+                  focused ? ACTIVE_MY_COURSE_ICON : IN_ACTIVE_MY_COURSE_ICON
+                }
                 height={24}
                 width={24}
                 iconStyle={styles.iconStyle}
                 textStyle={[
-                  styles.MyCourseInActiveLabel,
+                  focused ? styles.MyCourseLabel : styles.MyCourseInActiveLabel,
                   styles.commonMyCourseLabel,
                 ]}
                 tabTitle="My Course"
@@ -103,25 +90,17 @@ const BottomTabBarNavigator = () => {
         options={{
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {
-            return focused ? (
+            return (
               <BottomTabItem
-                componentStyle={styles.labelFocusedContainer}
-                icon={ACTIVE_VIDEOS}
-                height={24}
-                width={24}
-                iconStyle={styles.iconStyle}
-                textStyle={[styles.MyCourseLabel, styles.commonMyCourseLabel]}
-                tabTitle="Free Video"
-              />
-            ) : (
-              <BottomTabItem
-                componentStyle={styles.labelContainer}
-                icon={IN_ACTIVE_VIDEOS}
+                componentStyle={
+                  focused ? styles.labelFocusedContainer : styles.labelContainer
+                }
+                icon={focused ? ACTIVE_VIDEOS : IN_ACTIVE_VIDEOS}
                 height={24}
                 width={24}
                 iconStyle={styles.iconStyle}
                 textStyle={[
-                  styles.MyCourseInActiveLabel,
+                  focused ? styles.MyCourseLabel : styles.MyCourseInActiveLabel,
                   styles.commonMyCourseLabel,
                 ]}
                 tabTitle="Free Video"
@@ -140,25 +119,17 @@ const BottomTabBarNavigator = () => {
         options={{
           tabBarLabel: '',
           tabBarIcon: ({focused}) => {
-            return focused ? (
+            return (
               <BottomTabItem
-                componentStyle={styles.labelFocusedContainer}
-                icon={ACTIVE_BOOKS}
-                height={24}
-                width={24}
-                iconStyle={styles.iconStyle}
-                textStyle={[styles.MyCourseLabel, styles.commonMyCourseLabel]}
-                tabTitle="Study Material"
-              />
-            ) : (
-              <BottomTabItem
-                componentStyle={styles.labelContainer}
-                icon={IN_ACTIVE_BOOKS}
+                componentStyle={
+                  focused ? styles.labelFocusedContainer : styles.labelContainer
+                }
+                icon={focused ? ACTIVE_BOOKS : IN_ACTIVE_BOOKS}
                 height={24}
                 width={24}
                 iconStyle={styles.iconStyle}
                 textStyle={[
-                  styles.MyCourseInActiveLabel,
+                  focused ? styles.MyCourseLabel : styles.MyCourseInActiveLabel,
                   styles.commonMyCourseLabel,
                 ]}
                 tabTitle="Study Material"
