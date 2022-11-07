@@ -1,0 +1,21 @@
+import {StyleSheet} from 'react-native';
+
+const styles = StyleSheet.create({
+  border: {borderBottomWidth: 1, borderBottomColor: 'rgba(0, 0, 0, 0.05)'},
+  slideMenuItemContainer: {
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  slideMenuLabel: {paddingStart: 12},
+  expandableViewContainer: {paddingTop: 12, paddingBottom: 12},
+  expandableViewHeaderContainer: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0, 0, 0, 0.05)',
+  },
+  expandableViewChildContainer: {
+    paddingStart: 48,
+  },
+});
+export default styles;

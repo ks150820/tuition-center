@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
 import UIRow from '@widgets/ui-row';
 import UIText from '@widgets/ui-text';
@@ -20,11 +20,19 @@ const Body = ({body}: {body: string}) => {
     </UIRow>
   );
 };
-const AccordionView = ({title, body}: {title: string; body: string}) => {
+const AccordionView = ({
+  children,
+  title,
+  body,
+}: {
+  children?: ReactNode;
+  title: string;
+  body?: string;
+}) => {
   return (
     <View>
       <Header title={title} />
-      <Body body={body} />
+      {body ? <Body body={body} /> : children}
     </View>
   );
 };

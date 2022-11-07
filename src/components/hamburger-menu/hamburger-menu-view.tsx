@@ -1,5 +1,4 @@
-import {View, Text} from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {useRef} from 'react';
 import Modal from 'react-native-modal';
 import SideMenuView from './side-menu-view';
 interface IHamburgerMenu {
@@ -8,7 +7,6 @@ interface IHamburgerMenu {
 }
 const HamburgerMenu = ({isVisible = false, setIsVisible}: IHamburgerMenu) => {
   const refModal = useRef<any>();
-  const [first, setfirst] = useState(isVisible);
   return (
     // Other parts of our screen
     // Modal needs to be included

@@ -41,6 +41,7 @@ export const FONT_TYPE: IFontType = {
     fontFamily: 'Mukta-SemiBold',
     fontSize: FONT_SIZE.font16,
   },
+  HAMBURGER: {fontFamily: 'Mukta-SemiBold', fontSize: FONT_SIZE.font14},
   OTHERS: {
     fontFamily: 'Mukta-SemiBold',
     fontSize: FONT_SIZE.font18,

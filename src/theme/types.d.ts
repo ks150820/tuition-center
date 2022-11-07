@@ -9,6 +9,7 @@ type FontType =
   | 'PARAGRAPH'
   | 'INFO'
   | 'BUTTON'
+  | 'HAMBURGER'
   | 'OTHERS';
 interface IFont {
   [key: string]: number;
