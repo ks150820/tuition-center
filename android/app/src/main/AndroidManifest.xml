@@ -1,0 +1,28 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.exampur">
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<application android:name=".MainApplication" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" android:allowBackup="false" android:theme="@style/BootTheme">
+		<activity android:name=".MainActivity" android:label="@string/app_name" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:launchMode="singleTask" android:windowSoftInputMode="adjustResize" android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<receiver android:name=".SmsBroadCastReceiver" android:priority="999" android:enabled="true" android:exported="true" android:permission="com.google.android.gms.auth.api.phone.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED" />
+			</intent-filter>
+		</receiver>
+		<service android:name=".MyFirebaseMessagingService" android:exported="false">
+			<intent-filter>
+				<action android:name="com.google.firebase.MESSAGING_EVENT" />
+			</intent-filter>
+		</service>
+		<service android:name=".downloadService.DownloadService" android:enabled="true" android:exported="false" />
+		<service android:name=".downloadService.DownloadEventService" />
+		<receiver android:name=".downloadService.DownloadActionReceiver" />
+	</application>
+</manifest>
