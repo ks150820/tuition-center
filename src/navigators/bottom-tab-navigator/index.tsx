@@ -16,8 +16,43 @@ import {
   ACTIVE_BOOKS,
   IN_ACTIVE_BOOKS,
 } from '@assets/icons/svg-icons';
+import BottomTabHeaderView from '@navigators/components/bottom-tab-navigation-header/bottom-tab-header-view';
 
 const BottomTab = createBottomTabNavigator<bottomTabParamList>();
+const bottomTabOption = [
+  {
+    title: 'Home',
+    icon: {
+      active: ACTIVE_HOME_ICON,
+      inActive: INACTIVE_HOME_ICON,
+    },
+    component: HomeNavigator,
+  },
+  {
+    title: 'Courses',
+    icon: {
+      active: ACTIVE_MY_COURSE_ICON,
+      inActive: IN_ACTIVE_MY_COURSE_ICON,
+    },
+    component: CoursesScreen,
+  },
+  {
+    title: 'FreeVideo',
+    icon: {
+      active: ACTIVE_VIDEOS,
+      inActive: IN_ACTIVE_VIDEOS,
+    },
+    component: FreeVideosScreen,
+  },
+  {
+    title: 'StudyMaterial',
+    icon: {
+      active: ACTIVE_VIDEOS,
+      inActive: IN_ACTIVE_VIDEOS,
+    },
+    component: StudyMaterial,
+  },
+];
 
 const BottomTabBarNavigator = () => {
   return (
@@ -27,121 +62,38 @@ const BottomTabBarNavigator = () => {
           height: 60,
         },
       })}>
-      <BottomTab.Screen
-        name="HomeNavigator"
-        options={{
-          headerShown: false,
-          tabBarLabel: '',
-          tabBarIcon: ({focused}) => {
-            return (
-              <BottomTabItem
-                componentStyle={
-                  focused ? styles.labelFocusedContainer : styles.labelContainer
-                }
-                icon={focused ? ACTIVE_HOME_ICON : INACTIVE_HOME_ICON}
-                height={24}
-                width={24}
-                iconStyle={styles.iconStyle}
-                textStyle={[
-                  focused ? styles.MyCourseLabel : styles.MyCourseInActiveLabel,
-                  styles.commonMyCourseLabel,
-                ]}
-                tabTitle="Home"
-              />
-            );
-          },
-        }}
-        component={HomeNavigator}
-      />
-      <BottomTab.Screen
-        name="Courses"
-        component={CoursesScreen}
-        options={{
-          tabBarLabel: '',
-          tabBarIcon: ({focused}) => {
-            return (
-              <BottomTabItem
-                componentStyle={
-                  focused ? styles.labelFocusedContainer : styles.labelContainer
-                }
-                icon={
-                  focused ? ACTIVE_MY_COURSE_ICON : IN_ACTIVE_MY_COURSE_ICON
-                }
-                height={24}
-                width={24}
-                iconStyle={styles.iconStyle}
-                textStyle={[
-                  focused ? styles.MyCourseLabel : styles.MyCourseInActiveLabel,
-                  styles.commonMyCourseLabel,
-                ]}
-                tabTitle="My Course"
-              />
-            );
-          },
-          tabBarItemStyle: {
-            width: 100,
-            flex: 1,
-          },
-        }}
-      />
-      <BottomTab.Screen
-        name="FreeVideo"
-        component={FreeVideosScreen}
-        options={{
-          tabBarLabel: '',
-          tabBarIcon: ({focused}) => {
-            return (
-              <BottomTabItem
-                componentStyle={
-                  focused ? styles.labelFocusedContainer : styles.labelContainer
-                }
-                icon={focused ? ACTIVE_VIDEOS : IN_ACTIVE_VIDEOS}
-                height={24}
-                width={24}
-                iconStyle={styles.iconStyle}
-                textStyle={[
-                  focused ? styles.MyCourseLabel : styles.MyCourseInActiveLabel,
-                  styles.commonMyCourseLabel,
-                ]}
-                tabTitle="Free Video"
-              />
-            );
-          },
-          tabBarItemStyle: {
-            width: 100,
-            flex: 1,
-          },
-        }}
-      />
-      <BottomTab.Screen
-        name="StudyMaterial"
-        component={StudyMaterial}
-        options={{
-          tabBarLabel: '',
-          tabBarIcon: ({focused}) => {
-            return (
-              <BottomTabItem
-                componentStyle={
-                  focused ? styles.labelFocusedContainer : styles.labelContainer
-                }
-                icon={focused ? ACTIVE_BOOKS : IN_ACTIVE_BOOKS}
-                height={24}
-                width={24}
-                iconStyle={styles.iconStyle}
-                textStyle={[
-                  focused ? styles.MyCourseLabel : styles.MyCourseInActiveLabel,
-                  styles.commonMyCourseLabel,
-                ]}
-                tabTitle="Study Material"
-              />
-            );
-          },
-          tabBarItemStyle: {
-            width: 100,
-            flex: 1,
-          },
-        }}
-      />
+      {bottomTabOption.map(item => (
+        <BottomTab.Screen
+          name={item.title as any}
+          options={{
+            headerTitle: props => <BottomTabHeaderView title={item.title} />,
+            tabBarLabel: '',
+            tabBarIcon: ({focused}) => {
+              return (
+                <BottomTabItem
+                  componentStyle={
+                    focused
+                      ? styles.labelFocusedContainer
+                      : styles.labelContainer
+                  }
+                  icon={focused ? item.icon.active : item.icon.inActive}
+                  height={24}
+                  width={24}
+                  iconStyle={styles.iconStyle}
+                  textStyle={[
+                    focused
+                      ? styles.MyCourseLabel
+                      : styles.MyCourseInActiveLabel,
+                    styles.commonMyCourseLabel,
+                  ]}
+                  tabTitle={item.title}
+                />
+              );
+            },
+          }}
+          component={item.component}
+        />
+      ))}
     </BottomTab.Navigator>
   );
 };

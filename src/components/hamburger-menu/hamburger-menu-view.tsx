@@ -24,7 +24,7 @@ const HamburgerMenu = ({isVisible = false, setIsVisible}: IHamburgerMenu) => {
       propagateSwipe // Allows swipe events to propagate to children components (eg a ScrollView inside a modal)
       style={{
         height: '100%',
-        width: '75%',
+        width: '80%',
         backgroundColor: 'white',
         margin: 0,
       }} // Needs to contain the width, 75% of screen width in our case

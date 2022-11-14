@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   slideMenuItemContainer: {
     paddingVertical: 12,
     alignItems: 'center',
+    justifyContent:"space-between"
   },
   slideMenuLabel: {paddingStart: 12},
   expandableViewContainer: {paddingTop: 12, paddingBottom: 12},
