@@ -16,7 +16,8 @@ import {
   ACTIVE_BOOKS,
   IN_ACTIVE_BOOKS,
 } from '@assets/icons/svg-icons';
-import BottomTabHeaderView from '@navigators/components/bottom-tab-navigation-header/bottom-tab-header-view';
+import BottomTabHeaderView from '@navigators/bottom-tab-navigator/components/bottom-tab-navigation-header/bottom-tab-header-view';
+import ProfileScreenView from '@screens/profile-screen/profile-screen-view-controller';
 
 const BottomTab = createBottomTabNavigator<bottomTabParamList>();
 const bottomTabOption = [
@@ -50,7 +51,7 @@ const bottomTabOption = [
       active: ACTIVE_VIDEOS,
       inActive: IN_ACTIVE_VIDEOS,
     },
-    component: StudyMaterial,
+    component: ProfileScreenView,
   },
 ];
 

@@ -4,13 +4,14 @@ import UIText from '@widgets/ui-text';
 import {FONT_TYPE} from '@theme/font';
 import colors from '@theme/colors';
 import UIRow from '@widgets/ui-row';
+import EditIcon from '@resources/icons/edit';
 
 const ProfileView = () => (
   <View
     style={{
-      height: 54,
-      width: 54,
-      borderRadius: 54 / 2,
+      height: 68,
+      width: 68,
+      borderRadius: 68 / 2,
       backgroundColor: colors.gray_scale.dusty_gray,
       justifyContent: 'center',
       alignItems: 'center',
@@ -19,25 +20,31 @@ const ProfileView = () => (
     <UIText FontType={FONT_TYPE.H1}>{'A'}</UIText>
   </View>
 );
-const HamburgerProfileView = () => {
+const ProfileDetailsView = () => {
   return (
     <UIRow
       style={{
         paddingHorizontal: 16,
         paddingTop: 32,
-        alignItems: 'center',
         borderBottomColor: 'rgba(0, 0, 0, 0.05)',
         borderBottomWidth: 1,
         paddingBottom: 32,
+        width: '100%',
+        justifyContent:"space-between"
       }}>
-      <ProfileView />
-      <View>
-        <UIText FontType={FONT_TYPE.HEADING}>Anmol Kumar</UIText>
-        <UIText FontType={FONT_TYPE.SUBHEADING}>ankitverma12@gmail.com</UIText>
-        <UIText FontType={FONT_TYPE.SUBHEADING}>9876543210</UIText>
-      </View>
+      <UIRow>
+        <ProfileView />
+        <View>
+          <UIText FontType={FONT_TYPE.HEADING}>Anmol Kumar</UIText>
+          <UIText FontType={FONT_TYPE.SUBHEADING}>
+            ankitverma12@gmail.com
+          </UIText>
+          <UIText FontType={FONT_TYPE.SUBHEADING}>9876543210</UIText>
+        </View>
+      </UIRow>
+      <EditIcon />
     </UIRow>
   );
 };
 
-export default HamburgerProfileView;
+export default ProfileDetailsView;

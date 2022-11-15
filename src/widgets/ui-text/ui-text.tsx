@@ -23,7 +23,7 @@ interface IUITextViewProps {
   // Alignment of text
   textAlign?: 'auto' | 'left' | 'right' | 'center' | 'justify' | undefined;
   // Styling for text
-  style?: object;
+  style?: ViewStyle;
   // Children to render
   children?: ReactNode;
 }

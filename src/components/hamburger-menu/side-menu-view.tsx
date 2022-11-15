@@ -1,7 +1,6 @@
+import React, {useState} from 'react';
 import {Pressable, ScrollView, View} from 'react-native';
-import React, {useState, ReactNode} from 'react';
 import UIRow from '@widgets/ui-row';
-import Profile from '@assets/icons/profile';
 import UIText from '@widgets/ui-text';
 import {FONT_TYPE} from '@theme/font';
 import styles from './style';
@@ -12,89 +11,18 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
-import AppTutorialIcon from '@resources/icons/app-tutorial-hamburger';
-import LanguageSwitchIcon from '@resources/icons/language-switch-hamburger';
-import ProfileIcon from '@resources/icons/profile-icon-hamburger';
-import AttemptedQuestionsIcon from '@resources/icons/attempted-questions-hamburger';
-import HelpIcon from '@resources/icons/help-hamburger';
-import PrivacyPolicyIcon from '@resources/icons/privacy-policy-hamburger';
-import ShareNowIcon from './share-now-hamburger';
-import RateUsIcon from '@resources/icons/rate-us-hamburger';
+
 import ChevronDownIcon from '@resources/icons/chevron-down';
 import {useSharedValue} from 'react-native-reanimated';
-import LanguageSwitchView from './language-switch-label';
-import CallNowIcon from '@resources/icons/call-now-hamburger';
-import WhatsApp from '@resources/icons/whtasapp';
-import HamburgerProfileView from './hamburger-profile-view';
-import SavedQuestionsIcon from '@resources/icons/saved-questions-hamburger';
-import PersonalDetailsIcon from '@resources/icons/personal-details-hamburger';
+import ProfileDetailsView from '../profile-details/profile-details-view';
+import useHamburgerActions from './side-menu-view-controller';
+import {actionsType, menuList} from './constants';
 
-const menuList = [
-  {
-    title: 'Profile',
-    Icon: ProfileIcon,
-    children: {
-      child1: {
-        title: 'My Purchases',
-        Icon: AppTutorialIcon,
-      },
-      child2: {
-        title: 'Personal Details',
-        Icon: PersonalDetailsIcon,
-      },
-    },
-    ExtraLabelView: null,
-  },
-  {
-    title: 'App tutorial',
-    Icon: AppTutorialIcon,
-    children: {},
-    ExtraLabelView: null,
-  },
-  {
-    title: 'Language',
-    Icon: LanguageSwitchIcon,
-    children: {},
-    ExtraLabelView: LanguageSwitchView,
-  },
-  {
-    title: 'Saved Questions',
-    Icon: SavedQuestionsIcon,
-    children: {},
-    ExtraLabelView: null,
-  },
-  {
-    title: 'Attempted Questions',
-    Icon: AttemptedQuestionsIcon,
-    children: {},
-    ExtraLabelView: null,
-  },
-  {
-    title: 'Help',
-    Icon: HelpIcon,
-    children: {},
-    ExtraLabelView: CallNowIcon,
-  },
-  {
-    title: 'Privacy policy',
-    Icon: PrivacyPolicyIcon,
-    children: {},
-    ExtraLabelView: null,
-  },
-  {
-    title: 'Share now',
-    Icon: ShareNowIcon,
-    children: {},
-    ExtraLabelView: WhatsApp,
-  },
-  {
-    title: 'Rate us',
-    Icon: RateUsIcon,
-    children: {},
-    ExtraLabelView: null,
-  },
-];
-const CreateChildForExpandable = ({childrenObject}: {childrenObject: any}) => {
+const CreateChildForExpandable = ({
+  childrenObject,
+}: {
+  childrenObject: childType[];
+}) => {
   let list = [];
   let index = 0;
   for (const child in childrenObject) {
@@ -106,6 +34,7 @@ const CreateChildForExpandable = ({childrenObject}: {childrenObject: any}) => {
         <SideMenuItem
           Icon={childrenObject[child].Icon}
           label={childrenObject[child].title}
+          actions={childrenObject[child].actions}
         />
       </View>,
     );
@@ -115,22 +44,23 @@ const CreateChildForExpandable = ({childrenObject}: {childrenObject: any}) => {
 
 const CreateExpandableView = ({
   title,
-  object,
+  childrenObject,
   setIsExpand,
   isExpand,
   Icon,
+  actions,
 }: {
   title: string;
-  object: any;
+  childrenObject: childType[];
   setIsExpand: any;
   isExpand: boolean;
   Icon?: any;
+  actions: any;
 }) => {
-  console.log(object);
-  const rotation = useSharedValue(0);
+  const rotation = useSharedValue(180);
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      transform: [{rotateX: `${rotation.value}deg`}],
+      transform: [{rotateZ: `${rotation.value}deg`}],
     };
   });
 
@@ -151,7 +81,7 @@ const CreateExpandableView = ({
             styles.expandableViewHeaderContainer,
             {paddingHorizontal: 16},
           ]}>
-          <SideMenuItem Icon={Icon} label={title} />
+          <SideMenuItem Icon={Icon} label={title} actions={actions} />
           <Animated.View style={animatedStyles}>
             <ChevronDownIcon />
           </Animated.View>
@@ -160,9 +90,11 @@ const CreateExpandableView = ({
 
       <View>
         {isExpand && (
-          <Animated.View entering={FadeIn.duration(800)}>
-            <CreateChildForExpandable childrenObject={object} />
-          </Animated.View>
+          <View>
+            <Animated.View entering={FadeIn.duration(800)}>
+              <CreateChildForExpandable childrenObject={childrenObject} />
+            </Animated.View>
+          </View>
         )}
       </View>
     </View>
@@ -179,15 +111,26 @@ const SideMenuItem = ({
   label,
   Icon,
   ExtraLabel,
+  actions,
 }: {
   label: string;
-  Icon?: any;
+  Icon?: iconType;
   ExtraLabel?: any;
+  actions?: typeActions;
 }) => {
-  console.log('Icon', Icon);
-
+  const {onCall, onWhatsappShare} = useHamburgerActions();
   return (
-    <Pressable onPress={() => {}}>
+    <Pressable
+      onPress={() => {
+        if (actions) {
+          if (actions.type && actions.type === actionsType.openDialer) {
+            onCall(actions.data);
+          }
+          if (actions.type && actions.type === actionsType.openWhatsapp) {
+            onWhatsappShare(actions.data, actions.extra || '');
+          }
+        }
+      }}>
       <UIRow style={styles.slideMenuItemContainer}>
         <UIRow style={{alignItems: 'center'}}>
           {Icon ? <Icon /> : null}
@@ -204,7 +147,7 @@ const SideMenuView = () => {
 
   const renderOptions = () => {
     return menuList.map((data, index) => {
-      return Object.keys(data.children).length === 0 ? (
+      return Object.keys(data.childrens).length === 0 ? (
         <View style={index !== menuList.length - 1 && styles.border}>
           <View style={{paddingHorizontal: 16}}>
             <SideMenuItem
@@ -212,6 +155,7 @@ const SideMenuView = () => {
               label={data.title}
               Icon={data.Icon}
               ExtraLabel={data.ExtraLabelView}
+              actions={data.actions}
             />
           </View>
         </View>
@@ -220,8 +164,9 @@ const SideMenuView = () => {
           setIsExpand={setIsExpand}
           isExpand={isExpand}
           title={data.title}
-          object={data.children}
+          childrenObject={data.childrens}
           Icon={data.Icon}
+          actions={data.actions}
         />
       );
     });
@@ -230,7 +175,7 @@ const SideMenuView = () => {
   return (
     <ScrollView style={{flex: 1}}>
       <Animated.View entering={FadeInDown.duration(800)}>
-        <HamburgerProfileView/>
+        <ProfileDetailsView />
         {renderOptions()}
       </Animated.View>
     </ScrollView>
