@@ -1,12 +1,3 @@
-import METRICS from './metric';
-
-/**
- * created by Ramees P
- * date: 4 Aug 21
- * font configurations
- */
-
-console.log(METRICS.screenWidth);
 
 const FONT_SIZE: IFont = {
   font12: 12,

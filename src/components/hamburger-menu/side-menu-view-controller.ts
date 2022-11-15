@@ -1,10 +1,11 @@
-import {Text, View} from 'react-native';
-import React, {Component} from 'react';
 import {Linking} from 'react-native';
 import UIToast from '@services/UIToast/ui-toast';
 const useHamburgerActions = () => {
   const onNavigate = () => {};
   const onLanguageSwitch = () => {};
+  /**
+   * @param phoneNumber phone number of user
+   */
   const onCall = (phoneNumber: string) => {
     let numberToCall = `tel:${phoneNumber}`;
     Linking.canOpenURL(numberToCall).then(supported => {
@@ -15,6 +16,10 @@ const useHamburgerActions = () => {
       }
     });
   };
+  /**
+   * @param phone phone number for whatsapp chat
+   * @param msg message to send to user
+   */
   const onWhatsappShare = (phone: string, msg: string) => {
     let mobile = '+' + phone;
     if (mobile) {

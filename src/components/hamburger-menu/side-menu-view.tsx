@@ -17,24 +17,24 @@ import {useSharedValue} from 'react-native-reanimated';
 import ProfileDetailsView from '../profile-details/profile-details-view';
 import useHamburgerActions from './side-menu-view-controller';
 import {actionsType, menuList} from './constants';
-
-const CreateChildForExpandable = ({
-  childrenObject,
-}: {
-  childrenObject: childType[];
-}) => {
+/**
+ *
+ * @param  props.childrens  it is used when there is multiple child  for a  expandable view . childrens contains one or more child's
+ * @returns returns a view with rendered child object
+ */
+const CreateChildForExpandable = ({childrens}: {childrens: childType[]}) => {
   let list = [];
   let index = 0;
-  for (const child in childrenObject) {
+  for (const child in childrens) {
     index = index + 1;
     list.push(
       <View
-        key={childrenObject[child].title}
-        style={index !== Object.keys(childrenObject).length && styles.border}>
+        key={childrens[child].title}
+        style={index !== Object.keys(childrens).length && styles.border}>
         <SideMenuItem
-          Icon={childrenObject[child].Icon}
-          label={childrenObject[child].title}
-          actions={childrenObject[child].actions}
+          Icon={childrens[child].Icon}
+          label={childrens[child].title}
+          actions={childrens[child].actions}
         />
       </View>,
     );
@@ -42,22 +42,33 @@ const CreateChildForExpandable = ({
   return <View style={styles.expandableViewChildContainer}>{list}</View>;
 };
 
+/**
+ * @param props.title  title for the view
+ * @param props.childrens  child,s of an expandable view
+ * @param props.setIsExpand  setState function to control expansion and collapse of the view
+ * @param props.isExpand  boolean to check weather the view is expanded or not
+ * @param props.Icon it will render the icon
+ * @param props.actions actions that needed to be carried out while clicking a view
+ * @returns a view that we can expand and collapse
+ */
 const CreateExpandableView = ({
   title,
-  childrenObject,
+  childrens,
   setIsExpand,
   isExpand,
   Icon,
   actions,
 }: {
   title: string;
-  childrenObject: childType[];
+  childrens: childType[];
   setIsExpand: any;
   isExpand: boolean;
-  Icon?: any;
-  actions: any;
+  Icon?: iconType;
+  actions?: typeActions;
 }) => {
-  const rotation = useSharedValue(180);
+  // in order to control the rotation of chevron icon while expanding and collapsing a view initial value is set to 180 deg , useSharedValue is the part react-native re animation
+  const rotation = useSharedValue<number>(180);
+  //by using useAnimatedStyle we will control the rotation of the icon
   const animatedStyles = useAnimatedStyle(() => {
     return {
       transform: [{rotateZ: `${rotation.value}deg`}],
@@ -69,6 +80,7 @@ const CreateExpandableView = ({
       <Pressable
         onPress={() => {
           setIsExpand(!isExpand);
+          //if the view is expanded we will set the rotation z axis  to 360 and if its not expanded we will set it back to 180
           rotation.value = isExpand
             ? withTiming(180, {duration: 300, easing: Easing.inOut(Easing.exp)})
             : withTiming(360, {
@@ -92,7 +104,7 @@ const CreateExpandableView = ({
         {isExpand && (
           <View>
             <Animated.View entering={FadeIn.duration(800)}>
-              <CreateChildForExpandable childrenObject={childrenObject} />
+              <CreateChildForExpandable childrens={childrens} />
             </Animated.View>
           </View>
         )}
@@ -100,6 +112,11 @@ const CreateExpandableView = ({
     </View>
   );
 };
+/**
+ *
+ * @param label string value to display as title
+ * @returns rendered text view
+ */
 const SideMenuLabel = ({label}: {label: string}) => {
   return (
     <UIText style={styles.slideMenuLabel} FontType={FONT_TYPE.HAMBURGER}>
@@ -107,6 +124,14 @@ const SideMenuLabel = ({label}: {label: string}) => {
     </UIText>
   );
 };
+/**
+ *
+ * @param props.label label or title on the view
+ * @param props.Icon icon to render left to label
+ * @param props.ExtraLabel extra actions label to render right to the item example language switch
+ * @param props.actions actions to be completed while clicking an item
+ * @returns a view to be rendered on the side menu view
+ */
 const SideMenuItem = ({
   label,
   Icon,
@@ -124,15 +149,15 @@ const SideMenuItem = ({
       onPress={() => {
         if (actions) {
           if (actions.type && actions.type === actionsType.openDialer) {
-            onCall(actions.data);
+            onCall(actions.data); // check side menu view controller. it will open the dialer with provided number
           }
           if (actions.type && actions.type === actionsType.openWhatsapp) {
-            onWhatsappShare(actions.data, actions.extra || '');
+            onWhatsappShare(actions.data, actions.extra || ''); // check side menu view controller. it will open whatsapp chat on the given number and message
           }
         }
       }}>
       <UIRow style={styles.slideMenuItemContainer}>
-        <UIRow style={{alignItems: 'center'}}>
+        <UIRow style={styles.alignCenter}>
           {Icon ? <Icon /> : null}
           <SideMenuLabel label={String(label)} />
         </UIRow>
@@ -145,13 +170,17 @@ const SideMenuItem = ({
 const SideMenuView = () => {
   const [isExpand, setIsExpand] = useState(false);
 
+  /**
+   * it will render the view if the length of children is > 0 it will create an expandable view otherwise normal view
+   */
   const renderOptions = () => {
     return menuList.map((data, index) => {
       return Object.keys(data.childrens).length === 0 ? (
-        <View style={index !== menuList.length - 1 && styles.border}>
+        <View
+          key={data.title}
+          style={index !== menuList.length - 1 && styles.border}>
           <View style={{paddingHorizontal: 16}}>
             <SideMenuItem
-              key={data.title}
               label={data.title}
               Icon={data.Icon}
               ExtraLabel={data.ExtraLabelView}
@@ -164,9 +193,10 @@ const SideMenuView = () => {
           setIsExpand={setIsExpand}
           isExpand={isExpand}
           title={data.title}
-          childrenObject={data.childrens}
+          childrens={data.childrens}
           Icon={data.Icon}
           actions={data.actions}
+          key={data.title}
         />
       );
     });

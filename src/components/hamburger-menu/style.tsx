@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   slideMenuItemContainer: {
     paddingVertical: 12,
     alignItems: 'center',
-    justifyContent:"space-between"
+    justifyContent: 'space-between',
   },
   slideMenuLabel: {paddingStart: 12},
   expandableViewContainer: {paddingTop: 12, paddingBottom: 12},
@@ -17,6 +17,15 @@ const styles = StyleSheet.create({
   },
   expandableViewChildContainer: {
     paddingStart: 48,
+  },
+  alignCenter: {
+    alignItems: 'center',
+  },
+  sideMenuContainer: {
+    height: '100%',
+    width: '80%',
+    backgroundColor: 'white',
+    margin: 0,
   },
 });
 export default styles;

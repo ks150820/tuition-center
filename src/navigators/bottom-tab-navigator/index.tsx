@@ -65,6 +65,7 @@ const BottomTabBarNavigator = () => {
       })}>
       {bottomTabOption.map(item => (
         <BottomTab.Screen
+          key={item.title}
           name={item.title as any}
           options={{
             headerTitle: props => <BottomTabHeaderView title={item.title} />,
