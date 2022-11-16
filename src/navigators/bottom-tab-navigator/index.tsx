@@ -17,7 +17,7 @@ import {
   IN_ACTIVE_BOOKS,
 } from '@assets/icons/svg-icons';
 import BottomTabHeaderView from '@navigators/bottom-tab-navigator/components/bottom-tab-navigation-header/bottom-tab-header-view';
-import ProfileScreenView from '@screens/profile-screen/profile-screen-view-controller';
+import ProfileScreenView from '@screens/profile-screen/profile-screen-view';
 
 const BottomTab = createBottomTabNavigator<bottomTabParamList>();
 const bottomTabOption = [

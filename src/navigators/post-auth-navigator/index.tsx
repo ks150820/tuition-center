@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import BottomTabBar from '../bottom-tab-navigator';
-import ProfileScreenView from '@screens/profile-screen/profile-screen-view-controller';
+import ProfileScreenView from '@screens/profile-screen/profile-screen-view';
 
 
 

@@ -11,6 +11,7 @@ import CallNowIcon from '@resources/icons/call-now-hamburger';
 import WhatsApp from '@resources/icons/whtasapp';
 import SavedQuestionsIcon from '@resources/icons/saved-questions-hamburger';
 import PersonalDetailsIcon from '@resources/icons/personal-details-hamburger';
+import {HAMBURGER_MENU} from '@resources/values/strings';
 
 export enum actionsType {
   openPage = '_NAVIGATE',
@@ -22,11 +23,11 @@ export enum actionsType {
 
 export const menuList: IMenuList[] = [
   {
-    title: 'Profile',
+    title: HAMBURGER_MENU.PROFILE.en,
     Icon: ProfileIcon,
     childrens: [
       {
-        title: 'My Purchases',
+        title: HAMBURGER_MENU.MY_PURCHASES.en,
         Icon: AppTutorialIcon,
         actions: {
           type: actionsType.openPage,
@@ -34,7 +35,7 @@ export const menuList: IMenuList[] = [
         },
       },
       {
-        title: 'Personal Details',
+        title: HAMBURGER_MENU.PERSONAL_DETAILS.en,
         Icon: PersonalDetailsIcon,
         actions: {
           type: actionsType.openPage,
@@ -46,7 +47,7 @@ export const menuList: IMenuList[] = [
     ExtraLabelView: null,
   },
   {
-    title: 'App tutorial',
+    title: HAMBURGER_MENU.APP_TUTORIAL.en,
     Icon: AppTutorialIcon,
     childrens: [],
     ExtraLabelView: null,
@@ -56,7 +57,7 @@ export const menuList: IMenuList[] = [
     },
   },
   {
-    title: 'Language',
+    title: HAMBURGER_MENU.LANGUAGE.en,
     Icon: LanguageSwitchIcon,
     childrens: [],
     ExtraLabelView: LanguageSwitchView,
@@ -66,7 +67,7 @@ export const menuList: IMenuList[] = [
     },
   },
   {
-    title: 'Saved Questions',
+    title: HAMBURGER_MENU.SAVED_QUESTION.en,
     Icon: SavedQuestionsIcon,
     childrens: [],
     ExtraLabelView: null,
@@ -76,7 +77,7 @@ export const menuList: IMenuList[] = [
     },
   },
   {
-    title: 'Attempted Questions',
+    title: HAMBURGER_MENU.ATTEMPTED_QUESTION.en,
     Icon: AttemptedQuestionsIcon,
     childrens: [],
     ExtraLabelView: null,
@@ -86,7 +87,7 @@ export const menuList: IMenuList[] = [
     },
   },
   {
-    title: 'Help',
+    title: HAMBURGER_MENU.HELP.en,
     Icon: HelpIcon,
     childrens: [],
     ExtraLabelView: CallNowIcon,
@@ -96,7 +97,7 @@ export const menuList: IMenuList[] = [
     },
   },
   {
-    title: 'Privacy policy',
+    title: HAMBURGER_MENU.PRIVACY_POLICY.en,
     Icon: PrivacyPolicyIcon,
     childrens: [],
     ExtraLabelView: null,
@@ -106,7 +107,7 @@ export const menuList: IMenuList[] = [
     },
   },
   {
-    title: 'Share now',
+    title: HAMBURGER_MENU.SHARE_NOW.en,
     Icon: ShareNowIcon,
     childrens: [],
     ExtraLabelView: WhatsApp,
@@ -117,7 +118,7 @@ export const menuList: IMenuList[] = [
     },
   },
   {
-    title: 'Rate us',
+    title: HAMBURGER_MENU.RATE_US.en,
     Icon: RateUsIcon,
     childrens: [],
     ExtraLabelView: null,

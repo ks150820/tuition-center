@@ -44,3 +44,54 @@ export const PLAYER_TEXT: IStringConstants = {
   //   hi: '',
   // },
 };
+export const HAMBURGER_MENU: IStringConstants = {
+  PROFILE: {
+    en: 'Profile',
+    hi: 'Profile',
+  },
+  MY_PURCHASES: {
+    en: 'My Purchases',
+    hi: 'My Purchases',
+  },
+  PERSONAL_DETAILS: {en: 'Personal Details', hi: 'Personal Details'},
+  APP_TUTORIAL: {
+    en: 'App tutorial',
+    hi: 'App tutorial',
+  },
+  LANGUAGE: {
+    en: 'Language',
+    hi: 'Language',
+  },
+  SAVED_QUESTION: {
+    en: 'Saved Questions',
+    hi: 'Saved Questions',
+  },
+  ATTEMPTED_QUESTION: {
+    en: 'Attempted Questions',
+    hi: 'Attempted Questions',
+  },
+  HELP: {
+    en: 'Help',
+    hi: 'Help',
+  },
+  PRIVACY_POLICY: {
+    en: 'Privacy policy',
+    hi: 'Privacy policy',
+  },
+  SHARE_NOW: {
+    en: 'Share now',
+    hi: 'Share now',
+  },
+  RATE_US: {
+    en: 'Rate us',
+    hi: 'Rate us',
+  },
+  ENGLISH: {
+    en: 'English',
+    hi: 'English',
+  },
+  HINDI: {
+    en: 'Hindi',
+    hi: 'Hindi',
+  },
+};

@@ -20,7 +20,7 @@ const ProfileView = () => (
     <UIText FontType={FONT_TYPE.H1}>{'A'}</UIText>
   </View>
 );
-const ProfileDetailsView = () => {
+const ProfileDetailsView = ({isEditable = false}) => {
   return (
     <UIRow
       style={{
@@ -30,7 +30,7 @@ const ProfileDetailsView = () => {
         borderBottomWidth: 1,
         paddingBottom: 32,
         width: '100%',
-        justifyContent:"space-between"
+        justifyContent: 'space-between',
       }}>
       <UIRow>
         <ProfileView />
@@ -42,7 +42,7 @@ const ProfileDetailsView = () => {
           <UIText FontType={FONT_TYPE.SUBHEADING}>9876543210</UIText>
         </View>
       </UIRow>
-      <EditIcon />
+      {isEditable && <EditIcon />}
     </UIRow>
   );
 };
