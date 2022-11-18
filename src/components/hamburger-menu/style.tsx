@@ -14,6 +14,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(0, 0, 0, 0.05)',
+    paddingStart: 16,
+    paddingEnd: 12,
   },
   expandableViewChildContainer: {
     paddingStart: 48,

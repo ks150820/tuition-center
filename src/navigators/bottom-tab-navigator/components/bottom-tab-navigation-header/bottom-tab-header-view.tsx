@@ -1,17 +1,21 @@
-import {View, Text, Pressable} from 'react-native';
+import {Pressable} from 'react-native';
 import React, {useState} from 'react';
 import UIRow from '@widgets/ui-row';
 import HamburgerMenu from '@components/hamburger-menu/hamburger-menu-view';
 import HamburgerIcon from '@resources/icons/hamburger-icon';
+import styles from './style';
 import UIText from '@widgets/ui-text';
 import {FONT_TYPE} from '@theme/font';
-import {COLORS} from '@resources/colors';
-import styles from './style';
 
 interface IBottomTabHeaderView {
   title: string;
 }
-const BottomTabHeaderView = ({title}: IBottomTabHeaderView) => {
+/**
+ *
+ * @param title navigator title to render on the custom header
+ * @returns custom header with hamburger menu controller and title
+ */
+const BottomTabHeaderView: React.FC<IBottomTabHeaderView> = ({title}) => {
   const [isVisible, setIsVisible] = useState(false);
   return (
     <UIRow style={styles.container}>
@@ -19,12 +23,10 @@ const BottomTabHeaderView = ({title}: IBottomTabHeaderView) => {
         onPress={() => {
           setIsVisible(!isVisible);
         }}
-        style={{padding: 12}}>
+        style={styles.hamburgerIconContainer}>
         <HamburgerIcon />
       </Pressable>
-      <UIText FontType={FONT_TYPE.OTHERS} style={styles.title}>
-        {title}
-      </UIText>
+      <UIText FontType={FONT_TYPE.OTHERS}>{title}</UIText>
       <HamburgerMenu setIsVisible={setIsVisible} isVisible={isVisible} />
     </UIRow>
   );

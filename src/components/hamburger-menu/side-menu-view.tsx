@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Pressable, ScrollView, View} from 'react-native';
 import UIRow from '@widgets/ui-row';
 import UIText from '@widgets/ui-text';
@@ -17,12 +17,19 @@ import {useSharedValue} from 'react-native-reanimated';
 import ProfileDetailsView from '../profile-details/profile-details-view';
 import useHamburgerActions from './side-menu-view-controller';
 import {actionsType, menuList} from './constants';
+import {useNavigation} from '@react-navigation/native';
+import {HamburgerContext} from './hamburger-menu-view';
 /**
  *
  * @param  props.childrens  it is used when there is multiple child  for a  expandable view . childrens contains one or more child's
  * @returns returns a view with rendered child object
  */
-const CreateChildForExpandable = ({childrens}: {childrens: childType[]}) => {
+interface ICreateChildForExpandable {
+  childrens: childType[];
+}
+const CreateChildForExpandable: React.FunctionComponent<
+  ICreateChildForExpandable
+> = ({childrens}) => {
   let list = [];
   let index = 0;
   for (const child in childrens) {
@@ -51,23 +58,24 @@ const CreateChildForExpandable = ({childrens}: {childrens: childType[]}) => {
  * @param props.actions actions that needed to be carried out while clicking a view
  * @returns a view that we can expand and collapse
  */
-const CreateExpandableView = ({
-  title,
-  childrens,
-  setIsExpand,
-  isExpand,
-  Icon,
-  actions,
-}: {
+interface ICreateExpandableView {
   title: string;
   childrens: childType[];
   setIsExpand: any;
   isExpand: boolean;
   Icon?: iconType;
   actions?: typeActions;
+}
+const CreateExpandableView: React.FunctionComponent<ICreateExpandableView> = ({
+  title,
+  childrens,
+  setIsExpand,
+  isExpand,
+  Icon,
+  actions,
 }) => {
   // in order to control the rotation of chevron icon while expanding and collapsing a view initial value is set to 180 deg , useSharedValue is the part react-native re animation
-  const rotation = useSharedValue<number>(180);
+  const rotation = useSharedValue<number>(360);
   //by using useAnimatedStyle we will control the rotation of the icon
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -82,17 +90,13 @@ const CreateExpandableView = ({
           setIsExpand(!isExpand);
           //if the view is expanded we will set the rotation z axis  to 360 and if its not expanded we will set it back to 180
           rotation.value = isExpand
-            ? withTiming(180, {duration: 300, easing: Easing.inOut(Easing.exp)})
-            : withTiming(360, {
+            ? withTiming(360, {duration: 300, easing: Easing.inOut(Easing.exp)})
+            : withTiming(180, {
                 duration: 300,
                 easing: Easing.inOut(Easing.exp),
               });
         }}>
-        <UIRow
-          style={[
-            styles.expandableViewHeaderContainer,
-            {paddingHorizontal: 16},
-          ]}>
+        <UIRow style={styles.expandableViewHeaderContainer}>
           <SideMenuItem Icon={Icon} label={title} actions={actions} />
           <Animated.View style={animatedStyles}>
             <ChevronDownIcon />
@@ -117,7 +121,10 @@ const CreateExpandableView = ({
  * @param label string value to display as title
  * @returns rendered text view
  */
-const SideMenuLabel = ({label}: {label: string}) => {
+interface ISideMenuLabel {
+  label: string;
+}
+const SideMenuLabel: React.FunctionComponent<ISideMenuLabel> = ({label}) => {
   return (
     <UIText style={styles.slideMenuLabel} FontType={FONT_TYPE.HAMBURGER}>
       {label}
@@ -132,21 +139,26 @@ const SideMenuLabel = ({label}: {label: string}) => {
  * @param props.actions actions to be completed while clicking an item
  * @returns a view to be rendered on the side menu view
  */
-const SideMenuItem = ({
-  label,
-  Icon,
-  ExtraLabel,
-  actions,
-}: {
+interface ISideMenuItem {
   label: string;
   Icon?: iconType;
   ExtraLabel?: any;
   actions?: typeActions;
+}
+const SideMenuItem: React.FunctionComponent<ISideMenuItem> = ({
+  label,
+  Icon,
+  ExtraLabel,
+  actions,
 }) => {
+  const navigation = useNavigation<profileScreenProp>();
   const {onCall, onWhatsappShare} = useHamburgerActions();
+  const {setIsVisible} = useContext(HamburgerContext);
   return (
     <Pressable
       onPress={() => {
+        setIsVisible && setIsVisible(false);
+        navigation.navigate('ProfileScreen');
         if (actions) {
           if (actions.type && actions.type === actionsType.openDialer) {
             onCall(actions.data); // check side menu view controller. it will open the dialer with provided number
@@ -167,7 +179,7 @@ const SideMenuItem = ({
   );
 };
 
-const SideMenuView = () => {
+const SideMenuView: React.FunctionComponent = () => {
   const [isExpand, setIsExpand] = useState(false);
 
   /**

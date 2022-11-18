@@ -7,3 +7,4 @@ type bottomTabParamList = {
   FreeVideo: undefined;
   StudyMaterial: undefined;
 };
+

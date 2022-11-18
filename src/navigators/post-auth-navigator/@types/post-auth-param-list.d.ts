@@ -1,10 +1,8 @@
 type NavigatorScreenParams =
-  import('@react-navigation/native').NavigatorScreenParams;
-  type StackNavigationProp =
-  import('@react-navigation/stack').StackNavigationProp;
-type StackScreenProps = import('@react-navigation/stack').StackScreenProps;
+  import('@react-navigation/native-stack').NativeStackScreenProps;
+
 type postAuthParamList = {
   BottomNavigator: NavigatorScreenParams<bottomTabParamList>;
-  ProfileScreen: string | undefined;
+  ProfileScreen;
 };
-type profileScreenProp = StackScreenProps<postAuthParamList, 'ProfileScreen'>;
+type profileScreenProp = StackNavigationProp<postAuthParamList, 'ProfileScreen'>;

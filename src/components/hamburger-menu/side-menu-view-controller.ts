@@ -1,5 +1,6 @@
 import {Linking} from 'react-native';
 import UIToast from '@services/UIToast/ui-toast';
+import {ERROR_MESSAGES} from './constants';
 const useHamburgerActions = () => {
   const onNavigate = () => {};
   const onLanguageSwitch = () => {};
@@ -12,7 +13,7 @@ const useHamburgerActions = () => {
       if (supported) {
         return Linking.openURL(numberToCall);
       } else {
-        UIToast('unable to support');
+        UIToast(ERROR_MESSAGES.DIALER_OPEN_ERROR.en);
       }
     });
   };
@@ -23,13 +24,9 @@ const useHamburgerActions = () => {
   const onWhatsappShare = (phone: string, msg: string) => {
     let mobile = '+' + phone;
     let url = 'whatsapp://send?text=' + msg + '&phone=' + mobile;
-    Linking.openURL(url)
-      .then(data => {
-        console.log('WhatsApp Opened');
-      })
-      .catch(() => {
-        UIToast('Make sure WhatsApp installed on your device');
-      });
+    Linking.openURL(url).catch(() => {
+      UIToast(ERROR_MESSAGES.WHATSAPP_OPEN_ERROR.en);
+    });
   };
 
   return {onNavigate, onLanguageSwitch, onCall, onWhatsappShare};

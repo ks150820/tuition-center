@@ -8,7 +8,8 @@ import colors from '@theme/colors';
 import styles from './style';
 import {HAMBURGER_MENU} from '@resources/values/strings';
 
-const LanguageSwitchView = () => (
+//label view to switch between hindi and english
+const LanguageSwitchView: React.FunctionComponent = () => (
   <UIRow style={styles.alignCenter}>
     <UIText color={colors.accent.royal_blue} FontType={FONT_TYPE.SUBHEADING}>
       {HAMBURGER_MENU.ENGLISH.en}

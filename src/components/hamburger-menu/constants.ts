@@ -128,3 +128,22 @@ export const menuList: IMenuList[] = [
     },
   },
 ];
+
+export enum SIDE_MENU_VIEW_ANIMATION {
+  ANIMATION_IN = 'slideInLeft',
+  ANIMATION_OUT = 'slideOutLeft',
+}
+export enum SWIPE_DIRECTION {
+  LEFT = 'left',
+  RIGHT = 'right',
+}
+export const ERROR_MESSAGES = {
+  WHATSAPP_OPEN_ERROR: {
+    en: 'Make sure WhatsApp installed on your device',
+    hi: 'Make sure WhatsApp installed on your device',
+  },
+  DIALER_OPEN_ERROR: {
+    en: 'f something went wrong, please inform us via the help section.',
+    hi: 'f something went wrong, please inform us via the help section.',
+  },
+};

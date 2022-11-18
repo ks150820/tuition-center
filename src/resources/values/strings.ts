@@ -95,3 +95,18 @@ export const HAMBURGER_MENU: IStringConstants = {
     hi: 'Hindi',
   },
 };
+
+export const PROFILE_SCREEN: IStringConstants = {
+  ADMIT_CARD: {
+    en: 'Admit Card',
+    hi: 'Admit Card',
+  },
+  MY_PURCHASES: {
+    en: 'My Purchases',
+    hi: 'My Purchases',
+  },
+  LOG_OUT: {
+    en: 'Log Out',
+    hi: 'Log Out',
+  },
+};
