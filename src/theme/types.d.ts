@@ -9,8 +9,11 @@ type FontType =
   | 'PARAGRAPH'
   | 'INFO'
   | 'BUTTON'
+  | 'OTHERS'
+  | 'DISCOUNT'
+  | 'H'
   | 'HAMBURGER'
-  | 'OTHERS';
+  | 'FONT_THIRTEEN';
 interface IFont {
   [key: string]: number;
 }

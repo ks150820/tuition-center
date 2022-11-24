@@ -9,6 +9,7 @@ const colors = {
     royal_blue: '#2665EE',
     emerald: '#58BE78',
     solid_black: '#000000',
+    corn_silk: '#fff6e0',
   },
   gray_scale: {
     mine_shaft: '#333333',
@@ -16,7 +17,7 @@ const colors = {
     dusty_gray: '#999999',
     silver: '#CCCCCC',
     gallery: '#EEEEEE',
-    white: '#EEEEEE',
+    white: '#FFFFFF',
   },
 };
 export default colors;
