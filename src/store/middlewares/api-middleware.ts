@@ -1,20 +1,47 @@
-import * as actions from '@store/actions/actions';
 import {createRequest, HttpClient} from '@secure-access-control/client';
 import {axiosInterceptor} from '@services/http/axios-interceptor-service';
-import {store} from 'store/configureStore';
+import {apiCallBegan} from '@store/actions/actions';
 import {BASE_URL, CACHING_TIME} from '@store/enum';
-import {handleError} from '@store/ui/http-manager';
-interface IDataType {
-  type: string;
-  payload: unknown;
-}
+import {AnyAction, Middleware} from 'redux';
 
 const apiLastCalledTimeMap = new Map<
   string,
   {url: string; method: string; lastCalled: number}
 >();
-const authToken = store?.getState()?.auth?.authDetails?.authToken;
-const makeRequest = (payload: IDispatchType) => {
+
+const isBlockApiCall = (key: string, timeOut: CACHING_TIME) => {
+  let previousTime = apiLastCalledTimeMap.get(key)?.lastCalled;
+
+  if (
+    previousTime &&
+    timeOut > CACHING_TIME.INVALIDATE &&
+    new Date().getMinutes() - previousTime < timeOut
+  ) {
+    return true;
+  }
+
+  return false;
+};
+
+const returnRequestObject = (
+  url: string,
+  method: HttpMethod,
+  authToken: string,
+  data?: any,
+) =>
+  createRequest(
+    BASE_URL.PRODUCTION,
+    url,
+    method,
+    HttpClient.MOBILE,
+    authToken ? authToken : undefined,
+    data,
+  );
+const makeApiRequest = async (
+  dispatch: AppDispatch,
+  getState: RootState,
+  payload: IDispatchType,
+) => {
   const {
     url,
     method,
@@ -24,79 +51,31 @@ const makeRequest = (payload: IDispatchType) => {
     onSuccess,
     cacheValidityDuration,
   } = payload;
-  const dispatch = (oData: IDataType) => {
-    store.dispatch({
-      type: oData.type,
-      payload: oData.payload,
-    });
-    oData.type === actions.apiCallSuccess.type
-      ? store.dispatch({type: onSuccess, payload: oData.payload})
-      : oData.type === actions.apiCallFailed.type
-      ? store.dispatch({
-          type: onError,
-          payload: oData.payload,
-        })
-      : store.dispatch({type: onStart, payload: []});
-  };
-
-  let apiLastCalledApiKey = url + method;
-  const requestObject = createRequest(
-    BASE_URL.PRODUCTION,
-    url,
-    method,
-    HttpClient.MOBILE,
-    authToken ? authToken : undefined,
-    data,
-  );
-  let lastCalledTimeApi =
-    apiLastCalledTimeMap.get(apiLastCalledApiKey)?.lastCalled;
-
-  if (
-    lastCalledTimeApi &&
-    cacheValidityDuration > CACHING_TIME.INVALIDATE &&
-    new Date().getMinutes() - lastCalledTimeApi < cacheValidityDuration
-  ) {
+  if (isBlockApiCall(url + method, cacheValidityDuration)) {
     return;
   }
-  axiosInterceptor
-    .request(requestObject)
-    .then(response => {
-      dispatch({type: actions.apiCallSuccess.type, payload: response.data});
-
-      apiLastCalledTimeMap.set(apiLastCalledApiKey, {
-        url: url,
-        method: method,
-        lastCalled: new Date().getMinutes(),
-      });
-      return response;
-    })
-    .catch(error => {
-      if (error.response) {
-        store.dispatch(
-          handleError({
-            errorCode: error.code || 'NaN',
-            errorMessage: error.message || 'something went wrong',
-          }),
-        );
-      }
-      dispatch({
-        type: actions.apiCallFailed.type,
-        payload: JSON.stringify(error),
-      });
-      return error;
-    });
-};
-
-const apiMiddleware =
-  (
-    {}, //dispatch, getState
-  ) =>
-  (next: any) =>
-  async (action: any) => {
-    if (action?.type !== actions.apiCallBegan.type) {
-      return next(action);
+  const authToken = getState()?.auth?.authDetails?.authToken;
+  try {
+    dispatch({action: onStart, payload: []});
+    let response = await axiosInterceptor.request(
+      returnRequestObject(url, method, authToken ? authToken : undefined, data),
+    );
+    if (response?.status === 200) {
+      dispatch({action: onSuccess, payload: response.data});
     }
-    makeRequest(action.payload);
+  } catch (error) {
+    if (error) dispatch({action: onError, payload: error});
+  }
+};
+const apiMiddleware: Middleware<
+  {dispatch: Dispatch; getState: RootState}, // Most middleware do not modify the dispatch return value
+  RootState
+> =
+  ({dispatch, getState}: {dispatch: Dispatch; getState: RootState}) =>
+  (next: any) =>
+  async (action: AnyAction) => {
+    return action?.type === apiCallBegan
+      ? makeApiRequest(dispatch, getState, action?.payload)
+      : next(action);
   };
-
 export default apiMiddleware;
