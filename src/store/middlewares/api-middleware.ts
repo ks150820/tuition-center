@@ -4,14 +4,22 @@ import {apiCallBegan} from '@store/actions/actions';
 import {BASE_URL, CACHING_TIME} from '@store/enum';
 import {AnyAction, Middleware} from 'redux';
 
+// for handling caching , last called time is pushed and compared with current time
 const apiLastCalledTimeMap = new Map<
   string,
   {url: string; method: string; lastCalled: number}
 >();
 
+/**
+ * 
+ * @param key to get the last called time from apiLastCalledTimeMap Map 
+ * @param timeOut caching time out 
+ * @returns boolean
+ */
 const isBlockApiCall = (key: string, timeOut: CACHING_TIME) => {
   let previousTime = apiLastCalledTimeMap.get(key)?.lastCalled;
 
+  //if timer is greater than zero and current time minus previous time is less than  given timeOut
   if (
     previousTime &&
     timeOut > CACHING_TIME.INVALIDATE &&
@@ -22,7 +30,12 @@ const isBlockApiCall = (key: string, timeOut: CACHING_TIME) => {
 
   return false;
 };
-
+/**
+ * @param url url for the api call
+ * @param method method for the api call
+ * @param authToken auth token 
+ * @param data data for post request
+ */
 const returnRequestObject = (
   url: string,
   method: HttpMethod,
@@ -37,6 +50,8 @@ const returnRequestObject = (
     authToken ? authToken : undefined,
     data,
   );
+
+// this will make and API request and dispatch different scenarios for api success ,failure and start
 const makeApiRequest = async (
   dispatch: AppDispatch,
   getState: RootState,
@@ -51,6 +66,7 @@ const makeApiRequest = async (
     onSuccess,
     cacheValidityDuration,
   } = payload;
+  // if api caching timed out , otherwise it wont proceed further
   if (isBlockApiCall(url + method, cacheValidityDuration)) {
     return;
   }

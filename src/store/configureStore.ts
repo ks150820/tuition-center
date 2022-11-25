@@ -7,14 +7,13 @@ const middlewares = [
 ];
 
 if (__DEV__) {
+  // only for development version
   const createDebugger = require('redux-flipper').default;
   middlewares.push(createDebugger());
 }
 export const store = configureStore({
   reducer: reducer,
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({serializableCheck: false})
-      .prepend(...middlewares)
-      // prepend and concat calls can be chained
-      .concat(),
+    getDefaultMiddleware({serializableCheck: false}).prepend(...middlewares),
+  // prepend and concat calls can be chained
 });
