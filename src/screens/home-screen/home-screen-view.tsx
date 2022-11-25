@@ -23,40 +23,7 @@ const HomeScreenView: React.FunctionComponent<IHomeScreenViewProps> = ({
     });
 
   const [isVisible, setIsVisible] = useState(false);
-  return (
-    <View style={{flex: 1, backgroundColor: 'pink'}}>
-      <Pressable
-        onPress={onPress}
-        style={{backgroundColor: 'orange', padding: 20}}>
-        <Text style={{fontFamily: 'Mukta-Regular', fontSize: 14}}>
-          Click Me 2
-        </Text>
-      </Pressable>
-      <Pressable
-        onPress={onRetry}
-        style={{backgroundColor: 'red', padding: 20}}>
-        <UIText FontType={FONT_TYPE.PARAGRAPH}>Click Me 2 3</UIText>
-      </Pressable>
-      <Pressable
-        onPress={onStartTest}
-        style={{backgroundColor: 'blue', padding: 20}}>
-        <Text>Start Test</Text>
-      </Pressable>
-      <Pressable
-        onPress={openFeedBackModal}
-        style={{backgroundColor: 'tomato', padding: 20}}>
-        <Text>Open Feedback Modal</Text>
-      </Pressable>
-      <Pressable
-        onPress={() => {
-          setIsVisible(!isVisible);
-        }}
-        style={{backgroundColor: 'tomato', padding: 20}}>
-        <Text>Live Chat</Text>
-      </Pressable>
-      <HamburgerMenu setIsVisible={setIsVisible} isVisible={isVisible} />
-    </View>
-  );
+  return <View style={{flex: 1, backgroundColor: 'pink'}}></View>;
 };
 
 export default HomeScreenView;

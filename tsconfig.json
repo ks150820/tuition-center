@@ -49,7 +49,9 @@
       "underscore": [
         "lodash"
       ],
-      "@resources/*": ["./resources/*"],
+      "@resources/*": [
+        "./resources/*"
+      ],
     },
   },
   "typeRoots": [

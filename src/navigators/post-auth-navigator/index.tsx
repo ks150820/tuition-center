@@ -1,6 +1,9 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import BottomTabBar from '../bottom-tab-navigator';
+import ProfileScreenView from '@screens/profile-screen/profile-screen-view';
+
+
 
 const PostAuthStack = createStackNavigator<postAuthParamList>();
 const PostAuthNavigator = () => {
@@ -10,6 +13,11 @@ const PostAuthNavigator = () => {
         options={{headerShown: false}}
         name="BottomNavigator"
         component={BottomTabBar}
+      />
+      <PostAuthStack.Screen
+        options={{headerShown: true}}
+        name="ProfileScreen"
+        component={ProfileScreenView}
       />
     </PostAuthStack.Navigator>
   );

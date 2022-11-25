@@ -1,9 +1,4 @@
 import {Dimensions} from 'react-native';
-/**
- * created by Ramees P
- * date: 4 Aug 21
- * to get screen height and width in landscape and portrait mode
- */
 
 type ScreenDimensions = 'screenWidth' | 'screenHeight';
 

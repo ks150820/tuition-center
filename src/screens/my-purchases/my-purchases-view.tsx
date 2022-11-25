@@ -1,12 +1,12 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const HamburgerToggle = () => {
+const MyPurchasesView = () => {
   return (
     <View>
-      <Text>HamburgerToggle</Text>
+      <Text>MyPurchasesView</Text>
     </View>
   );
 };
 
-export default HamburgerToggle;
+export default MyPurchasesView;

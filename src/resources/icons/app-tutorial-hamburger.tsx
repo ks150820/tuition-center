@@ -1,5 +1,13 @@
 import * as React from 'react';
-import Svg, {SvgProps, Circle, G, Path, Defs, ClipPath} from 'react-native-svg';
+import Svg, {
+  SvgProps,
+  Circle,
+  G,
+  Path,
+  Defs,
+  ClipPath,
+  SvgFromXml,
+} from 'react-native-svg';
 
 const AppTutorialIcon = (props: SvgProps) => (
   <Svg width={34} height={34} fill="none" {...props}>

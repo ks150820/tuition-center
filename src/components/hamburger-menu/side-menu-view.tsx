@@ -1,175 +1,202 @@
+import React, {useContext, useState} from 'react';
 import {Pressable, ScrollView, View} from 'react-native';
-import React, {useState} from 'react';
 import UIRow from '@widgets/ui-row';
-import Profile from '@assets/icons/profile';
 import UIText from '@widgets/ui-text';
 import {FONT_TYPE} from '@theme/font';
 import styles from './style';
-import Animated, {FadeInDown} from 'react-native-reanimated';
-import AppTutorialIcon from '@resources/icons/app-tutorial-hamburger';
-import LanguageSwitchIcon from '@resources/icons/language-switch-hamburger';
-import ProfileIcon from '@resources/icons/profile-icon-hamburger';
-import AttemptedQuestionsIcon from '@resources/icons/attempted-questions-hamburger';
-import HelpIcon from '@resources/icons/help-hamburger';
-import PrivacyPolicyIcon from '@resources/icons/privacy-policy-hamburger';
-import ShareNowIcon from './share-now-hamburger';
-import RateUsIcon from '@resources/icons/rate-us-hamburger';
+import Animated, {
+  Easing,
+  FadeIn,
+  FadeInDown,
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
 
-const menuList = [
-  {
-    title: 'Profile',
-    Icon: ProfileIcon,
-    children: {
-      child1: {
-        title: 'My Purchases',
-        Icon: Profile,
-      },
-      child2: {
-        title: 'Personal Details',
-        Icon: Profile,
-      },
-    },
-    extraLabelView: null,
-  },
-  {
-    title: 'App tutorial',
-    Icon: AppTutorialIcon,
-    children: {},
-    extraLabelView: null,
-  },
-  {
-    title: 'Language',
-    Icon: LanguageSwitchIcon,
-    children: {},
-    extraLabelView: null,
-  },
-  {
-    title: 'Saved Questions',
-    Icon: Profile,
-    children: {},
-    extraLabelView: null,
-  },
-  {
-    title: 'Attempted Questions',
-    Icon: AttemptedQuestionsIcon,
-    children: {},
-    extraLabelView: null,
-  },
-  {
-    title: 'Help',
-    Icon: HelpIcon,
-    children: {},
-    extraLabelView: null,
-  },
-  {
-    title: 'Privacy policy',
-    Icon: PrivacyPolicyIcon,
-    children: {},
-    extraLabelView: null,
-  },
-  {
-    title: 'Share now',
-    Icon: ShareNowIcon,
-    children: {},
-    extraLabelView: null,
-  },
-  {
-    title: 'Rate us',
-    Icon: RateUsIcon,
-    children: {},
-    extraLabelView: null,
-  },
-];
-const CreateChildForExpandable = ({childrenObject}: {childrenObject: any}) => {
+import ChevronDownIcon from '@resources/icons/chevron-down';
+import {useSharedValue} from 'react-native-reanimated';
+import ProfileDetailsView from '../profile-details/profile-details-view';
+import useHamburgerActions from './side-menu-view-controller';
+import {actionsType, menuList} from './constants';
+import {useNavigation} from '@react-navigation/native';
+import {HamburgerContext} from './hamburger-menu-view';
+/**
+ *
+ * @param  props.childrens  it is used when there is multiple child  for a  expandable view . childrens contains one or more child's
+ * @returns returns a view with rendered child object
+ */
+interface ICreateChildForExpandable {
+  childrens: childType[];
+}
+const CreateChildForExpandable: React.FunctionComponent<
+  ICreateChildForExpandable
+> = ({childrens}) => {
   let list = [];
   let index = 0;
-  for (const child in childrenObject) {
+  for (const child in childrens) {
     index = index + 1;
     list.push(
       <View
-        key={childrenObject[child].title}
-        style={index !== Object.keys(childrenObject).length && styles.border}>
+        key={childrens[child].title}
+        style={index !== Object.keys(childrens).length && styles.border}>
         <SideMenuItem
-          Icon={childrenObject[child].Icon}
-          label={childrenObject[child].title}
+          Icon={childrens[child].Icon}
+          label={childrens[child].title}
+          actions={childrens[child].actions}
         />
       </View>,
     );
   }
   return <View style={styles.expandableViewChildContainer}>{list}</View>;
 };
-const CreateExpandableView = ({
+
+/**
+ * @param props.title  title for the view
+ * @param props.childrens  child,s of an expandable view
+ * @param props.setIsExpand  setState function to control expansion and collapse of the view
+ * @param props.isExpand  boolean to check weather the view is expanded or not
+ * @param props.Icon it will render the icon
+ * @param props.actions actions that needed to be carried out while clicking a view
+ * @returns a view that we can expand and collapse
+ */
+interface ICreateExpandableView {
+  title: string;
+  childrens: childType[];
+  setIsExpand: any;
+  isExpand: boolean;
+  Icon?: iconType;
+  actions?: typeActions;
+}
+const CreateExpandableView: React.FunctionComponent<ICreateExpandableView> = ({
   title,
-  object,
+  childrens,
   setIsExpand,
   isExpand,
   Icon,
-}: {
-  title: string;
-  object: any;
-  setIsExpand: any;
-  isExpand: boolean;
-  Icon?: any;
+  actions,
 }) => {
-  console.log(object);
+  // in order to control the rotation of chevron icon while expanding and collapsing a view initial value is set to 180 deg , useSharedValue is the part react-native re animation
+  const rotation = useSharedValue<number>(360);
+  //by using useAnimatedStyle we will control the rotation of the icon
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      transform: [{rotateZ: `${rotation.value}deg`}],
+    };
+  });
+
   return (
     <View style={[styles.expandableViewContainer, isExpand && styles.border]}>
       <Pressable
         onPress={() => {
           setIsExpand(!isExpand);
+          //if the view is expanded we will set the rotation z axis  to 360 and if its not expanded we will set it back to 180
+          rotation.value = isExpand
+            ? withTiming(360, {duration: 300, easing: Easing.inOut(Easing.exp)})
+            : withTiming(180, {
+                duration: 300,
+                easing: Easing.inOut(Easing.exp),
+              });
         }}>
-        <UIRow
-          style={[
-            styles.expandableViewHeaderContainer,
-            {paddingHorizontal: 16},
-          ]}>
-          <SideMenuItem Icon={Icon} label={title} />
-          <View style={{height: 12, width: 12, backgroundColor: 'green'}} />
+        <UIRow style={styles.expandableViewHeaderContainer}>
+          <SideMenuItem Icon={Icon} label={title} actions={actions} />
+          <Animated.View style={animatedStyles}>
+            <ChevronDownIcon />
+          </Animated.View>
         </UIRow>
       </Pressable>
 
       <View>
         {isExpand && (
-          <Animated.View entering={FadeInDown.duration(800)}>
-            <CreateChildForExpandable childrenObject={object} />
-          </Animated.View>
+          <View>
+            <Animated.View entering={FadeIn.duration(800)}>
+              <CreateChildForExpandable childrens={childrens} />
+            </Animated.View>
+          </View>
         )}
       </View>
     </View>
   );
 };
-const SideMenuLabel = ({label}: {label: string}) => {
+/**
+ *
+ * @param label string value to display as title
+ * @returns rendered text view
+ */
+interface ISideMenuLabel {
+  label: string;
+}
+const SideMenuLabel: React.FunctionComponent<ISideMenuLabel> = ({label}) => {
   return (
     <UIText style={styles.slideMenuLabel} FontType={FONT_TYPE.HAMBURGER}>
       {label}
     </UIText>
   );
 };
-const SideMenuItem = ({label, Icon}: {label: string; Icon?: any}) => {
-  console.log('Icon', Icon);
-
+/**
+ *
+ * @param props.label label or title on the view
+ * @param props.Icon icon to render left to label
+ * @param props.ExtraLabel extra actions label to render right to the item example language switch
+ * @param props.actions actions to be completed while clicking an item
+ * @returns a view to be rendered on the side menu view
+ */
+interface ISideMenuItem {
+  label: string;
+  Icon?: iconType;
+  ExtraLabel?: any;
+  actions?: typeActions;
+}
+const SideMenuItem: React.FunctionComponent<ISideMenuItem> = ({
+  label,
+  Icon,
+  ExtraLabel,
+  actions,
+}) => {
+  const navigation = useNavigation<profileScreenProp>();
+  const {onCall, onWhatsappShare} = useHamburgerActions();
+  const {setIsVisible} = useContext(HamburgerContext);
   return (
-    <Pressable onPress={() => {}}>
+    <Pressable
+      onPress={() => {
+        setIsVisible && setIsVisible(false);
+        navigation.navigate('ProfileScreen');
+        if (actions) {
+          if (actions.type && actions.type === actionsType.openDialer) {
+            onCall(actions.data); // check side menu view controller. it will open the dialer with provided number
+          }
+          if (actions.type && actions.type === actionsType.openWhatsapp) {
+            onWhatsappShare(actions.data, actions.extra || ''); // check side menu view controller. it will open whatsapp chat on the given number and message
+          }
+        }
+      }}>
       <UIRow style={styles.slideMenuItemContainer}>
-        {Icon ? <Icon /> : null}
-        <SideMenuLabel label={String(label)} />
+        <UIRow style={styles.alignCenter}>
+          {Icon ? <Icon /> : null}
+          <SideMenuLabel label={String(label)} />
+        </UIRow>
+        {ExtraLabel ? <ExtraLabel /> : null}
       </UIRow>
     </Pressable>
   );
 };
 
-const SideMenuView = () => {
+const SideMenuView: React.FunctionComponent = () => {
   const [isExpand, setIsExpand] = useState(false);
 
+  /**
+   * it will render the view if the length of children is > 0 it will create an expandable view otherwise normal view
+   */
   const renderOptions = () => {
     return menuList.map((data, index) => {
-      return Object.keys(data.children).length === 0 ? (
-        <View style={index !== menuList.length - 1 && styles.border}>
+      return Object.keys(data.childrens).length === 0 ? (
+        <View
+          key={data.title}
+          style={index !== menuList.length - 1 && styles.border}>
           <View style={{paddingHorizontal: 16}}>
             <SideMenuItem
-              key={data.title}
               label={data.title}
               Icon={data.Icon}
+              ExtraLabel={data.ExtraLabelView}
+              actions={data.actions}
             />
           </View>
         </View>
@@ -178,8 +205,10 @@ const SideMenuView = () => {
           setIsExpand={setIsExpand}
           isExpand={isExpand}
           title={data.title}
-          object={data.children}
+          childrens={data.childrens}
           Icon={data.Icon}
+          actions={data.actions}
+          key={data.title}
         />
       );
     });
@@ -188,6 +217,7 @@ const SideMenuView = () => {
   return (
     <ScrollView style={{flex: 1}}>
       <Animated.View entering={FadeInDown.duration(800)}>
+        <ProfileDetailsView />
         {renderOptions()}
       </Animated.View>
     </ScrollView>
