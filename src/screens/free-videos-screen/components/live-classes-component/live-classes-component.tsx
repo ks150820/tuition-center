@@ -3,10 +3,23 @@ import useLiveClassesComponentController from './live-classes-component-controll
 
 import LiveClassesComponentView from './live-classes-component-view';
 
-interface ILiveClassesComponentProps {}
 const LiveClassesComponent = ({}: ILiveClassesComponentProps): ReactElement => {
-    const {tabId, dummy_data, categories_data, categoriesTabId, handleTabs, handleCategoriesTabs} = useLiveClassesComponentController();
-  return <LiveClassesComponentView tabId={tabId} categories_data={categories_data} data={dummy_data} categoriesTabId={categoriesTabId} handleTabs={(id: string) => handleTabs(id)} handleCategoriesTabs={(id: string) => handleCategoriesTabs(id)} />;
+  const CONTROLLER = useLiveClassesComponentController();
+  return (
+    <LiveClassesComponentView
+      tabId={CONTROLLER.tabId}
+      genres={CONTROLLER.genres}
+      tabIndex={CONTROLLER.tabIndex}
+      categoriesTabIndex={CONTROLLER.categoriesTabIndex}
+      data={CONTROLLER.dummy_data}
+      liveClasses={CONTROLLER.liveClasses}
+      categoriesTabId={CONTROLLER.categoriesTabId}
+      handleTabs={(index: number) => CONTROLLER.handleTabs(index)}
+      handleCategoriesTabs={(index: number) =>
+        CONTROLLER.handleCategoriesTabs(index)
+      }
+    />
+  );
 };
 
 export default LiveClassesComponent;

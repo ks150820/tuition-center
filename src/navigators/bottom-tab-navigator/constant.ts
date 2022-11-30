@@ -8,8 +8,9 @@ import {
 } from '@assets/icons/svg-icons';
 import HomeNavigator from '../home-navigator';
 import CoursesScreen from '@screens/courses-screen';
-import FreeVideosScreen from '@screens/free-videos-screen';
+// import FreeVideosScreen from '@screens/free-videos-screen';
 import StudyMaterial from '@screens/study-material-screen';
+import FreeVideoNavigator from '../free-video-navigator';
 
 interface IBottomTabOptions {
   title: string;
@@ -42,7 +43,7 @@ export const bottomTabOptions: IBottomTabOptions[] = [
       active: ACTIVE_VIDEOS,
       inActive: IN_ACTIVE_VIDEOS,
     },
-    component: FreeVideosScreen,
+    component: FreeVideoNavigator,
   },
   {
     title: 'StudyMaterial',

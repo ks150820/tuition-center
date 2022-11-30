@@ -8,6 +8,7 @@ const FONT_SIZE: IFont = {
   font18: 18,
   font20: 20,
   font10: 10,
+  font8: 8,
 };
 
 export const FONT_TYPE: IFontType = {
@@ -47,6 +48,10 @@ export const FONT_TYPE: IFontType = {
   DISCOUNT: {
     fontFamily: 'Mukta-Regular',
     fontSize: FONT_SIZE.font10,
+  },
+  FONT_EIGHT: {
+    fontFamily: 'Mukta-Regular',
+    fontSize: FONT_SIZE.font8,
   },
   FONT_THIRTEEN: {
     fontFamily: 'Mukta-Regular',

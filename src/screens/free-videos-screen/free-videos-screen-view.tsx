@@ -8,11 +8,12 @@ import LiveClassesComponent from './components/live-classes-component';
 import {styles} from './free-videos-screen-style';
 
 interface IFreeVideosScreenViewProps {
-  dashBoardData: any;
+  dashBoardData: FreeVideoDummyDataType[];
+  handleNavigation: any;
 }
 
-const FreeVideosScreenView = ({dashBoardData}: IFreeVideosScreenViewProps) => {
-  const renderItem = (item: any) => {
+const FreeVideosScreenView = ({dashBoardData, handleNavigation}: IFreeVideosScreenViewProps) => {
+  const renderItem = (item: FreeVideoDummyDataType) => {
     switch (item.type) {
       case 'free courses': {
         return <FreeCoursesComponent />;
@@ -24,7 +25,7 @@ const FreeVideosScreenView = ({dashBoardData}: IFreeVideosScreenViewProps) => {
         return <LiveClassesComponent />;
       }
       case 'popular series': {
-        return <PopularSeriesComponent />;
+        return <PopularSeriesComponent onCardPress={handleNavigation} />;
       }
       default: {
         return <></>;
@@ -36,7 +37,9 @@ const FreeVideosScreenView = ({dashBoardData}: IFreeVideosScreenViewProps) => {
       <FlatList
         keyExtractor={item => item.id + ''}
         data={dashBoardData}
-        renderItem={({item}: {item: any}) => renderItem(item)}
+        renderItem={({item}: {item: FreeVideoDummyDataType}) =>
+          renderItem(item)
+        }
       />
     </View>
   );

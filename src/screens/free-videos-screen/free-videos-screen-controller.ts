@@ -1,5 +1,5 @@
-const useFreeVideosScreenController = () => {
-  const dummyFreeVideosDashBoardData = [
+const useFreeVideosScreenController = ({navigation}: IUseFreeVideosScreenController) => {
+  const dummyFreeVideosDashBoardData: FreeVideoDummyDataType[] = [
     {
       id: 1,
       type: 'free courses',
@@ -18,7 +18,10 @@ const useFreeVideosScreenController = () => {
     },
   ];
 
-  return {dummyFreeVideosDashBoardData};
+  const handleNavigation = () => {
+    navigation.navigate('VideoDetail');
+  }
+  return {dummyFreeVideosDashBoardData, handleNavigation};
 };
 
 export default useFreeVideosScreenController;

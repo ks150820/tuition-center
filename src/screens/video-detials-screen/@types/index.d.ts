@@ -1,0 +1,3 @@
+interface IVideoDetailsScreenViewProps {}
+
+interface IVideoDetailsScreen {}

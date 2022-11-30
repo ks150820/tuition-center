@@ -8,67 +8,45 @@ import colors from '@theme/colors';
 import UIImage from '@common/ui-image';
 import UIText from '@widgets/ui-text';
 import {FONT_TYPE} from '@theme/font';
-import SvgToIcon from '@helpers/svg-to-icon';
-import {WHITE_PLAY_ICON} from '@assets/icons/svg-icons';
+import PlayIcon from '@resources/icons/play-icon';
 
-interface ILiveClassesComponentViewProps {
-  tabId: string;
-  data: any;
-  categories_data: any;
-  categoriesTabId: string;
-  handleCategoriesTabs(id: string): void;
-  handleTabs(id: string): void;
-}
-
-const LiveClassesComponentView = ({
-  tabId,
-  data,
-  categories_data,
-  categoriesTabId,
-  handleTabs,
-  handleCategoriesTabs,
-}: ILiveClassesComponentViewProps) => {
-  const renderItem = (_item: any) => {
+const LiveClassesComponentView = (props: ILiveClassesComponentViewProps) => {
+  const renderItem = (item: LiveClasses) => {
     return (
-      <UICard
-        style={styles.card_component}>
+      <UICard style={styles.card_component}>
         <Pressable style={styles.inner_card_component}>
           {/* left */}
           <View
-            style={{position: 'relative', borderRadius: 7, overflow: 'hidden'}}>
-            <UIImage
-              url={require('@assets/images/live-banner.jpg')}
-              style={styles.image_style}
-            />
+            style={styles.left_component}>
+            <UIImage url={item.imgUrl} style={styles.image_style} />
             <View style={styles.play_icon_component}>
               <View>
-                <SvgToIcon xml={WHITE_PLAY_ICON} width={28} height={28} />
+                <PlayIcon width={28} height={28} />
               </View>
             </View>
           </View>
           {/* right */}
-          <View style={{paddingHorizontal: 10, flex: 1}}>
+          <View style={styles.right_component}>
             <UIText
               FontType={FONT_TYPE.PARAGRAPH}
               style={{fontWeight: '700'}}
               color={colors.gray_scale.mine_shaft}>
-              Quantative Aptitude Quant Aptitude
+              {item.heading}
             </UIText>
             <View style={styles.right_footer_intro_component}>
-              <View
-                style={styles.right_footer_inner_intro_component}>
+              <View style={styles.right_footer_inner_intro_component}>
                 <View>
                   <UIText
                     FontType={FONT_TYPE.DISCOUNT}
                     style={{fontWeight: '400'}}
                     color={colors.primary.cardinal}>
-                    Bank demo class
+                    {item.subHeading}
                   </UIText>
                   <UIText
                     FontType={FONT_TYPE.FONT_THIRTEEN}
                     style={{fontWeight: '500'}}
                     color={colors.gray_scale.dove_gray}>
-                    Abhishek Banerjee
+                    {item.teacher}
                   </UIText>
                 </View>
                 <View style={styles.live_text_component}>
@@ -97,38 +75,40 @@ const LiveClassesComponentView = ({
         {/* tabs */}
         <View>
           <UITabs
-            tabItems={data}
-            tabId={tabId}
+            tabItems={props.data}
+            tabIndex={props.tabIndex}
+            tabId={props.tabId}
             renderItemStyle={styles.header_renderItemStyle}
             tabsComponentStyle={styles.header_tabsComponentStyle}
             activeTabStyle={styles.header_activeTabStyle}
             inActiveTabStyle={{}}
-            onChange={(id: string) => handleTabs(id)}
+            onChange={(index: number) => props.handleTabs(index)}
             activeTextColor={colors.accent.solid_black}
             inActiveTextColor={colors.gray_scale.dusty_gray}
           />
         </View>
         <View style={{padding: 10}}>
-          {/* -- tabs -- */}
+          {/* -- categories tabs -- */}
           <View style={styles.outer_tabs_component}>
             <UITabs
-              tabItems={categories_data}
+              tabItems={props.genres}
+              tabIndex={props.categoriesTabIndex}
               activeTabStyle={styles.activeTabStyle}
               inActiveTabStyle={styles.inActiveTabStyle}
               activeTextColor={colors.gray_scale.white}
               inActiveTextColor={colors.gray_scale.mine_shaft}
               tabsComponentStyle={styles.tabsComponentStyle}
-              tabId={categoriesTabId}
-              onChange={(id: string) => handleCategoriesTabs(id)}
+              tabId={props.categoriesTabId}
+              onChange={(index: number) => props.handleCategoriesTabs(index)}
             />
           </View>
           {/* -- cards -- */}
           <View>
             <FlatList
               keyExtractor={(_item, index) => index + ''}
-              data={[1, 2]}
+              data={props.liveClasses}
               showsVerticalScrollIndicator={false}
-              renderItem={({item}: {item: any}) => renderItem(item)}
+              renderItem={({item}: {item: LiveClasses}) => renderItem(item)}
             />
           </View>
         </View>

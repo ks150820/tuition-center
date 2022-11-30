@@ -52,6 +52,8 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.gray_scale.white,
     borderWidth: 0,
   },
+  left_component: {position: 'relative', borderRadius: 7, overflow: 'hidden'},
+  right_component: {paddingHorizontal: 10, flex: 1},
   outer_blink_icon_component: {
     backgroundColor: '#EC5A61',
     padding: 3,

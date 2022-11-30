@@ -9,19 +9,16 @@ import UIText from '@widgets/ui-text';
 import UITabs from '@widgets/ui-tabs';
 import UIImage from '@common/ui-image';
 
-interface IMissedClassesComponentView {
-  tabID: string;
-  onChangeTabs(id: string): void;
-}
-
 const MissedClassesComponentView = ({
   tabID,
+  genres,
+  tabsIndex,
+  missedClasses,
   onChangeTabs,
 }: IMissedClassesComponentView): ReactElement => {
   const renderItem = (_item: any) => {
     return (
-      <UICard
-        style={styles.cards_component}>
+      <UICard style={styles.cards_component}>
         <View>
           <UIImage
             url={require('@assets/images/missed-class-banner.jpg')}
@@ -56,29 +53,22 @@ const MissedClassesComponentView = ({
             {/* --- tabs --- */}
             <View style={styles.outer_tabs_component}>
               <UITabs
-                tabItems={[
-                  {id: '1', title: 'All'},
-                  {id: '2', title: 'English'},
-                  {id: '3', title: 'Maths'},
-                  {id: '4', title: 'Science'},
-                  {id: '5', title: 'History'},
-                  {id: '5', title: 'History'},
-                  {id: '5', title: 'History'},
-                ]}
+                tabItems={genres}
+                tabIndex={tabsIndex}
                 activeTabStyle={styles.activeTabStyle}
                 inActiveTabStyle={styles.inActiveTabStyle}
                 activeTextColor={colors.gray_scale.white}
                 inActiveTextColor={colors.gray_scale.mine_shaft}
                 tabsComponentStyle={styles.tabsComponentStyle}
                 tabId={tabID}
-                onChange={(id: string) => onChangeTabs(id)}
+                onChange={(index: number) => onChangeTabs(index)}
               />
             </View>
             {/* -- cards -- */}
             <View>
               <FlatList
                 keyExtractor={(_item, index) => index + ''}
-                data={[1, 2, 3]}
+                data={missedClasses}
                 renderItem={({item}: {item: any}) => renderItem(item)}
                 horizontal
                 showsHorizontalScrollIndicator={false}

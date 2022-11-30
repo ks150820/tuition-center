@@ -1,6 +1,6 @@
 type ReactNode = import('react').ReactNode;
 type AnimatedValue = import('react-native').Animated.Value;
-type ViewStyle = import('react-native').ViewStyle;
+type ViewStyle = import('react-native').TextStyle;
 type GestureResponderEvent = import('react-native').GestureResponderEvent;
 type SliderProps = import('@rneui/base').SliderProps;
 

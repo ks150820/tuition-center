@@ -13,6 +13,7 @@ type FontType =
   | 'DISCOUNT'
   | 'H'
   | 'HAMBURGER'
+  | 'FONT_EIGHT'
   | 'FONT_THIRTEEN';
 interface IFont {
   [key: string]: number;

@@ -1,11 +1,11 @@
 import React, {ReactElement} from 'react';
 
 import FreeCoursesComponentView from './free-courses-component-view';
-
-interface IFreeCoursesComponentProps {}
+import useFreeCoursesComponentController from './free-courses-component-controller';
 
 const FreeCoursesComponent = ({}: IFreeCoursesComponentProps): ReactElement => {
-  return <FreeCoursesComponentView />;
+  const {courses} = useFreeCoursesComponentController();
+  return <FreeCoursesComponentView courses={courses} />;
 };
 
 export default FreeCoursesComponent;

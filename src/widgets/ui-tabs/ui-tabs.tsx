@@ -5,13 +5,14 @@ import UITabsView from './ui-tabs-view';
 interface IUITabsProps {
   tabId: string;
   tabItems: any;
+  tabIndex: number;
   activeTabStyle: object;
   inActiveTabStyle: object;
   activeTextColor: string;
   tabsComponentStyle?: object;
   inActiveTextColor: string;
   renderItemStyle?: object;
-  onChange(id: string): void;
+  onChange(index: number): void;
 }
 
 /**
@@ -23,6 +24,7 @@ interface IUITabsProps {
  */
 const UITabs = ({
   tabId,
+  tabIndex,
   tabItems,
   activeTabStyle,
   inActiveTabStyle,
@@ -36,13 +38,14 @@ const UITabs = ({
     <UITabsView
       tabId={tabId}
       tabItems={tabItems}
+      tabIndex={tabIndex}
       activeTabStyle={activeTabStyle}
       inActiveTabStyle={inActiveTabStyle}
       activeTextColor={activeTextColor}
       inActiveTextColor={inActiveTextColor}
       tabsComponentStyle={tabsComponentStyle}
       renderItemStyle={renderItemStyle}
-      onChange={(index: string) => onChange(index)}
+      onChange={(index: number) => onChange(index)}
     />
   );
 };

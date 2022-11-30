@@ -13,17 +13,19 @@ type TabItems = {
 interface IUITabsViewProps {
   tabId: string;
   tabItems: TabItems[];
+  tabIndex: number;
   activeTabStyle: object;
   inActiveTabStyle: object;
   tabsComponentStyle?: object;
   activeTextColor: string;
   inActiveTextColor: string;
   renderItemStyle?: object;
-  onChange(id: string): void;
+  onChange(index: number): void;
 }
 
 interface IRenderItemProps {
   item: TabItems;
+  index: number;
 }
 
 /**
@@ -35,6 +37,7 @@ interface IRenderItemProps {
  */
 const UITabsView = ({
   tabId = '',
+  tabIndex,
   tabItems,
   tabsComponentStyle,
   activeTabStyle,
@@ -49,14 +52,14 @@ const UITabsView = ({
    * @param {IRenderItemProps} params.item items to render
    * @returns
    */
-  const RenderItem = ({item}: IRenderItemProps) => {
+  const RenderItem = ({item, index}: IRenderItemProps) => {
     return (
       <View>
         <UIBtn
           btnText={item.title}
           styles={{
             btnElementWrapper:
-              tabId === item.id
+              tabIndex === index
                 ? {...tabsStyles.commonStyleBooksTextButton, ...activeTabStyle}
                 : {
                     ...tabsStyles.commonStyleBooksTextButton,
@@ -65,8 +68,8 @@ const UITabsView = ({
           }}
           fontType={FONT_TYPE.PARAGRAPH}
           textStyle={{fontWeight: '700'}}
-          color={tabId === item.id ? activeTextColor : inActiveTextColor}
-          onPress={() => onChange(item.id)}
+          color={tabIndex === index ? activeTextColor : inActiveTextColor}
+          onPress={() => onChange(index)}
         />
       </View>
     );
@@ -79,8 +82,10 @@ const UITabsView = ({
         contentContainerStyle={tabsStyles.scrollViewComponent}>
         {tabItems.map((item: TabItems, index: number) => {
           return (
-            <View key={index} style={[tabsStyles.renderItemComponentStyle, renderItemStyle]}>
-              <RenderItem item={item} />
+            <View
+              key={index}
+              style={[tabsStyles.renderItemComponentStyle, renderItemStyle]}>
+              <RenderItem item={item} index={index} />
             </View>
           );
         })}
