@@ -51,7 +51,12 @@ const createRequestObject = (
     data,
   );
 
-// this will make and API request and dispatch different scenarios for api success ,failure and start
+//  this will make and API request and dispatch different scenarios for api success ,failure and start
+/**
+ * This will make an api call using axios , 
+ *    Before beginning the api call it will dispatch on start action
+ *    After a successful api call it will dispatch onSuccess and on error it will dispatch onError action 
+ */
 const makeApiRequest = async (
   dispatch: AppDispatch,
   getState: RootState,
@@ -66,7 +71,7 @@ const makeApiRequest = async (
     onSuccess,
     cacheValidityDuration,
   } = payload;
-  // if api caching timed out , otherwise it wont proceed further
+  // if api caching timed out , otherwise it wont proceed further 
   if (isAPICached(url + method, cacheValidityDuration)) {
     return;
   }
