@@ -11,12 +11,12 @@ const apiLastCalledTimeMap = new Map<
 >();
 
 /**
- * 
- * @param key to get the last called time from apiLastCalledTimeMap Map 
- * @param timeOut caching time out 
+ * it will check the time difference between last time when api called and the present time
+ * @param key to get the last called time from apiLastCalledTimeMap Map
+ * @param timeOut caching time out
  * @returns boolean
  */
-const isBlockApiCall = (key: string, timeOut: CACHING_TIME) => {
+const isAPICached = (key: string, timeOut: CACHING_TIME) => {
   let previousTime = apiLastCalledTimeMap.get(key)?.lastCalled;
 
   //if timer is greater than zero and current time minus previous time is less than  given timeOut
@@ -24,19 +24,19 @@ const isBlockApiCall = (key: string, timeOut: CACHING_TIME) => {
     previousTime &&
     timeOut > CACHING_TIME.INVALIDATE &&
     new Date().getMinutes() - previousTime < timeOut
-  ) {
+  )
     return true;
-  }
 
   return false;
 };
 /**
+ * it will create a request object for axios with header felids
  * @param url url for the api call
  * @param method method for the api call
- * @param authToken auth token 
+ * @param authToken auth token
  * @param data data for post request
  */
-const returnRequestObject = (
+const createRequestObject = (
   url: string,
   method: HttpMethod,
   authToken: string,
@@ -67,14 +67,14 @@ const makeApiRequest = async (
     cacheValidityDuration,
   } = payload;
   // if api caching timed out , otherwise it wont proceed further
-  if (isBlockApiCall(url + method, cacheValidityDuration)) {
+  if (isAPICached(url + method, cacheValidityDuration)) {
     return;
   }
   const authToken = getState()?.auth?.authDetails?.authToken;
   try {
     dispatch({action: onStart, payload: []});
     let response = await axiosInterceptor.request(
-      returnRequestObject(url, method, authToken ? authToken : undefined, data),
+      createRequestObject(url, method, authToken ? authToken : undefined, data),
     );
     if (response?.status === 200) {
       dispatch({action: onSuccess, payload: response.data});
