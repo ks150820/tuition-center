@@ -1,6 +1,10 @@
 import {createRequest, HttpClient} from '@secure-access-control/client';
 import {axiosInterceptor} from '@services/http/axios-interceptor-service';
-import {apiCallBegan} from '@store/actions/actions';
+import {
+  apiCallBegan,
+  apiCallFailed,
+  apiCallSuccess,
+} from '@store/actions/actions';
 import {BASE_URL, CACHING_TIME} from '@store/enum';
 import {AnyAction, Middleware} from 'redux';
 
@@ -53,9 +57,9 @@ const createRequestObject = (
 
 //  this will make and API request and dispatch different scenarios for api success ,failure and start
 /**
- * This will make an api call using axios , 
+ * This will make an api call using axios ,
  *    Before beginning the api call it will dispatch on start action
- *    After a successful api call it will dispatch onSuccess and on error it will dispatch onError action 
+ *    After a successful api call it will dispatch onSuccess and on error it will dispatch onError action
  */
 const makeApiRequest = async (
   dispatch: AppDispatch,
@@ -71,21 +75,25 @@ const makeApiRequest = async (
     onSuccess,
     cacheValidityDuration,
   } = payload;
-  // if api caching timed out , otherwise it wont proceed further 
+  // if api caching timed out , otherwise it wont proceed further
   if (isAPICached(url + method, cacheValidityDuration)) {
     return;
   }
   const authToken = getState()?.auth?.authDetails?.authToken;
   try {
-    dispatch({action: onStart, payload: []});
+    if (onStart) dispatch({type: onStart, payload: []});
     let response = await axiosInterceptor.request(
       createRequestObject(url, method, authToken ? authToken : undefined, data),
     );
-    if (response?.status === 200) {
-      dispatch({action: onSuccess, payload: response.data});
+    if (response.status === 200) {
+      dispatch({type: apiCallSuccess, payload: response.data});
+      if (onSuccess) dispatch({type: onSuccess, payload: response.data});
     }
   } catch (error) {
-    if (error) dispatch({action: onError, payload: error});
+    if (error) {
+      dispatch({type: apiCallFailed, payload: error});
+      if (onError) dispatch({type: onError, payload: error});
+    }
   }
 };
 const apiMiddleware: Middleware<
@@ -95,7 +103,7 @@ const apiMiddleware: Middleware<
   ({dispatch, getState}: {dispatch: Dispatch; getState: RootState}) =>
   (next: any) =>
   async (action: AnyAction) => {
-    return action?.type === apiCallBegan
+    return action.type === apiCallBegan
       ? makeApiRequest(dispatch, getState, action?.payload)
       : next(action);
   };
