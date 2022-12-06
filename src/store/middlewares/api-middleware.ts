@@ -103,7 +103,7 @@ const apiMiddleware: Middleware<
   ({dispatch, getState}: {dispatch: Dispatch; getState: RootState}) =>
   (next: any) =>
   async (action: AnyAction) => {
-    return action.type === apiCallBegan
+    return action.type === apiCallBegan.type
       ? makeApiRequest(dispatch, getState, action?.payload)
       : next(action);
   };
