@@ -30,3 +30,20 @@ interface Section {
   section_time: 0;
   _id: '';
 }
+
+interface CourseCardProps {
+  cardFor: string;
+  imageUrl: ImageSourcePropType;
+  heading: string;
+  batchName?: string;
+  actualPrice?: number;
+  discountedPrice?: number;
+  discountPercent?: number;
+  batchStartDate?: string;
+  style?: object;
+  children?: any;
+  buttonText: string;
+  viewPdfButton: boolean;
+  onPress(): void;
+  imageStyle?: viewStyle;
+}

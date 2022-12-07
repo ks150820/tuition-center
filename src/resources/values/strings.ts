@@ -110,3 +110,21 @@ export const PROFILE_SCREEN: IStringConstants = {
     hi: 'Log Out',
   },
 };
+
+export const VIEW_ALL: ILanguageObject = {
+  en: 'View all',
+  hi: 'View all'
+};
+
+export const FREE_VIDEO_CONSTANTS: IStringConstants = {
+  FREE_COURSES: {
+    en: 'Free Courses',
+    hi: 'Free Courses',
+  },
+};
+
+
+export const LIVE: ILanguageObject = {
+  en: 'LIVE',
+  hi: 'LIVE',
+}

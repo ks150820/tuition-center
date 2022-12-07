@@ -5,7 +5,9 @@ import { getAllFreeCourses } from '@store/entities/free-videos';
 const useFreeCoursesComponentController = () => {
     const courses = useSelector(getAllFreeCourses);
 
-    return {courses};
+    const handleOnCardPress = (): void => {};
+
+    return {courses, handleOnCardPress};
 };
 
 export default useFreeCoursesComponentController;

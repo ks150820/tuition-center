@@ -4,8 +4,8 @@ import FreeCoursesComponentView from './free-courses-component-view';
 import useFreeCoursesComponentController from './free-courses-component-controller';
 
 const FreeCoursesComponent = ({}: IFreeCoursesComponentProps): ReactElement => {
-  const {courses} = useFreeCoursesComponentController();
-  return <FreeCoursesComponentView courses={courses} />;
+  const {courses, handleOnCardPress} = useFreeCoursesComponentController();
+  return <FreeCoursesComponentView courses={courses} handleOnCardPress={handleOnCardPress} />;
 };
 
 export default FreeCoursesComponent;

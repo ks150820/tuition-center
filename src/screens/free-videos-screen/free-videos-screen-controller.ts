@@ -1,4 +1,7 @@
-const useFreeVideosScreenController = ({navigation}: IUseFreeVideosScreenController) => {
+import {useNavigation} from '@react-navigation/native';
+
+const useFreeVideosScreenController = ({}: IUseFreeVideosScreenController) => {
+  const navigation = useNavigation<freeVideosScreensNavigation>();
   const dummyFreeVideosDashBoardData: FreeVideoDummyDataType[] = [
     {
       id: 1,
@@ -18,9 +21,9 @@ const useFreeVideosScreenController = ({navigation}: IUseFreeVideosScreenControl
     },
   ];
 
-  const handleNavigation = () => {
+  const handleNavigation = (): void => {
     navigation.navigate('VideoDetail');
-  }
+  };
   return {dummyFreeVideosDashBoardData, handleNavigation};
 };
 

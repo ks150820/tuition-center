@@ -1,6 +1,6 @@
 import React from 'react';
-import usePopularSeriesComponentController from './popular-series-component-controller';
 
+import usePopularSeriesComponentController from './popular-series-component-controller';
 import PopularSeriesComponentView from './popular-series-component-view';
 
 const PopularSeriesComponent = ({onCardPress}: any) => {

@@ -2,12 +2,14 @@ import React, {ReactElement} from 'react';
 import {View, FlatList} from 'react-native';
 
 import {styles} from './missed-classes-component-style';
-import UICard from '@common/ui-card';
+import UICard from '@widgets/ui-card';
 import colors from '@theme/colors';
 import {FONT_TYPE} from '@theme/font';
 import UIText from '@widgets/ui-text';
 import UITabs from '@widgets/ui-tabs';
-import UIImage from '@common/ui-image';
+import UIImage from '@widgets/ui-image';
+import {HEADINGS} from '@resources/strings';
+import {VIEW_ALL} from '@resources/values/strings';
 
 const MissedClassesComponentView = ({
   tabID,
@@ -16,20 +18,17 @@ const MissedClassesComponentView = ({
   missedClasses,
   onChangeTabs,
 }: IMissedClassesComponentView): ReactElement => {
-  const renderItem = (_item: any) => {
+  const renderItem = (item: MissedLiveClasses) => {
     return (
-      <UICard style={styles.cards_component}>
+      <UICard style={styles.cardsComponent}>
         <View>
-          <UIImage
-            url={require('@assets/images/missed-class-banner.jpg')}
-            style={styles.cards_image}
-          />
-          <View style={styles.cards_intro_component}>
+          <UIImage url={item.imgUrl} style={styles.cardsImage} />
+          <View style={styles.cardsIntroComponent}>
             <UIText
               numberOfLines={2}
               FontType={FONT_TYPE.FONT_THIRTEEN}
               color={colors.gray_scale.mine_shaft}>
-              UPSSC course number with Vipul Sir
+              {item.heading}
             </UIText>
           </View>
         </View>
@@ -38,20 +37,20 @@ const MissedClassesComponentView = ({
   };
   return (
     <View style={styles.component}>
-      <UICard style={styles.inner_component}>
+      <UICard style={styles.innerComponent}>
         <>
-          <View style={styles.heading_card_component}>
+          <View style={styles.headingCardComponent}>
             {/* -- heading -- */}
             <View>
               <UIText
                 FontType={FONT_TYPE.SUBHEADING}
                 color={colors.primary.cardinal}
-                style={styles.heading_text}>
-                Missed Live Classes
+                style={styles.headingText}>
+                {HEADINGS.MISSED_LIVE['en']}
               </UIText>
             </View>
             {/* --- tabs --- */}
-            <View style={styles.outer_tabs_component}>
+            <View style={styles.outerTabsComponent}>
               <UITabs
                 tabItems={genres}
                 tabIndex={tabsIndex}
@@ -69,19 +68,21 @@ const MissedClassesComponentView = ({
               <FlatList
                 keyExtractor={(_item, index) => index + ''}
                 data={missedClasses}
-                renderItem={({item}: {item: any}) => renderItem(item)}
+                renderItem={({item}: {item: MissedLiveClasses}) =>
+                  renderItem(item)
+                }
                 horizontal
                 showsHorizontalScrollIndicator={false}
               />
             </View>
           </View>
-          <View style={styles.viewAll_component}>
+          <View style={styles.viewAllComponent}>
             <UIText
               FontType={FONT_TYPE.DISCOUNT}
-              style={styles.viewAll_Text}
+              style={styles.viewAllText}
               textAlign="center"
               color={colors.primary.cardinal}>
-              View all
+              {VIEW_ALL['en']}
             </UIText>
           </View>
         </>

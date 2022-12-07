@@ -5,26 +5,25 @@ import FreeCoursesComponent from './components/free-courses-component';
 import MissedClassesComponent from './components/missed-classes-component';
 import PopularSeriesComponent from './components/popular-series-component';
 import LiveClassesComponent from './components/live-classes-component';
+import {FreeVideoScreenOptions} from './constants/constants';
 import {styles} from './free-videos-screen-style';
 
-interface IFreeVideosScreenViewProps {
-  dashBoardData: FreeVideoDummyDataType[];
-  handleNavigation: any;
-}
-
-const FreeVideosScreenView = ({dashBoardData, handleNavigation}: IFreeVideosScreenViewProps) => {
+const FreeVideosScreenView = ({
+  dashBoardData,
+  handleNavigation,
+}: IFreeVideosScreenViewProps) => {
   const renderItem = (item: FreeVideoDummyDataType) => {
     switch (item.type) {
-      case 'free courses': {
+      case FreeVideoScreenOptions.FREE_COURSES: {
         return <FreeCoursesComponent />;
       }
-      case 'missed live classes': {
+      case FreeVideoScreenOptions.MISSED_LIVE_CLASSES: {
         return <MissedClassesComponent />;
       }
-      case 'live and upcoming classes': {
+      case FreeVideoScreenOptions.LIVE_UPCOMING: {
         return <LiveClassesComponent />;
       }
-      case 'popular series': {
+      case FreeVideoScreenOptions.POPULAR_SERIES: {
         return <PopularSeriesComponent onCardPress={handleNavigation} />;
       }
       default: {

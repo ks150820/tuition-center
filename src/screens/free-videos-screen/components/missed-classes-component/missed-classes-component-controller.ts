@@ -10,7 +10,7 @@ const useMissedClassesComponentController = () => {
   const missedClasses = useSelector(getMissedLiveClasses);
   const genres = useSelector(getAllGenres);
 
-  const handleMissedComponentTabs = (index: number) => {
+  const handleMissedComponentTabs = (index: number): void => {
     // setTabsId(id);
     setTabsIndex(index);
   };

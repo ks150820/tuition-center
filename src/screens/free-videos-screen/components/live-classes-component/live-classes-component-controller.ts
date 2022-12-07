@@ -46,6 +46,8 @@ const useLiveClassesComponentController = () => {
     setCategoriesTabIndex(index);
   };
 
+  const handleOnPressCard = (): void => {};
+
   return {
     tabId,
     tabIndex,
@@ -56,6 +58,7 @@ const useLiveClassesComponentController = () => {
     liveClasses,
     handleTabs,
     handleCategoriesTabs,
+    handleOnPressCard,
   };
 };
 

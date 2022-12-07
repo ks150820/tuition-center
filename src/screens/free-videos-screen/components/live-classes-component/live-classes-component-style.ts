@@ -1,5 +1,5 @@
-import colors from '@theme/colors';
 import {StyleSheet} from 'react-native';
+import colors from '@theme/colors';
 
 export const styles = StyleSheet.create({
   component: {
@@ -8,30 +8,30 @@ export const styles = StyleSheet.create({
     borderRadius: 0,
     marginBottom: 10,
   },
-  card_component: {
+  cardComponent: {
     elevation: 0,
     borderWidth: 0.5,
     padding: 10,
     borderColor: colors.gray_scale.silver,
     marginVertical: 5,
   },
-  image_style: {width: 140, height: 85, elevation: 0},
-  inner_card_component:{flexDirection: 'row', flex: 1},
-  header_renderItemStyle: {
+  imageStyle: {width: 140, height: 85, elevation: 0},
+  innerCardComponent:{flexDirection: 'row', flex: 1},
+  headerRenderItemStyle: {
     flex: 0,
     borderBottomColor: colors.gray_scale.gallery,
   },
-  header_tabsComponentStyle: {
+  headerTabsComponentStyle: {
     borderRadius: 0,
     backgroundColor: colors.gray_scale.white,
     paddingHorizontal: 5,
   },
-  header_activeTabStyle: {
+  headerActiveTabStyle: {
     borderBottomWidth: 2,
     borderBottomColor: colors.primary.cardinal,
     borderRadius: 0,
   },
-  outer_tabs_component: {marginVertical: 7},
+  outerTabsComponent: {marginVertical: 7},
   activeTabStyle: {
     paddingVertical: 2,
     backgroundColor: colors.primary.cardinal,
@@ -52,23 +52,23 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.gray_scale.white,
     borderWidth: 0,
   },
-  left_component: {position: 'relative', borderRadius: 7, overflow: 'hidden'},
-  right_component: {paddingHorizontal: 10, flex: 1},
-  outer_blink_icon_component: {
-    backgroundColor: '#EC5A61',
+  leftComponent: {position: 'relative', borderRadius: 7, overflow: 'hidden'},
+  rightComponent: {paddingHorizontal: 10, flex: 1},
+  outerBlinkIconComponent: {
+    backgroundColor: '#EC5A61', // color name is not in the figma
     padding: 3,
     opacity: 0.5,
     borderRadius: 6,
     marginRight: 4,
   },
-  inner_blink_icon_component: {
+  innerBlinkIconComponent: {
     width: 6,
     height: 6,
     borderRadius: 6,
     backgroundColor: colors.primary.cardinal,
     zIndex: 1,
   },
-  play_icon_component: {
+  playIconComponent: {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -78,10 +78,23 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#00000066',
   },
-  right_footer_intro_component: {flex: 1, justifyContent: 'flex-end'},
-  right_footer_inner_intro_component: {flexDirection: 'row', justifyContent: 'space-between'},
-  live_text_component: {
+  rightFooterIntroComponent: {flex: 1, justifyContent: 'flex-end'},
+  rightFooterInnerIntroComponent: {flexDirection: 'row', justifyContent: 'space-between'},
+  liveTextComponent: {
     justifyContent: 'flex-end',
   },
-  live_text_inner_component: {flexDirection: 'row', alignItems: 'center'},
+  liveTextInnerComponent: {flexDirection: 'row', alignItems: 'center'},
+  fontWeight700: {fontWeight: '700'},
+  fontWeight400: {fontWeight: '400'},
+  fontWeight500: {fontWeight: '500'},
+  fontWeight600: {fontWeight: '600'},
+  viewAllComponent: {
+    backgroundColor: colors.gray_scale.white,
+    padding: 8,
+    borderTopWidth: 0.8,
+    borderTopColor: colors.gray_scale.gallery,
+  },
+  viewAllText: {
+    fontWeight: '700',
+  },
 });

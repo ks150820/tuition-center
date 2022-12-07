@@ -18,6 +18,7 @@ const LiveClassesComponent = ({}: ILiveClassesComponentProps): ReactElement => {
       handleCategoriesTabs={(index: number) =>
         CONTROLLER.handleCategoriesTabs(index)
       }
+      handleOnPressCard={CONTROLLER.handleOnPressCard}
     />
   );
 };

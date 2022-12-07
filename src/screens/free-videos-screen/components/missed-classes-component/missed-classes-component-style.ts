@@ -5,25 +5,25 @@ export const styles = StyleSheet.create({
   component: {
     padding: 15,
   },
-  inner_component: {
+  innerComponent: {
     borderWidth: 0.5,
     padding: 0,
     borderColor: colors.primary.cardinal,
     elevation: 0,
   },
-  heading_text: {
+  headingText: {
     fontWeight: '700',
   },
-  heading_card_component: {
+  headingCardComponent: {
     padding: 15,
   },
-  viewAll_component: {
+  viewAllComponent: {
     backgroundColor: colors.gray_scale.white,
     padding: 8,
     borderTopWidth: 0.8,
     borderTopColor: colors.gray_scale.gallery,
   },
-  viewAll_Text: {
+  viewAllText: {
     fontWeight: '700',
   },
   activeTabStyle: {
@@ -42,12 +42,12 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 1,
   },
-  outer_tabs_component: {marginVertical: 15},
+  outerTabsComponent: {marginVertical: 15},
   tabsComponentStyle: {
     backgroundColor: colors.gray_scale.white,
     borderWidth: 0,
   },
-  cards_component: {
+  cardsComponent: {
     padding: 0,
     elevation: 0,
     width: 160,
@@ -55,6 +55,6 @@ export const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#D9D9D9',
   },
-  cards_image: {width: '100%', height: 105, elevation: 0},
-  cards_intro_component: {padding: 10},
+  cardsImage: {width: '100%', height: 105, elevation: 0},
+  cardsIntroComponent: {padding: 10},
 });

@@ -38,6 +38,7 @@ type PopularSeries = {
     heading: string,
     isLiveClassIncluded: boolean,
     studentEnrolled: number,
+    // plusImage?: boolean,
 };
 
 interface FreeVideosType {

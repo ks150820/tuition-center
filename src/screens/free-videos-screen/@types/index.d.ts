@@ -1,10 +1,6 @@
-interface IFreeVideoScreenProps extends videoDetails {
-  navigation: any;
-}
+interface IFreeVideoScreenProps {}
 
-interface IUseFreeVideosScreenController {
-  navigation: any;
-}
+interface IUseFreeVideosScreenController {}
 
 interface IPopularSeriesComponentViewProps {
   readonly data: PopularSeries[];
@@ -33,9 +29,14 @@ interface ILiveClassesComponentViewProps {
   categoriesTabId: string;
   handleCategoriesTabs(index: number): void;
   handleTabs(index: number): void;
+  handleOnPressCard(): void;
 }
 
 interface FreeVideoDummyDataType {
   readonly id: number;
   readonly type: string;
+}
+interface IFreeVideosScreenViewProps {
+  dashBoardData: FreeVideoDummyDataType[];
+  handleNavigation(): void;
 }

@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     position: 'relative',
   },
   image: {width: '100%', height: 162, elevation: 0},
-  enrolled_component: {
+  enrolledComponent: {
     backgroundColor: '#F7BF1F', // color name is not in the figma
     borderRadius: 4,
     paddingVertical: 2,
@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     top: 6,
     right: 7,
   },
-  playIcon_component: {
+  playIconComponent: {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -32,14 +32,14 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  playIcon_inner_component: {
+  playIconInnerComponent: {
     flexDirection: 'row',
     padding: 5,
     backgroundColor: colors.gray_scale.white,
     borderRadius: 10,
     alignItems: 'center',
   },
-  card_component: {
+  cardComponent: {
     borderWidth: 0.8,
     borderColor: '#E0DACB',
     elevation: 0,
@@ -54,13 +54,13 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: '#FEEEEF',
   },
-  viewAll_card_component: {
+  viewAllCardComponent: {
     elevation: 0,
     width: 70,
     justifyContent: 'center',
     alignItem: 'center',
   },
-  viewAll_Icon_component: {
+  viewAllIconComponent: {
     padding: 20,
     borderRadius: 100,
     justifyContent: 'center',

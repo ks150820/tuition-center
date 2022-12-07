@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 
-import UIImage from '@common/ui-image';
+import UIImage from '@widgets/ui-image';
 import {style} from './video-details-screen-style';
 import PlayIcon from '@resources/icons/play-icon';
 
