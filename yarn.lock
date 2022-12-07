@@ -1843,10 +1843,10 @@
   resolved "https://registry.yarnpkg.com/@rneui/themed/-/themed-4.0.0-rc.7.tgz#5a016b853ee2e62bfd3183d39fc03b35864012f6"
   integrity sha512-nRF95gFTv/8JEx01L8q9p9VWKE5M/luPWPKYsWHKUQ5PHqwveQId/V5+ba9yiXsYIl9VbJJ1nLlqfHVP00u/3Q==
 
-"@secure-access-control/client@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@secure-access-control/client/-/client-0.0.1.tgz#b3c5c426b2f73627cef62871faf0928b95d2692d"
-  integrity sha512-YHz2OQ3TJF/WT/VXGK5FAAIyuRJbbSZ/9cEbyKuF+4xPo5EYtv3UZfcLaOHbHe/mhMA2KUXDUhIphgdG7ucf4A==
+"@secure-access-control/client@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@secure-access-control/client/-/client-0.0.3.tgz#8800e25644746afa28536cb24fff8ce0a1b18649"
+  integrity sha512-SKZDZsDVf7HgsJyOyvWPasKUZZVdolMBsumE85knUSNSTAYchZjMn3027wZx14VLEBy2mytdNVDECTtbCs41Dw==
   dependencies:
     sha256 "^0.2.0"
 
@@ -7178,6 +7178,11 @@ react-native-elements@^3.4.2:
     opencollective-postinstall "^2.0.3"
     react-native-ratings "8.0.4"
     react-native-size-matters "^0.3.1"
+
+react-native-flipper@^0.174.0:
+  version "0.174.0"
+  resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.174.0.tgz#acb57d4cea68551edff73c0f17999e519b39614c"
+  integrity sha512-9WAUxqHLU57dYxD/Z5EkcU/MdP1KFWCxdZfeHJ6Ogq/GbJVawzibjVfGPVwc2GoLIMvE6rZ0Fvvw4AUIdykc/g==
 
 react-native-gesture-handler@^2.8.0:
   version "2.8.0"
