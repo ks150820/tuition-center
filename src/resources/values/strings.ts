@@ -128,3 +128,8 @@ export const LIVE: ILanguageObject = {
   en: 'LIVE',
   hi: 'LIVE',
 }
+
+export const RUPEE: ILanguageObject = {
+  en: '₹',
+  hi: '₹',
+}

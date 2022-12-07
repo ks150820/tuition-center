@@ -8,7 +8,6 @@ type CompositeNavigationProp =
 
 type freeVideoParamList = {
   FreeVideoScreen: undefined;
-  VideoDetail: undefined;
 };
 
 // type freeVideoScreenProps = StackScreenProps<
@@ -20,5 +19,4 @@ type freeVideoParamList = {
 
 type freeVideosScreensNavigation = CompositeNavigationProp<
   StackNavigationProp<homeParamList, 'FreeVideoScreen'>,
-  StackNavigationProp<homeParamList, 'VideoDetail'>
 >;

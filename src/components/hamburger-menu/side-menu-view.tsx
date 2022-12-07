@@ -151,7 +151,7 @@ const SideMenuItem: React.FunctionComponent<ISideMenuItem> = ({
   ExtraLabel,
   actions,
 }) => {
-  const navigation = useNavigation<profileScreenProp>();
+  const navigation = useNavigation<freeVideosScreensNavigation>();
   const {onCall, onWhatsappShare} = useHamburgerActions();
   const {setIsVisible} = useContext(HamburgerContext);
   return (

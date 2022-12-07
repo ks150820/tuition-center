@@ -10,7 +10,6 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start:development": "NODE_ENV=development npx react-native run-android",
     "start:production": "NODE_ENV=production npx react-native run-android"
-    
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.7",
@@ -41,6 +40,7 @@
     "react-native-dotenv": "^3.4.2",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "^2.8.0",
+    "react-native-linear-gradient": "^2.6.2",
     "react-native-modal": "^13.0.1",
     "react-native-moengage": "^8.1.0",
     "react-native-orientation-locker": "^1.5.0",

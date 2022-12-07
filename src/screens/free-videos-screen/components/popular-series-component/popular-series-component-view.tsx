@@ -16,6 +16,7 @@ const PopularSeriesComponentView = ({
   data,
   onCardPress,
 }: IPopularSeriesComponentViewProps): ReactElement => {
+  // TODO: change item types
   const renderItem = (item: any) => {
     if (item.plusImage === true) {
       return (
