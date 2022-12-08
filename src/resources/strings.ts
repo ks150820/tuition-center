@@ -31,6 +31,26 @@ export const CONSTANT: IStringConstants = {
         en: 'Videos',
         hi: 'Videos',
     },
+    BATCH_NAME: {
+        en: 'ABHIMANYU BATCH',
+        hi: 'ABHIMANYU BATCH',
+    },
+    COURSES_BOUGHT_STATS: {
+        en: 'Course bought by over 1000 Users in last 1 Month',
+        hi: 'Course bought by over 1000 Users in last 1 Month',
+    },
+    STARTS: {
+        en: 'Starts:',
+        hi: 'Starts:',
+    },
+    COUPON_DESCRIPTION: {
+        en: '*आप 50% छूट पाने के लिए EXAMPUR10 कूपन का उपयोग कर सकते हैं|',
+        hi: '*आप 50% छूट पाने के लिए EXAMPUR10 कूपन का उपयोग कर सकते हैं|',
+    },
+    DURATION: {
+        en: 'Duration:',
+        hi: 'Duration:',
+    },
 };
 
 export const HEADINGS: IStringConstants = {
@@ -69,6 +89,10 @@ export const HEADINGS: IStringConstants = {
     POPULAR_SERIES: {
         en: 'Popular series',
         hi: 'Popular series',
+    },
+    COURSE_DETAILS: {
+        en: 'Course Details',
+        hi: 'Course Details',
     },
 };
 

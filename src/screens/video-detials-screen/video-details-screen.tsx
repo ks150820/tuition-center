@@ -4,24 +4,22 @@ import useVideoDetailsScreenController from './video-details-screen-controller';
 import VideoDetailsScreenView from './video-details-screen-view';
 
 const VideoDetailsScreen: React.FC<IVideoDetailsScreen> = ({}) => {
-  const {
-    courseData,
-    TabsData,
-    activeTab,
-    courseClassSelect,
-    handleOnCourseClassSelect,
-    handleTabs,
-  } = useVideoDetailsScreenController({});
+  const CONTROLLER = useVideoDetailsScreenController({});
   return (
     <VideoDetailsScreenView
-      TabsData={TabsData}
-      courseData={courseData}
-      handleTabs={handleTabs}
-      activeTab={activeTab}
-      selectedClass={courseClassSelect}
+      TabsData={CONTROLLER.TabsData}
+      courseData={CONTROLLER.courseData}
+      handleTabs={CONTROLLER.handleTabs}
+      activeTab={CONTROLLER.activeTab}
+      selectedClass={CONTROLLER.courseClassSelect}
       handleOnCourseClassSelect={(index: number) =>
-        handleOnCourseClassSelect(index)
+        CONTROLLER.handleOnCourseClassSelect(index)
       }
+      isBottomSheetVisible={CONTROLLER.isBottomSheetVisible}
+      toggleBottomSheet={CONTROLLER.toggleBottomSheet}
+      courseDescription={CONTROLLER.courseDescription}
+      bottomSheetDetail={CONTROLLER.bottomSheetDetail}
+      handleToCourseDetails={(details: CourseDetailType) => CONTROLLER.handleToCourseDetails(details)}
     />
   );
 };

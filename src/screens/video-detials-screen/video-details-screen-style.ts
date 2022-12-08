@@ -7,6 +7,9 @@ export const styles = (isLive?: boolean, isUpcoming?: boolean) =>
       flex: 1,
       backgroundColor: colors.gray_scale.gallery,
     },
+    innerComponent: {
+        flex: 1,
+    },
     videoComponent: {
       position: 'relative',
     },
@@ -23,7 +26,7 @@ export const styles = (isLive?: boolean, isUpcoming?: boolean) =>
     videoPlayerImage: {height: 185, width: '100%', elevation: 0},
     uiTabsComponent: {
       paddingHorizontal: 15,
-      paddingTop: 15,
+      paddingTop: 10,
     },
     tabsComponentStyle: {
       paddingVertical: 0,
@@ -34,18 +37,14 @@ export const styles = (isLive?: boolean, isUpcoming?: boolean) =>
       elevation: 0,
       padding: 11,
     },
-    inActiveTabStyle: {
-        // borderTopWidth: 1,
-        // borderBottomWidth: 1,
-        // borderLeftWidth: 1,
-        // borderColor: colors.gray_scale.silver,
-        // borderTopRightRadius: 0,
-        // borderBottomRightRadius: 0,
-    },
+    inActiveTabStyle: {},
     videoCoursesComponent: {
-      paddingHorizontal: 15,
-      paddingVertical: 15,
+    paddingTop: 10,
       flex: 1,
+    },
+    videoCoursesInnerComponent: {
+        paddingHorizontal: 15,
+        paddingVertical: 10,
     },
     videoCoursesCardComponent: {
       padding: 10,
@@ -130,13 +129,12 @@ export const styles = (isLive?: boolean, isUpcoming?: boolean) =>
         alignItems: 'center',
     },
     videoDetailsFooterDetailComponent: {
-        padding: 10,
+        paddingVertical: 7,
+        paddingHorizontal: 11,
     },
     videoDetailsFooterPriceComponent: {
         flexDirection: 'row',
-        // justifyContent: 'flex-end',
         alignItems: 'flex-end',
-        // alignItems: 'center'
     },
     videoDetailsFooterDiscountedPriceComponent: {
         marginLeft: 5,
@@ -147,5 +145,111 @@ export const styles = (isLive?: boolean, isUpcoming?: boolean) =>
         textDecorationStyle: 'solid',
         textDecorationLine: 'line-through',
         justifyContent: 'flex-end',
+    },
+    videoDetailsFooterDiscountText: {
+        padding: 2,
+    },
+    viewCourseButton: {
+        backgroundColor: colors.primary.cardinal,
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        borderRadius: 8,
+    },
+    bottomSheetComponent: {
+        flex: 1,
+    },
+    bottomSheetFooterComponent: {justifyContent: 'flex-end'},
+    bottomSheetCloseIconComponent: {
+        alignItems: 'flex-end',
+        padding: 5,
+    },
+    bottomSheetBannerImageContainer: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    bottomSheetBannerImage: {
+        width: 200,
+        height: 113,
+        elevation: 0,
+    },
+    fontWeight700: {
+        fontWeight: '700',
+    },
+    bottomSheetHeadingContainer: {
+        position: 'relative',
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    bottomSheetHeadingComponent: {
+        // backgroundColor: colors.gray_scale.white,
+        paddingHorizontal: 5
+    },
+    bottomSheetHeadingCrossingLine: {
+        height: 1,
+        backgroundColor: colors.gray_scale.silver,
+        // width: 100
+        flex: 1,
+        // marginTop: -6,
+    },
+    buttonsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        marginTop: 15,
+    },
+    bottomSheetDatesButton: {
+        flexDirection: 'row',
+        flex: 0.4,
+        padding: 3,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: colors.accent.royal_blue,
+        backgroundColor: '#E7F3FF',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    bottomSheetDatesButtonIcon: {
+        marginRight: 10,
+    },
+    boughtByUserTextOuterContainer: {alignSelf: 'center', marginTop: 15, marginBottom: 15,},
+    boughtByUserTextContainer: {
+        flexDirection: 'row',
+        paddingVertical: 4,
+        paddingHorizontal: 10,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#E0DACB',
+        backgroundColor: '#FEEEEF',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    courseDetailsDescriptionOuterContainer: {
+        padding: 20,
+    },
+    courseDetailsDescriptionInnerContainer: {
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        // alignItems: 'center',
+        alignSelf: 'center',
+        // justifyContent: 'space-around',
+        borderWidth: 0.5,
+        borderColor: colors.gray_scale.silver,
+        borderRadius: 8,
+        padding: 10,
+    },
+    courseDetailsDescriptionContainerChild: {
+        marginLeft: 15,
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 5,
+    },
+    courseDetailsDescriptionContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 5,
+    },
+    courseDetailsDescriptionDoubleCheckIcon: {
+        marginRight: 5,
     },
   });

@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.WHITE.white,
     position: 'absolute',
     bottom: 0,
-    padding: 10,
+    padding: 0,
     borderTopStartRadius: 10,
     borderTopEndRadius: 10,
   },

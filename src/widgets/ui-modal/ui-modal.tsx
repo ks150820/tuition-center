@@ -3,6 +3,7 @@ import UiModalView from './ui-modal-view';
 
 interface IUiModalProps {
   modalVisible: boolean;
+  height?: string;
   children: ReactElement;
   isBottomSheet: boolean;
 }
@@ -17,12 +18,14 @@ interface IUiModalProps {
 const UiModal: React.FC<IUiModalProps> = ({
   isBottomSheet,
   modalVisible,
+  height,
   children,
 }) => {
   return (
     <UiModalView
       modalVisible={modalVisible}
       children={children}
+      height={height}
       isBottomSheet={isBottomSheet}
     />
   );
