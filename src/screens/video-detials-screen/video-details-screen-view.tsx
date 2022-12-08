@@ -41,6 +41,7 @@ const VideoPlayScreenComponent = (): ReactElement => {
 const VideoDetailFooterComponent = ({
   discountedPrice,
   actualPrice,
+  onPress,
 }: IVideoDetailFooterComponentProps): ReactElement => {
   return (
     <View style={styles().videoDetailsFooterComponent}>
@@ -83,7 +84,7 @@ const VideoDetailFooterComponent = ({
           <View>
             <UIBtn
               btnText="View Course"
-              onPress={() => {}}
+              onPress={onPress}
               styles={{btnElementWrapper: styles().viewCourseButton}}
               color={colors.gray_scale.white}
             />
@@ -245,6 +246,7 @@ const BottomSheetView: React.FC<IVideoDetailBottomSheetProps> = ({
           <VideoDetailFooterComponent
             discountedPrice={1999}
             actualPrice={2000}
+            onPress={()=>{}}
           />
         </View>
       </>
@@ -366,6 +368,7 @@ const VideoDetailsScreenView: React.FC<IVideoDetailsScreenViewProps> = (
       <VideoDetailFooterComponent
         discountedPrice={DProps.bottomSheetDetail.discountedPrice}
         actualPrice={DProps.bottomSheetDetail.actualPrice}
+        onPress={DProps.handleViewCourseButton}
       />
 
       {/* ----- bottom sheet ----- */}

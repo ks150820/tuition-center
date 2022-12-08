@@ -9,9 +9,10 @@ interface IVideoDetailsScreenViewProps {
   handleOnCourseClassSelect(index: number): void;
   isBottomSheetVisible: boolean;
   toggleBottomSheet(): void;
-  bottomSheetDetail: any;
+  bottomSheetDetail: CourseDetailType;
   readonly courseDescription: ICourseDescription[];
   handleToCourseDetails(details: CourseDetailType): void;
+  handleViewCourseButton(): void;
 }
 
 interface IVideoDetailsScreen {}
@@ -28,7 +29,8 @@ interface IUseVideoDetailsScreenControllerReturnTypes {
   handleTabs(index: number): void;
   handleOnCourseClassSelect(index: number): void;
   handleToCourseDetails(details: CourseDetailType): void;
-  bottomSheetDetail: any;
+  bottomSheetDetail: CourseDetailType;
+  handleViewCourseButton(): void;
 }
 
 interface CourseDetailType {
@@ -62,7 +64,7 @@ interface IVideoDetailBottomSheetProps {
   isVisible: boolean;
   toggleBottomSheet(): void;
   courseDescription: ICourseDescription[];
-  bottomSheetDetail: any;
+  bottomSheetDetail: CourseDetailType;
 }
 
 type ICourseDescription = {
@@ -73,4 +75,5 @@ type ICourseDescription = {
 interface IVideoDetailFooterComponentProps {
   discountedPrice: number;
   actualPrice: number;
+  onPress(): void;
 }

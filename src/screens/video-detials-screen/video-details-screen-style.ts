@@ -30,7 +30,8 @@ export const styles = (isLive?: boolean, isUpcoming?: boolean) =>
     },
     tabsComponentStyle: {
       paddingVertical: 0,
-      backgroundColor: "#ededed",
+      backgroundColor: '#ededed', // color name is not in the figma
+      borderWidth: 1
     },
     activeTabComponent: {
       backgroundColor: colors.gray_scale.white,

@@ -19,6 +19,7 @@ const VideoDetailsScreen: React.FC<IVideoDetailsScreen> = ({}) => {
       toggleBottomSheet={CONTROLLER.toggleBottomSheet}
       courseDescription={CONTROLLER.courseDescription}
       bottomSheetDetail={CONTROLLER.bottomSheetDetail}
+      handleViewCourseButton={CONTROLLER.handleViewCourseButton}
       handleToCourseDetails={(details: CourseDetailType) => CONTROLLER.handleToCourseDetails(details)}
     />
   );

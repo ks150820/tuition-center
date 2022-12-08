@@ -6,8 +6,24 @@ const useVideoDetailsScreenController =
     const [courseClassSelect, setCourseCardSelect] = useState<number | null>(
       null,
     );
-    const [isBottomSheetVisible, setBottomSheetVisible] = useState<boolean>(false);
-    const [bottomSheetDetail, setBottomSheetDetail] = useState({});
+    const [isBottomSheetVisible, setBottomSheetVisible] =
+      useState<boolean>(false);
+    const [bottomSheetDetail, setBottomSheetDetail] =
+      useState<CourseDetailType>({
+        _id: '',
+        heading: '',
+        batchName: '',
+        teacherName: '',
+        startDate: '',
+        duration: '',
+        discountedPrice: 0,
+        actualPrice: 0,
+        imageUrl: require('@assets/images/group.jpg'),
+        isActive: false,
+        isLive: false,
+        status: '',
+        isUpcoming: false,
+      });
 
     const courseData: CourseDetailType[] = [
       {
@@ -125,12 +141,14 @@ const useVideoDetailsScreenController =
 
     const toggleBottomSheet = (): void => {
       setBottomSheetVisible(!isBottomSheetVisible);
-    }
+    };
 
     const handleToCourseDetails = (details: CourseDetailType): void => {
       setBottomSheetDetail(details);
       setBottomSheetVisible(!isBottomSheetVisible);
-    }
+    };
+
+    const handleViewCourseButton = (): void => {};
 
     return {
       courseData,
@@ -144,6 +162,7 @@ const useVideoDetailsScreenController =
       handleTabs,
       handleOnCourseClassSelect,
       handleToCourseDetails,
+      handleViewCourseButton,
     };
   };
 
