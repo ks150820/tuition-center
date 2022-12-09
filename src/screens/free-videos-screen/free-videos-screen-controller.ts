@@ -24,7 +24,11 @@ const useFreeVideosScreenController = ({}: IUseFreeVideosScreenController) => {
   const handleNavigation = (): void => {
     navigation.navigate('VideoDetail');
   };
-  return {dummyFreeVideosDashBoardData, handleNavigation};
+
+  const handleLiveClassNavigation = (): void => {
+    navigation.navigate('AllVideos');
+  };
+  return {dummyFreeVideosDashBoardData, handleNavigation, handleLiveClassNavigation};
 };
 
 export default useFreeVideosScreenController;

@@ -51,6 +51,18 @@ export const CONSTANT: IStringConstants = {
         en: 'Duration:',
         hi: 'Duration:',
     },
+    TXT_STUDENT: {
+        en: 'Students watching',
+        hi: 'Students watching',
+    },
+    TXT_SCHEDULED: {
+        en: 'Scheduled time:',
+        hi: 'Scheduled time:',
+    },
+    TXT_RECORDED: {
+        en: 'Recorded on:',
+        hi: 'Recorded on:',
+    },
 };
 
 export const HEADINGS: IStringConstants = {

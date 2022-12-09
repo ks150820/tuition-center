@@ -17,7 +17,9 @@ interface IMissedClassesComponentView {
   onChangeTabs(index: number): void;
 }
 
-interface ILiveClassesComponentProps {}
+interface ILiveClassesComponentProps {
+  handleViewAll(): void;
+}
 
 interface ILiveClassesComponentViewProps {
   tabId: string;
@@ -30,6 +32,7 @@ interface ILiveClassesComponentViewProps {
   handleCategoriesTabs(index: number): void;
   handleTabs(index: number): void;
   handleOnPressCard(): void;
+  handleViewAll(): void;
 }
 
 interface FreeVideoDummyDataType {
@@ -39,4 +42,5 @@ interface FreeVideoDummyDataType {
 interface IFreeVideosScreenViewProps {
   dashBoardData: FreeVideoDummyDataType[];
   handleNavigation(): void;
+  handleLiveClassNavigation(): void;
 }

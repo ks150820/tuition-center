@@ -3,7 +3,7 @@ import useLiveClassesComponentController from './live-classes-component-controll
 
 import LiveClassesComponentView from './live-classes-component-view';
 
-const LiveClassesComponent = ({}: ILiveClassesComponentProps): ReactElement => {
+const LiveClassesComponent = ({handleViewAll}: ILiveClassesComponentProps): ReactElement => {
   const CONTROLLER = useLiveClassesComponentController();
   return (
     <LiveClassesComponentView
@@ -19,6 +19,7 @@ const LiveClassesComponent = ({}: ILiveClassesComponentProps): ReactElement => {
         CONTROLLER.handleCategoriesTabs(index)
       }
       handleOnPressCard={CONTROLLER.handleOnPressCard}
+      handleViewAll={handleViewAll}
     />
   );
 };

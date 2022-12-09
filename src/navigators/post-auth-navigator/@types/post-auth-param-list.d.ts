@@ -10,10 +10,12 @@ type postAuthParamList = {
   BottomNavigator: NavigatorScreenParams<bottomTabParamList>;
   ProfileScreen;
   VideoDetail: undefined;
+  AllVideos: undefined;
 };
 // type profileScreenProp = StackNavigationProp<postAuthParamList, 'ProfileScreen'>;
 
 type freeVideosScreensNavigation = CompositeNavigationProp<
-  StackNavigationProp<homeParamList, 'ProfileScreen'>,
-  StackNavigationProp<homeParamList, 'VideoDetail'>
+  StackNavigationProp<postAuthParamList, 'ProfileScreen'>,
+  StackNavigationProp<postAuthParamList, 'VideoDetail'>,
+  StackNavigationProp<postAuthParamList, 'AllVideos'>,
 >;

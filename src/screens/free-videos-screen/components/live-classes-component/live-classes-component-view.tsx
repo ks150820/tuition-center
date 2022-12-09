@@ -114,7 +114,7 @@ const LiveClassesComponentView = (props: ILiveClassesComponentViewProps) => {
             />
           </View>
         </View>
-        <View style={styles.viewAllComponent}>
+        <Pressable style={styles.viewAllComponent} onPress={props.handleViewAll}>
           <UIText
             FontType={FONT_TYPE.DISCOUNT}
             style={styles.viewAllText}
@@ -122,7 +122,7 @@ const LiveClassesComponentView = (props: ILiveClassesComponentViewProps) => {
             color={colors.primary.cardinal}>
             {VIEW_ALL['en']}
           </UIText>
-        </View>
+        </Pressable>
       </>
     </UICard>
   );

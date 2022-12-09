@@ -10,6 +10,7 @@ import {styles} from './free-videos-screen-style';
 
 const FreeVideosScreenView = ({
   dashBoardData,
+  handleLiveClassNavigation,
   handleNavigation,
 }: IFreeVideosScreenViewProps) => {
   const renderItem = (item: FreeVideoDummyDataType) => {
@@ -21,7 +22,7 @@ const FreeVideosScreenView = ({
         return <MissedClassesComponent />;
       }
       case FreeVideoScreenOptions.LIVE_UPCOMING: {
-        return <LiveClassesComponent />;
+        return <LiveClassesComponent handleViewAll={handleLiveClassNavigation} />;
       }
       case FreeVideoScreenOptions.POPULAR_SERIES: {
         return <PopularSeriesComponent onCardPress={handleNavigation} />;
